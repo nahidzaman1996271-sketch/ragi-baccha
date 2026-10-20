@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>For My Ragi Baccha, My Shundori Pakhi ❤️ — From Nahid</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Dancing+Script:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            script: ['"Dancing Script"', 'cursive'],
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            rose: {
+              50: '#fff1f2',
+              100: '#ffe4e6',
+              200: '#fecdd3',
+              300: '#fda4af',
+              400: '#fb7185',
+              500: '#f43f5e',
+              600: '#e11d48',
+              700: '#be123c',
+              800: '#9f1239',
+              900: '#881337',
+            },
+            cream: '#fffdf9',
+            gold: '#fbbf24'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- React & ReactDOM & Babel CDN -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <style>
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(2deg); }
+    }
+    @keyframes pulseGlow {
+      0%, 100% { filter: drop-shadow(0 0 12px rgba(244, 63, 94, 0.55)); transform: scale(1); }
+      50% { filter: drop-shadow(0 0 26px rgba(244, 63, 94, 0.85)); transform: scale(1.05); }
+    }
+    @keyframes driftDown {
+      0% { transform: translateY(-10vh) translateX(0) rotate(0deg); opacity: 0; }
+      15% { opacity: 0.75; }
+      85% { opacity: 0.75; }
+      100% { transform: translateY(105vh) translateX(40px) rotate(360deg); opacity: 0; }
+    }
+    @keyframes skyHeart {
+      0% { transform: translateY(0) scale(0.7); opacity: 1; }
+      100% { transform: translateY(-280px) scale(1.4); opacity: 0; }
+    }
+    @keyframes butterflyWing {
+      0%, 100% { transform: scaleX(1) translateY(0px); }
+      50% { transform: scaleX(0.55) translateY(-6px); }
+    }
+    .animate-float-slow { animation: floatSlow 4.5s ease-in-out infinite; }
+    .animate-pulse-glow { animation: pulseGlow 2.6s ease-in-out infinite; }
+    .animate-sky-heart { animation: skyHeart 2.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    .animate-butterfly { animation: butterflyWing 0.8s ease-in-out infinite; }
+
+    /* Vintage paper texture feel */
+    .paper-card {
+      background-color: #fffaf3;
+      background-image: 
+        radial-gradient(at 15% 15%, rgba(254, 205, 211, 0.25) 0px, transparent 50%),
+        radial-gradient(at 85% 85%, rgba(253, 230, 138, 0.2) 0px, transparent 50%),
+        repeating-linear-gradient(0deg, transparent, transparent 31px, rgba(244, 63, 94, 0.06) 31px, rgba(244, 63, 94, 0.06) 32px);
+      box-shadow: 0 20px 50px rgba(136, 19, 55, 0.12), inset 0 0 40px rgba(251, 113, 133, 0.07);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-rose-50 text-rose-950 font-sans antialiased selection:bg-rose-200 selection:text-rose-900 overflow-x-hidden">
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState, useEffect, useRef } = React;
+
+    // --- Custom Illustrated Couple & Bouquet SVG ---
+    const GardenCoupleIllustration = ({ bouquetExtended, flowersTaken, onBouquetClick, isSunset = false }) => {
+      // Calculate closeness when flowers are taken
+      const nahidOffset = flowersTaken ? 28 : 0;
+      const mahmudaOffset = flowersTaken ? -28 : 0;
+
+      return (
+        <div className="relative w-full max-w-3xl mx-auto select-none pt-4 pb-2 px-1">
+          {/* Responsive Floating Name Badges */}
+          <div className="grid grid-cols-2 gap-2 sm:gap-6 mb-3 sm:mb-4 px-1 sm:px-6 z-20 relative">
+            {/* Nahid Badge */}
+            <div className="flex justify-center sm:justify-start">
+              <div className="bg-white/85 backdrop-blur-md border border-rose-200/80 shadow-md rounded-2xl px-2.5 py-1.5 sm:px-4 sm:py-2 text-center sm:text-left animate-float-slow max-w-full">
+                <p className="text-[11px] sm:text-sm font-bold text-rose-900 leading-tight">
+                  Nahid Ibn Zaman
+                </p>
+                <p className="text-[10px] sm:text-xs font-medium text-rose-600 leading-tight mt-0.5">
+                  Ragi Pakhi-r Pagol Chele ❤️
+                </p>
+              </div>
+            </div>
+
+            {/* Mahmuda Badge */}
+            <div className="flex justify-center sm:justify-end">
+              <div className="bg-white/85 backdrop-blur-md border border-rose-200/80 shadow-md rounded-2xl px-2.5 py-1.5 sm:px-4 sm:py-2 text-center sm:text-right animate-float-slow max-w-full" style={{ animationDelay: '1.2s' }}>
+                <p className="text-[11px] sm:text-sm font-bold text-rose-900 leading-tight">
+                  Mahmuda Khanum
+                </p>
+                <p className="text-[10px] sm:text-xs font-medium text-rose-600 leading-tight mt-0.5">
+                  Shundori Pakhi 🐦💗
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Main SVG Scene */}
+          <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] rounded-3xl overflow-hidden shadow-2xl border border-white/60">
+            <svg viewBox="0 0 800 500" className="w-full h-full object-cover">
+              <defs>
+                {/* Sky Gradient */}
+                <linearGradient id={isSunset ? "sunsetSky" : "gardenSky"} x1="0" y1="0" x2="0" y2="1">
+                  {isSunset ? (
+                    <>
+                      <stop offset="0%" stopColor="#4c1d95" />
+                      <stop offset="35%" stopColor="#be185d" />
+                      <stop offset="70%" stopColor="#fb7185" />
+                      <stop offset="100%" stopColor="#fde68a" />
+                    </>
+                  ) : (
+                    <>
+                      <stop offset="0%" stopColor="#fce7f3" />
+                      <stop offset="45%" stopColor="#ffe4e6" />
+                      <stop offset="80%" stopColor="#fef3c7" />
+                      <stop offset="100%" stopColor="#fde68a" />
+                    </>
+                  )}
+                </linearGradient>
+
+                <radialGradient id="sunGlow" cx="50%" cy="62%" r="45%">
+                  <stop offset="0%" stopColor="#fef08a" stopOpacity="0.95" />
+                  <stop offset="45%" stopColor="#fda4af" stopOpacity="0.45" />
+                  <stop offset="100%" stopColor="#fda4af" stopOpacity="0" />
+                </radialGradient>
+
+                <linearGradient id="meadowBack" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor={isSunset ? "#881337" : "#f43f5e"} stopOpacity="0.22" />
+                  <stop offset="100%" stopColor={isSunset ? "#4c0519" : "#881337"} stopOpacity="0.55" />
+                </linearGradient>
+
+                <linearGradient id="panjabiGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stopColor="#881337" />
+                  <stop offset="100%" stopColor="#4c0519" />
+                </linearGradient>
+
+                <linearGradient id="sareeGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stopColor="#f43f5e" />
+                  <stop offset="50%" stopColor="#e11d48" />
+                  <stop offset="100%" stopColor="#9f1239" />
+                </linearGradient>
+              </defs>
+
+              {/* Background Sky */}
+              <rect width="800" height="500" fill={`url(#${isSunset ? "sunsetSky" : "gardenSky"})`} />
+
+              {/* Golden Sunset Orb */}
+              <circle cx="400" cy="310" r="210" fill="url(#sunGlow)" />
+              <circle cx="400" cy="310" r="78" fill="#fef9c3" opacity={isSunset ? "0.85" : "0.7"} />
+
+              {/* Dreamy Bokeh Lights */}
+              <circle cx="140" cy="120" r="18" fill="#fff" opacity="0.35" />
+              <circle cx="670" cy="100" r="24" fill="#fff" opacity="0.3" />
+              <circle cx="280" cy="90" r="12" fill="#fef08a" opacity="0.45" />
+              <circle cx="540" cy="140" r="15" fill="#fecdd3" opacity="0.45" />
+              <circle cx="620" cy="230" r="20" fill="#fef08a" opacity="0.3" />
+
+              {/* Distant Floral Hills */}
+              <path d="M0 390 Q200 330 420 385 T800 370 L800 500 L0 500 Z" fill="url(#meadowBack)" />
+              <path d="M0 425 Q260 380 510 420 T800 405 L800 500 L0 500 Z" fill={isSunset ? "#4c0519" : "#9f1239"} opacity="0.35" />
+
+              {/* Garden Pathway */}
+              <path d="M290 500 Q370 425 400 410 Q435 425 515 500 Z" fill="#fef3c7" opacity="0.4" />
+
+              {/* Garden Rose Bushes Left & Right */}
+              <g opacity="0.85">
+                <circle cx="65" cy="435" r="55" fill="#9f1239" opacity="0.5" />
+                <circle cx="120" cy="455" r="45" fill="#be123c" opacity="0.5" />
+                <circle cx="55" cy="415" r="10" fill="#fb7185" />
+                <circle cx="88" cy="405" r="8" fill="#fda4af" />
+                <circle cx="115" cy="430" r="11" fill="#f43f5e" />
+
+                <circle cx="735" cy="435" r="55" fill="#9f1239" opacity="0.5" />
+                <circle cx="680" cy="455" r="45" fill="#be123c" opacity="0.5" />
+                <circle cx="740" cy="410" r="10" fill="#fb7185" />
+                <circle cx="705" cy="425" r="9" fill="#fda4af" />
+                <circle cx="670" cy="435" r="11" fill="#f43f5e" />
+              </g>
+
+              {/* Delicate Butterflies */}
+              <g transform="translate(215, 165)" className="animate-butterfly">
+                <path d="M0 0 C-10 -12 -18 -4 -8 6 C-16 12 -8 18 0 8 C8 18 16 12 8 6 C18 -4 10 -12 0 0 Z" fill="#fb7185" opacity="0.85" />
+              </g>
+              <g transform="translate(575, 150) scale(0.85)" className="animate-butterfly" style={{ animationDelay: '0.4s' }}>
+                <path d="M0 0 C-10 -12 -18 -4 -8 6 C-16 12 -8 18 0 8 C8 18 16 12 8 6 C18 -4 10 -12 0 0 Z" fill="#f472b6" opacity="0.8" />
+              </g>
+
+              {/* ========================================================= */}
+              {/* CHARACTER 1: NAHID IBN ZAMAN (Left Side)                  */}
+              {/* ========================================================= */}
+              <g
+                style={{
+                  transform: `translateX(${nahidOffset}px)`,
+                  transition: 'transform 0.9s cubic-bezier(0.22, 1, 0.36, 1)'
+                }}
+              >
+                {/* Ground Shadow */}
+                <ellipse cx="265" cy="465" rx="48" ry="12" fill="#4c0519" opacity="0.28" />
+
+                {/* Legs / White Pajama Trousers */}
+                <rect x="246" y="375" width="14" height="82" rx="7" fill="#fff1f2" />
+                <rect x="268" y="375" width="14" height="82" rx="7" fill="#ffe4e6" />
+                {/* Sandals/Loafers */}
+                <ellipse cx="255" cy="460" rx="12" ry="6" fill="#451a03" />
+                <ellipse cx="277" cy="460" rx="12" ry="6" fill="#451a03" />
+
+                {/* Royal Maroon Panjabi Tunic */}
+                <path d="M230 250 Q264 242 296 250 L306 392 Q264 402 222 392 Z" fill="url(#panjabiGrad)" />
+                {/* Golden Collar & Placket Embroidery */}
+                <path d="M252 246 L265 256 L278 246" fill="none" stroke="#fbbf24" strokeWidth="3" strokeLinecap="round" />
+                <line x1="265" y1="256" x2="265" y2="305" stroke="#fbbf24" strokeWidth="2.5" strokeDasharray="4 3" />
+
+                {/* Left Arm (Relaxed by side) */}
+                <path d="M234 256 Q216 305 228 345" fill="none" stroke="#881337" strokeWidth="16" strokeLinecap="round" />
+                <circle cx="229" cy="350" r="8" fill="#d99b78" />
+
+                {/* Neck & Head */}
+                <rect x="256" y="226" width="16" height="24" rx="6" fill="#d99b78" />
+                {/* Face (Warm South Asian Skin Tone) */}
+                <ellipse cx="266" cy="198" rx="28" ry="33" fill="#e0a382" />
+                {/* Soft Blush */}
+                <ellipse cx="276" cy="205" rx="7" ry="4" fill="#fb7185" opacity="0.45" />
+
+                {/* Stylish Dark Wavy Hair */}
+                <path d="M236 196 C232 162 260 150 286 160 C302 165 300 185 292 192 C285 178 265 175 248 182 C242 186 240 194 236 196 Z" fill="#1e1b18" />
+                <path d="M245 162 Q268 146 292 165" fill="none" stroke="#292524" strokeWidth="6" strokeLinecap="round" />
+
+                {/* Expressive Face — Slightly Nervous, Hopeful, Loving */}
+                {/* Eyebrows (Gentle apologetic tilt) */}
+                <path d="M256 184 Q263 180 270 184" fill="none" stroke="#1e1b18" strokeWidth="2.3" strokeLinecap="round" />
+                <path d="M277 183 Q284 180 290 185" fill="none" stroke="#1e1b18" strokeWidth="2.3" strokeLinecap="round" />
+                {/* Warm Eyes looking at Mahmuda */}
+                <circle cx="265" cy="193" r="3.2" fill="#1e1b18" />
+                <circle cx="266" cy="192" r="1.1" fill="#fff" />
+                <circle cx="283" cy="193" r="3.2" fill="#1e1b18" />
+                <circle cx="284" cy="192" r="1.1" fill="#fff" />
+                {/* Nervous cute sweat drop if flowers not taken yet */}
+                {!flowersTaken && (
+                  <path d="M244 182 Q241 190 244 193 Q247 190 244 182 Z" fill="#93c5fd" opacity="0.85" />
+                )}
+                {/* Gentle Hopeful Smile */}
+                <path d="M266 212 Q275 219 283 211" fill="none" stroke="#881337" strokeWidth="2.4" strokeLinecap="round" />
+
+                {/* Right Arm Extending the Bouquet Toward Mahmuda */}
+                <g
+                  style={{
+                    transform: bouquetExtended ? 'rotate(-8deg) translate(8px, -4px)' : 'rotate(4deg)',
+                    transformOrigin: '285px 265px',
+                    transition: 'transform 0.9s ease-out'
+                  }}
+                >
+                  <path d="M286 262 Q325 285 360 272" fill="none" stroke="#881337" strokeWidth="16" strokeLinecap="round" />
+                  <circle cx="364" cy="271" r="9" fill="#e0a382" />
+
+                  {/* ================================================= */}
+                  {/* INTERACTIVE ROSE BOUQUET                          */}
+                  {/* ================================================= */}
+                  <g
+                    onClick={onBouquetClick}
+                    className="cursor-pointer group"
+                    style={{
+                      transform: flowersTaken ? 'translate(22px, -6px) scale(1.08)' : 'scale(1)',
+                      transformOrigin: '385px 260px',
+                      transition: 'transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1)'
+                    }}
+                  >
+                    {/* Subtle interactive glow halo around bouquet */}
+                    <circle cx="392" cy="252" r="42" fill="#fb7185" opacity="0.22" className="animate-pulse" />
+
+                    {/* Bouquet Kraft Paper Cone & Satin Ribbon */}
+                    <path d="M362 288 L392 228 L422 288 Z" fill="#fde68a" stroke="#f59e0b" strokeWidth="1.5" opacity="0.95" transform="rotate(165 392 258)" />
+                    <path d="M372 275 Q392 282 405 270" fill="none" stroke="#e11d48" strokeWidth="4" strokeLinecap="round" />
+                    <path d="M386 276 L380 294 M392 276 L398 294" stroke="#e11d48" strokeWidth="3" strokeLinecap="round" />
+
+                    {/* Green Foliage Leaves */}
+                    <ellipse cx="372" cy="242" rx="12" ry="6" fill="#15803d" transform="rotate(-30 372 242)" />
+                    <ellipse cx="412" cy="244" rx="12" ry="6" fill="#16a34a" transform="rotate(30 412 244)" />
+                    <ellipse cx="392" cy="230" rx="10" ry="6" fill="#15803d" />
+
+                    {/* Fresh Red Roses */}
+                    <circle cx="382" cy="246" r="11" fill="#e11d48" />
+                    <path d="M377 245 Q382 240 387 246 Q382 252 377 245" fill="none" stroke="#fecdd3" strokeWidth="1.5" />
+
+                    <circle cx="402" cy="248" r="11" fill="#be123c" />
+                    <path d="M397 247 Q402 242 407 248 Q402 254 397 247" fill="none" stroke="#fecdd3" strokeWidth="1.5" />
+
+                    <circle cx="392" cy="234" r="12" fill="#f43f5e" />
+                    <path d="M387 234 Q392 228 397 234 Q392 240 387 234" fill="none" stroke="#ffe4e6" strokeWidth="1.5" />
+
+                    {/* Soft Pink Roses */}
+                    <circle cx="374" cy="258" r="9.5" fill="#fb7185" />
+                    <circle cx="408" cy="260" r="9.5" fill="#fda4af" />
+                    <circle cx="391" cy="256" r="10" fill="#f472b6" />
+
+                    {/* Delicate White Baby's Breath Flowers */}
+                    <circle cx="368" cy="246" r="3.5" fill="#ffffff" />
+                    <circle cx="384" cy="226" r="3" fill="#ffffff" />
+                    <circle cx="402" cy="228" r="3.5" fill="#ffffff" />
+                    <circle cx="416" cy="250" r="3" fill="#ffffff" />
+                    <circle cx="380" cy="265" r="3" fill="#ffffff" />
+                    <circle cx="400" cy="266" r="3.5" fill="#ffffff" />
+                  </g>
+                </g>
+              </g>
+
+              {/* Floating Heart Between Them */}
+              <g transform="translate(400, 175)" className="animate-float-slow">
+                <path
+                  d="M0 10 C-12 -4 -26 4 -14 20 L0 34 L14 20 C26 4 12 -4 0 10 Z"
+                  fill="#f43f5e"
+                  opacity={flowersTaken ? "0.95" : "0.65"}
+                />
+              </g>
+
+              {/* ========================================================= */}
+              {/* CHARACTER 2: MAHMUDA KHANUM - SHUNDORI PAKHI (Right Side) */}
+              {/* ========================================================= */}
+              <g
+                style={{
+                  transform: `translateX(${mahmudaOffset}px)`,
+                  transition: 'transform 0.9s cubic-bezier(0.22, 1, 0.36, 1)'
+                }}
+              >
+                {/* Ground Shadow */}
+                <ellipse cx="535" cy="465" rx="48" ry="12" fill="#4c0519" opacity="0.28" />
+
+                {/* Flowing Long Wavy Hair (Back layer) */}
+                <path d="M515 175 Q568 185 572 285 Q555 315 525 295 Z" fill="#1c1917" />
+
+                {/* Elegant Rose-Pink & Gold Bangladeshi Saree / Anarkali */}
+                <path d="M502 252 Q535 244 566 252 L584 456 Q535 468 486 456 Z" fill="url(#sareeGrad)" />
+                {/* Saree Pallu / Dupatta Drape with Golden Zari Border */}
+                <path d="M500 254 Q535 295 574 355 L582 440 L542 456 L496 310 Z" fill="#fb7185" opacity="0.85" />
+                <path d="M500 254 Q535 295 574 355" fill="none" stroke="#fbbf24" strokeWidth="3.5" />
+                <path d="M486 450 Q535 462 584 450" fill="none" stroke="#fbbf24" strokeWidth="5" />
+
+                {/* Neck & Head */}
+                <rect x="527" y="228" width="15" height="24" rx="6" fill="#e5ab8c" />
+                {/* Jhumka Gold Earrings */}
+                <circle cx="558" cy="214" r="4" fill="#fbbf24" />
+                <path d="M553 222 A5 5 0 0 1 563 222 Z" fill="#f59e0b" />
+
+                {/* Face */}
+                <ellipse cx="532" cy="200" rx="26" ry="31" fill="#eab396" />
+                {/* Adorable Rosy Cheeks */}
+                <ellipse cx="518" cy="208" rx="7.5" ry="4.5" fill="#f43f5e" opacity="0.45" />
+                <ellipse cx="544" cy="208" rx="6" ry="4" fill="#f43f5e" opacity="0.35" />
+
+                {/* Hair Front & Flower Gajra in Hair */}
+                <path d="M505 192 C504 162 535 154 558 172 C565 180 564 198 558 202 C550 182 532 175 505 192 Z" fill="#1c1917" />
+                {/* White & Pink Flowers in Hair */}
+                <circle cx="556" cy="182" r="5" fill="#fff" />
+                <circle cx="561" cy="190" r="4.5" fill="#fda4af" />
+                <circle cx="556" cy="182" r="1.8" fill="#fbbf24" />
+
+                {/* Red Bindi */}
+                <circle cx="524" cy="187" r="2.2" fill="#be123c" />
+
+                {/* Expressive Face: Adorable "Ragi/Abhiman" Pout -> Softens when flowers taken */}
+                {flowersTaken ? (
+                  <>
+                    {/* Softened Happy/Touched Eyebrows */}
+                    <path d="M510 187 Q516 183 522 186" fill="none" stroke="#1c1917" strokeWidth="2" strokeLinecap="round" />
+                    <path d="M528 186 Q535 183 541 187" fill="none" stroke="#1c1917" strokeWidth="2" strokeLinecap="round" />
+                    {/* Warm Touched Eyes */}
+                    <circle cx="516" cy="196" r="3" fill="#1c1917" />
+                    <circle cx="515" cy="195" r="1" fill="#fff" />
+                    <circle cx="534" cy="196" r="3" fill="#1c1917" />
+                    <circle cx="533" cy="195" r="1" fill="#fff" />
+                    {/* Shy Sweet Smile */}
+                    <path d="M519 214 Q525 220 532 214" fill="none" stroke="#9f1239" strokeWidth="2.3" strokeLinecap="round" />
+                  </>
+                ) : (
+                  <>
+                    {/* Cute Slightly Upset / Ragi Eyebrows */}
+                    <path d="M510 184 Q516 187 521 188" fill="none" stroke="#1c1917" strokeWidth="2.2" strokeLinecap="round" />
+                    <path d="M529 188 Q535 187 541 184" fill="none" stroke="#1c1917" strokeWidth="2.2" strokeLinecap="round" />
+                    {/* Expressive Eyes with Eyelashes */}
+                    <circle cx="516" cy="196" r="3.1" fill="#1c1917" />
+                    <circle cx="515" cy="195" r="1.1" fill="#fff" />
+                    <circle cx="534" cy="196" r="3.1" fill="#1c1917" />
+                    <circle cx="533" cy="195" r="1.1" fill="#fff" />
+                    {/* Cute Pouty Lip */}
+                    <path d="M520 216 Q525 212 531 216" fill="none" stroke="#9f1239" strokeWidth="2.4" strokeLinecap="round" />
+                    {/* Cute Little "Hmph / Abhiman" Cloud Icon */}
+                    <g transform="translate(568, 155)" className="animate-float-slow">
+                      <circle cx="0" cy="0" r="12" fill="#fff1f2" opacity="0.9" />
+                      <text x="-7" y="4" fontSize="11" fill="#e11d48" fontWeight="bold">🥺</text>
+                    </g>
+                  </>
+                )}
+
+                {/* Arms (Crossed shyly or reaching toward flowers) */}
+                {flowersTaken ? (
+                  <path d="M512 262 Q482 282 455 270" fill="none" stroke="#eab396" strokeWidth="12" strokeLinecap="round" />
+                ) : (
+                  <path d="M515 262 Q502 298 528 308" fill="none" stroke="#eab396" strokeWidth="12" strokeLinecap="round" />
+                )}
+                {/* Red & Gold Reshmi Churi (Bangles) */}
+                <circle cx={flowersTaken ? "468" : "518"} cy={flowersTaken ? "274" : "304"} r="6" fill="none" stroke="#e11d48" strokeWidth="3" />
+                <circle cx={flowersTaken ? "473" : "514"} cy={flowersTaken ? "275" : "300"} r="6" fill="none" stroke="#fbbf24" strokeWidth="2" />
+              </g>
+            </svg>
+
+            {/* Interactive Tap Prompt Badge on the Bouquet */}
+            {!flowersTaken && (
+              <button
+                onClick={onBouquetClick}
+                aria-label="Inspect bouquet of roses"
+                className="absolute left-1/2 top-[54%] -translate-x-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white text-rose-700 text-xs sm:text-sm font-semibold px-3.5 py-1.5 rounded-full shadow-lg border border-rose-300 flex items-center gap-1.5 transition-transform active:scale-95 hover:scale-105"
+              >
+                <span>🌹 Tap the Bouquet</span>
+              </button>
+            )}
+          </div>
+        </div>
+      );
+    };
+
+    // --- Main Application ---
+    function App() {
+      // 1. Opening Screen & Typewriter State
+      const [introStage, setIntroStage] = useState('heart'); // 'heart' -> 'opened' -> 'garden'
+      const [bouquetExtended, setBouquetExtended] = useState(false);
+      const [typedText, setTypedText] = useState('');
+      const fullHeroQuote = "Amar ragi baccha ta shono na… ar rag kore theko na, please. 🥺❤️";
+
+      // 2. Interactive Bouquet State
+      const [bouquetBloomed, setBouquetBloomed] = useState(false);
+      const [flowersTaken, setFlowersTaken] = useState(false);
+      const [petalBurst, setPetalBurst] = useState([]);
+
+      // 3. Love Letter Envelope State
+      const [letterOpened, setLetterOpened] = useState(true);
+
+      // 4. Emotional Response Buttons State
+      const [emotionalChoice, setEmotionalChoice] = useState(null); // 'ador' | 'rag'
+
+      // 5. Editable Memory Timeline ("Our Little World")
+      const [memories, setMemories] = useState([
+        {
+          id: 'first-meeting',
+          badge: 'Chapter 01',
+          title: 'Our First Meeting when i see you in that yellow dress',
+          date: 'in our first semester first class',
+          description: 'that time when i see you first time its like who is this Khasi. She looks so dangerous i will keep distance from her'
+        },
+        {
+          id: 'in our dating in last of the first semester',
+          badge: 'Chapter 02',
+          title: 'Our Favorite Memory 💖',
+          date: 'last day/ anywhere you belong',
+          description: 'that time when i see you first time its like who is this Khasi. She looks so dangerous i will keep distance from her'
+        },
+        {
+          id: 'funniest-moment',
+          badge: 'Chapter 03',
+          title: 'ik you figure the it out in the incident of the transport "eta ki ucha hoye ache?',
+          date: 'i dunno the date, in the transport',
+          description: 'we laughed a lot and i was embrassed'
+        },
+        {
+          id: 'supported-each-other',
+          badge: 'Chapter 04',
+          title: 'When We Supported Each Other 🤝',
+          date: 'no where bae bae bae',
+          description: 'we insult and make joke of each other daily'
+        },
+        {
+          id: 'future-dream',
+          badge: 'Chapter 05',
+          title: 'i want to be with you Forer ever',
+          date: 'Our Forever Ahead',
+          description: 'I dont want to see you crying i want make you happy and laugh all time and i know a thing that i am the one who can tolerate all of your misbehave'
+        }
+      ]);
+      const [editingId, setEditingId] = useState(null);
+
+      // 6. Web Audio Romantic Music Box Synthesizer (No external audio required, plus custom upload option)
+      const [isPlayingMusic, setIsPlayingMusic] = useState(false);
+      const [isMuted, setIsMuted] = useState(false);
+      const audioCtxRef = useRef(null);
+      const musicTimerRef = useRef(null);
+
+      // 7. Final Sunset Scene Floating Hearts
+      const [skyHearts, setSkyHearts] = useState([]);
+      const [sentHeartMessage, setSentHeartMessage] = useState(false);
+
+      // Handle Opening Sequence
+      const handleOpenIntroHeart = () => {
+        setIntroStage('opened');
+        setTimeout(() => {
+          setIntroStage('garden');
+          setTimeout(() => setBouquetExtended(true), 450);
+        }, 1700);
+      };
+
+      // Typewriter Effect once in Garden
+      useEffect(() => {
+        if (introStage !== 'garden') return;
+        let idx = 0;
+        setTypedText('');
+        const interval = setInterval(() => {
+          idx += 1;
+          setTypedText(fullHeroQuote.slice(0, idx));
+          if (idx >= fullHeroQuote.length) clearInterval(interval);
+        }, 42);
+        return () => clearInterval(interval);
+      }, [introStage]);
+
+      // Trigger Bouquet Bloom
+      const handleBouquetClick = () => {
+        setBouquetBloomed(true);
+        const burst = Array.from({ length: 14 }).map((_, i) => ({
+          id: Date.now() + i,
+          left: 20 + Math.random() * 60,
+          emoji: i % 2 === 0 ? '🌹' : '💗'
+        }));
+        setPetalBurst(burst);
+        const el = document.getElementById('bouquet-section');
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      };
+
+      // Gentle Web Audio Romantic Piano/Music-Box Melody
+      const toggleMusic = () => {
+        if (isPlayingMusic) {
+          setIsPlayingMusic(false);
+          if (musicTimerRef.current) clearInterval(musicTimerRef.current);
+          return;
+        }
+
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (!audioCtxRef.current) {
+          audioCtxRef.current = new AudioContext();
+        }
+        if (audioCtxRef.current.state === 'suspended') {
+          audioCtxRef.current.resume();
+        }
+
+        setIsPlayingMusic(true);
+        // Romantic F-major / D-minor music box notes (frequencies in Hz)
+        const melody = [349.23, 440.00, 523.25, 659.25, 587.33, 523.25, 440.00, 392.00, 440.00, 523.25];
+        let step = 0;
+
+        const playNote = () => {
+          if (isMuted || !audioCtxRef.current) return;
+          const ctx = audioCtxRef.current;
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(melody[step % melody.length], ctx.currentTime);
+
+          gain.gain.setValueAtTime(0.001, ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.08, ctx.currentTime + 0.08);
+          gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 1.4);
+
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start();
+          osc.stop(ctx.currentTime + 1.45);
+          step++;
+        };
+
+        playNote();
+        musicTimerRef.current = setInterval(playNote, 950);
+      };
+
+      useEffect(() => {
+        return () => {
+          if (musicTimerRef.current) clearInterval(musicTimerRef.current);
+        };
+      }, []);
+
+      const handleUpdateMemory = (id, field, value) => {
+        setMemories(prev => prev.map(m => (m.id === id ? { ...m, [field]: value } : m)));
+      };
+
+      const handleSendSkyHeart = () => {
+        setSentHeartMessage(true);
+        const newHeart = {
+          id: Date.now() + Math.random(),
+          left: 35 + Math.random() * 30
+        };
+        setSkyHearts(prev => [...prev.slice(-8), newHeart]);
+      };
+
+      // Ambient drifting petals
+      const ambientPetals = [
+        { left: '8%', delay: '0s', duration: '13s', symbol: '🌸' },
+        { left: '22%', delay: '3s', duration: '15s', symbol: '❤️' },
+        { left: '41%', delay: '1.5s', duration: '12s', symbol: '🌹' },
+        { left: '64%', delay: '4.5s', duration: '16s', symbol: '🌸' },
+        { left: '81%', delay: '2s', duration: '14s', symbol: '💗' },
+        { left: '92%', delay: '5s', duration: '13s', symbol: '🌹' },
+      ];
+
+      return (
+        <div className="relative min-h-screen bg-gradient-to-b from-rose-50 via-pink-50/70 to-amber-50/50 text-rose-950">
+          {/* Ambient Drifting Petals & Hearts */}
+          <div className="fixed inset-0 pointer-events-none overflow-hidden z-10" aria-hidden="true">
+            {ambientPetals.map((p, i) => (
+              <span
+                key={i}
+                className="absolute top-0 text-sm sm:text-base opacity-60"
+                style={{
+                  left: p.left,
+                  animation: `driftDown ${p.duration} linear infinite`,
+                  animationDelay: p.delay
+                }}
+              >
+                {p.symbol}
+              </span>
+            ))}
+          </div>
+
+          {/* =============================================================== */}
+          {/* FLOATING MUSIC BAR (Top-Right, Mobile Friendly)                 */}
+          {/* =============================================================== */}
+          <div className="fixed top-3 right-3 sm:top-5 sm:right-5 z-40 flex items-center gap-1.5 bg-white/85 backdrop-blur-md border border-rose-200 shadow-lg rounded-full px-3 py-1.5">
+            <button
+              onClick={toggleMusic}
+              className="flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-rose-800 hover:text-rose-600 transition-colors"
+              aria-label={isPlayingMusic ? "Pause romantic melody" : "Play romantic melody"}
+            >
+              <span className="text-base">{isPlayingMusic ? '⏸️' : '🎵'}</span>
+              <span>{isPlayingMusic ? 'Pause Melody' : 'Play Soft Melody'}</span>
+            </button>
+            {isPlayingMusic && (
+              <button
+                onClick={() => setIsMuted(!isMuted)}
+                className="ml-1 pl-2 border-l border-rose-200 text-xs text-rose-600 hover:text-rose-900"
+                aria-label={isMuted ? "Unmute audio" : "Mute audio"}
+              >
+                {isMuted ? '🔇' : '🔊'}
+              </button>
+            )}
+          </div>
+
+          {/* =============================================================== */}
+          {/* 3. OPENING HEART LOVE-LETTER MODAL                              */}
+          {/* =============================================================== */}
+          {introStage !== 'garden' && (
+            <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-gradient-to-br from-rose-950 via-rose-900 to-amber-950 text-white px-6 text-center transition-opacity duration-700">
+              <div className="max-w-md w-full flex flex-col items-center">
+                {introStage === 'heart' ? (
+                  <>
+                    <button
+                      onClick={handleOpenIntroHeart}
+                      aria-label="Open love letter for Shundori Pakhi"
+                      className="group relative flex items-center justify-center w-32 h-32 sm:w-36 sm:h-36 rounded-full bg-rose-500/20 border border-rose-300/40 animate-pulse-glow mb-6 cursor-pointer transition-transform hover:scale-105 active:scale-95"
+                    >
+                      <span className="text-6xl sm:text-7xl select-none">💌</span>
+                    </button>
+                    <p className="text-rose-200 text-xs sm:text-sm uppercase tracking-widest mb-2">
+                      A Handwritten Apology From Nahid Ibn Zaman
+                    </p>
+                    <h1 className="font-serif text-2xl sm:text-4xl font-semibold text-white mb-6">
+                      Tap the glowing heart to open, my Pakhi ❤️
+                    </h1>
+                    <button
+                      onClick={handleOpenIntroHeart}
+                      className="bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white font-semibold px-7 py-3 rounded-full shadow-xl transition-transform active:scale-95"
+                    >
+                      Open Love Note ❤️
+                    </button>
+                  </>
+                ) : (
+                  <div className="animate-bounce">
+                    <span className="text-6xl block mb-4">💖</span>
+                    <h2 className="font-serif text-3xl sm:text-5xl font-bold text-rose-100 leading-tight">
+                      For My Ragi Baccha, My Shundori Pakhi ❤️
+                    </h2>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+
+          {/* =============================================================== */}
+          {/* 1. MAIN HERO SCENE — THE BOY AND HIS PAKHI                      */}
+          {/* =============================================================== */}
+          <header className="relative pt-14 pb-12 sm:pt-16 sm:pb-16 px-3 sm:px-6 max-w-5xl mx-auto text-center">
+            <div className="inline-flex items-center gap-2 bg-rose-100/90 border border-rose-200 text-rose-800 text-xs sm:text-sm font-medium px-4 py-1.5 rounded-full mb-3 shadow-sm">
+              <span>🕊️ For Mahmuda Khanum (My Shundori Pakhi)</span>
+            </div>
+
+            <h1 className="font-serif text-3xl sm:text-5xl md:text-6xl font-bold text-rose-950 tracking-tight leading-tight mb-4">
+              For My Ragi Baccha, My Shundori Pakhi ❤️
+            </h1>
+
+            {/* Custom Illustrated Garden Couple */}
+            <GardenCoupleIllustration
+              bouquetExtended={bouquetExtended}
+              flowersTaken={flowersTaken}
+              onBouquetClick={handleBouquetClick}
+              isSunset={false}
+            />
+
+            {/* Typewriter Quote Box */}
+            <div className="max-w-xl mx-auto mt-5 bg-white/80 backdrop-blur-md border border-rose-200/90 rounded-2xl p-4 sm:p-5 shadow-md">
+              <p className="font-serif italic text-lg sm:text-2xl text-rose-900 min-h-[3.2rem] flex items-center justify-center">
+                “{typedText}”
+              </p>
+            </div>
+
+            {/* Primary CTA Button */}
+            <div className="mt-6">
+              <a
+                href="#love-letter-section"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-rose-600 via-rose-500 to-pink-500 hover:from-rose-700 hover:to-pink-600 text-white font-semibold text-base sm:text-lg px-7 py-3.5 rounded-full shadow-xl shadow-rose-500/25 transition-all hover:scale-105 active:scale-95"
+              >
+                <span>Open My Heart 💌</span>
+              </a>
+            </div>
+          </header>
+
+          {/* =============================================================== */}
+          {/* 4. INTERACTIVE BOUQUET SCENE                                    */}
+          {/* =============================================================== */}
+          <section id="bouquet-section" className="py-10 sm:py-14 px-4 max-w-3xl mx-auto">
+            <div className="relative bg-white/75 backdrop-blur-md border border-rose-200 rounded-3xl p-6 sm:p-10 text-center shadow-xl overflow-hidden">
+              {/* Bursting Petals when clicked */}
+              {petalBurst.map((p) => (
+                <span
+                  key={p.id}
+                  className="pointer-events-none absolute bottom-6 text-2xl animate-sky-heart"
+                  style={{ left: `${p.left}%` }}
+                >
+                  {p.emoji}
+                </span>
+              ))}
+
+              <span className="text-xs font-bold uppercase tracking-widest text-rose-500 block mb-1">
+                A Special Bouquet For You
+              </span>
+              <h2 className="font-serif text-2xl sm:text-4xl font-bold text-rose-950 mb-3">
+                Red, Pink & White Roses for My Pakhi 💐
+              </h2>
+
+              {/* Interactive Large Bouquet Button */}
+              <div className="my-5 flex justify-center">
+                <button
+                  onClick={() => setBouquetBloomed(true)}
+                  aria-label="Bloom the roses"
+                  className={`group relative w-36 h-36 sm:w-44 sm:h-44 rounded-full bg-gradient-to-tr from-rose-100 via-pink-50 to-amber-50 border-2 border-rose-300 shadow-inner flex flex-col items-center justify-center transition-all duration-500 ${
+                    bouquetBloomed ? 'scale-110 ring-8 ring-rose-200/60' : 'hover:scale-105'
+                  }`}
+                >
+                  <span className={`text-6xl sm:text-7xl transition-transform duration-500 ${bouquetBloomed ? 'scale-110 rotate-6' : ''}`}>
+                    💐
+                  </span>
+                  <span className="text-[11px] sm:text-xs font-semibold text-rose-700 mt-1">
+                    {bouquetBloomed ? 'Bloomed for Pakhi ✨' : 'Tap to Bloom 🌹'}
+                  </span>
+                </button>
+              </div>
+
+              {bouquetBloomed ? (
+                <div className="space-y-4 animate-fadeIn">
+                  <p className="font-serif italic text-lg sm:text-2xl text-rose-900 max-w-xl mx-auto leading-relaxed bg-rose-50/90 border border-rose-200 rounded-2xl p-4">
+                    “Ei fulgulo tomar jonno, amar Pakhi. Prottekta golaper motoi amar bhalobasha tomar jonno special. 🌹”
+                  </p>
+
+                  {!flowersTaken ? (
+                    <button
+                      onClick={() => setFlowersTaken(true)}
+                      className="inline-flex items-center gap-2 bg-rose-600 hover:bg-rose-700 text-white font-semibold px-6 py-3 rounded-full shadow-lg transition-transform active:scale-95"
+                    >
+                      <span>Take the Flowers 🌹</span>
+                    </button>
+                  ) : (
+                    <div className="p-4 rounded-2xl bg-gradient-to-r from-rose-100 via-pink-100 to-amber-100 border border-rose-300 text-rose-950 font-serif text-xl sm:text-2xl font-semibold shadow-sm">
+                      “Tomar jonno amar shob bhalobasha, amar Shundori Pakhi.” ❤️
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <p className="text-sm sm:text-base text-rose-700">
+                  Tap the bouquet above (or in Nahid’s hand) to see what each rose says to you.
+                </p>
+              )}
+            </div>
+          </section>
+
+          {/* =============================================================== */}
+          {/* 5. THE HANDWRITTEN LOVE LETTER SECTION                          */}
+          {/* =============================================================== */}
+          <section id="love-letter-section" className="py-10 sm:py-16 px-3 sm:px-6 max-w-3xl mx-auto">
+            <div className="text-center mb-6">
+              <span className="text-xs font-bold uppercase tracking-widest text-rose-500">
+                From Nahid’s Heart to Yours
+              </span>
+              <h2 className="font-serif text-3xl sm:text-4xl font-bold text-rose-950 mt-1">
+                A Letter For My Shundori Pakhi 💌
+              </h2>
+            </div>
+
+            {/* Wax Seal Envelope Toggle */}
+            <div className="flex justify-center mb-4">
+              <button
+                onClick={() => setLetterOpened(!letterOpened)}
+                className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-rose-800 bg-white/90 border border-rose-200 px-4 py-2 rounded-full shadow-sm hover:bg-rose-50"
+              >
+                <span>{letterOpened ? '📜 Fold Letter' : '💌 Unfold Wax-Sealed Letter'}</span>
+              </button>
+            </div>
+
+            {letterOpened && (
+              <article className="paper-card relative rounded-3xl p-6 sm:p-12 border border-rose-200/90 text-rose-950">
+                {/* Decorative Wax Seal Stamp at Top Center */}
+                <div className="mx-auto -mt-10 sm:-mt-14 mb-6 w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-rose-600 to-rose-900 border-4 border-amber-200 shadow-lg flex items-center justify-center text-white text-2xl select-none">
+                  ❤️
+                </div>
+
+                <div className="space-y-4 sm:space-y-5 font-serif text-lg sm:text-xl leading-relaxed text-rose-950">
+                  <p className="font-semibold text-xl sm:text-2xl text-rose-900">
+                    Amar ragi baccha ta, ektu shono na… ar rag kore theko na, please.
+                  </p>
+
+                  <p>
+                    Amar pither gosto julano Pakhi ta, esho na amar kole esho. Tomake ektu ador kore dei, tomar kopale ekta kiss kori, ar tomake buker moddhe joriye dhore rakhi. Ummmwwahhhh! 😘💋
+                  </p>
+
+                  <p>
+                    Tumi jano na, ami tomake koto ta bhalobashi. Kintu majhe majhe tomar kichu kotha amar khub koshto dey. Tumi-i bolo, amar ki koshto hoy na? Amio to ekta manush. Amaro feelings ache, amaro mon kharap hoy.
+                  </p>
+
+                  <p className="italic text-rose-900 font-medium">
+                    Am I a robot, my love? Obviously not. I feel things too, and sometimes it hurts so much, my Pakhi.
+                  </p>
+
+                  <p>
+                    But do you know one thing? I don't hate you. I hate the fact that even when I'm hurt, even when I'm upset, I still can't hate you. Karon amar mon-ta je shudhu tomar-i. ❤️
+                  </p>
+
+                  <p>
+                    Sometimes I wonder why it feels like you don't love me, Pakhi. I don't want us to hurt each other. I want us to understand each other, respect each other's feelings, and remember our love even when we disagree.
+                  </p>
+
+                  <p className="bg-rose-100/60 border-l-4 border-rose-500 pl-4 py-2 rounded-r-xl font-medium">
+                    Ami perfect relationship chai na, Pakhi. Ami chai amra dujon dujonke bujhi, bhul hole sorry boli, ar ekjon arekjoner pashe thaki.
+                  </p>
+
+                  <p>
+                    I'm sorry, my love. Jodi amar kono kothay ba kaj-e tomar mon kharap hoye thake, amake bolo. Ami tomar kotha shunte chai, tomake bujhte chai.
+                  </p>
+
+                  <p>
+                    Nao, tomar jonno ekta boro bouquet of roses! 🌹💐 Ebar amar kache esho, amar buke matha rakho, ar tomar ei pagol chele-take ektu ador korte dao.
+                  </p>
+
+                  <p className="font-semibold text-rose-900">
+                    I love you, Mahmuda Khanum — my Shundori Pakhi, my Janu, my forever favorite person.
+                  </p>
+
+                  <div className="pt-4 border-t border-rose-200/80 text-right">
+                    <p className="text-base sm:text-lg text-rose-700">Forever your pagol,</p>
+                    <p className="font-script text-3xl sm:text-4xl text-rose-900 mt-1">
+                      Nahid Ibn Zaman ❤️
+                    </p>
+                  </div>
+                </div>
+              </article>
+            )}
+          </section>
+
+          {/* =============================================================== */}
+          {/* 6. INTERACTIVE EMOTIONAL BUTTONS                                */}
+          {/* =============================================================== */}
+          <section className="py-8 sm:py-12 px-4 max-w-2xl mx-auto text-center">
+            <h3 className="font-serif text-2xl sm:text-3xl font-bold text-rose-950 mb-2">
+              What Does Your Heart Say Right Now, Amar Pakhi? 💗
+            </h3>
+            <p className="text-xs sm:text-sm text-rose-700 mb-6">
+              Take all the time you need—both of your feelings are always safe with me.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3.5">
+              {/* Button A */}
+              <button
+                onClick={() => setEmotionalChoice('ador')}
+                className={`flex-1 py-3.5 px-6 rounded-2xl font-semibold text-base sm:text-lg shadow-md transition-all active:scale-95 ${
+                  emotionalChoice === 'ador'
+                    ? 'bg-rose-600 text-white ring-4 ring-rose-300'
+                    : 'bg-white hover:bg-rose-50 text-rose-900 border border-rose-300'
+                }`}
+              >
+                Ektu Ador Koro 🥺
+              </button>
+
+              {/* Button B */}
+              <button
+                onClick={() => setEmotionalChoice('rag')}
+                className={`flex-1 py-3.5 px-6 rounded-2xl font-semibold text-base sm:text-lg shadow-md transition-all active:scale-95 ${
+                  emotionalChoice === 'rag'
+                    ? 'bg-rose-800 text-white ring-4 ring-rose-300'
+                    : 'bg-white hover:bg-rose-50 text-rose-900 border border-rose-300'
+                }`}
+              >
+                Ami Ekhono Rag Kore Achi 😤
+              </button>
+            </div>
+
+            {/* Respectful Response Display */}
+            {emotionalChoice === 'ador' && (
+              <div className="mt-6 bg-white/90 backdrop-blur-md border-2 border-rose-300 rounded-3xl p-6 shadow-xl animate-fadeIn">
+                <div className="text-4xl sm:text-5xl mb-3 animate-bounce">🤗💞🌸</div>
+                <p className="font-serif text-xl sm:text-2xl font-semibold text-rose-900">
+                  “Asho amar Pakhi, shob obhiman bhule ektu kache asho. ❤️”
+                </p>
+              </div>
+            )}
+
+            {emotionalChoice === 'rag' && (
+              <div className="mt-6 bg-white/90 backdrop-blur-md border-2 border-rose-300 rounded-3xl p-6 shadow-xl animate-fadeIn">
+                <div className="text-4xl sm:text-5xl mb-3 animate-float-slow">🥺🌷🕊️</div>
+                <p className="font-serif text-xl sm:text-2xl font-semibold text-rose-900 leading-relaxed">
+                  “Thik ache, amar Pakhi. Tumi joto khon shomoy chao nao. Ami tomar kotha shunte ar tomake bujhte ekhanei achi. 🌷”
+                </p>
+              </div>
+            )}
+          </section>
+
+          {/* =============================================================== */}
+          {/* 7. A SPECIAL MEMORY SECTION — "OUR LITTLE WORLD 🌎❤️"           */}
+          {/* =============================================================== */}
+          <section className="py-12 sm:py-16 px-4 max-w-4xl mx-auto">
+            <div className="text-center mb-10">
+              <span className="text-xs font-bold uppercase tracking-widest text-rose-500">
+                Editable Keepsake Timeline
+              </span>
+              <h2 className="font-serif text-3xl sm:text-5xl font-bold text-rose-950 mt-1">
+                Our Little World 🌎❤️
+              </h2>
+              <p className="text-xs sm:text-sm text-rose-700 mt-2">
+                Tap any card below to personalize and save your real memories together.
+              </p>
+            </div>
+
+            <div className="relative border-l-2 border-rose-300 ml-3 sm:ml-8 pl-5 sm:pl-8 space-y-6">
+              {memories.map((mem) => {
+                const isEditing = editingId === mem.id;
+                return (
+                  <div
+                    key={mem.id}
+                    className="relative bg-white/85 backdrop-blur-md border border-rose-200/90 rounded-2xl p-5 sm:p-6 shadow-md hover:shadow-lg transition-shadow"
+                  >
+                    {/* Timeline Dot */}
+                    <span className="absolute -left-[29px] sm:-left-[41px] top-6 w-4 h-4 rounded-full bg-rose-500 ring-4 ring-rose-100" />
+
+                    <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
+                      <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-rose-100 text-rose-700">
+                        {mem.badge}
+                      </span>
+                      <button
+                        onClick={() => setEditingId(isEditing ? null : mem.id)}
+                        className="text-xs font-semibold text-rose-600 hover:text-rose-900 underline"
+                      >
+                        {isEditing ? 'Done ✓' : 'Edit Memory ✏️'}
+                      </button>
+                    </div>
+
+                    <h3 className="font-serif text-xl sm:text-2xl font-bold text-rose-950">
+                      {mem.title}
+                    </h3>
+
+                    {isEditing ? (
+                      <div className="mt-3 space-y-2.5">
+                        <input
+                          type="text"
+                          value={mem.date}
+                          onChange={(e) => handleUpdateMemory(mem.id, 'date', e.target.value)}
+                          className="w-full text-xs sm:text-sm px-3 py-2 rounded-xl border border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-400"
+                          placeholder="Date or Location..."
+                        />
+                        <textarea
+                          rows="3"
+                          value={mem.description}
+                          onChange={(e) => handleUpdateMemory(mem.id, 'description', e.target.value)}
+                          className="w-full text-sm sm:text-base px-3 py-2 rounded-xl border border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-400"
+                          placeholder="Write your real memory here..."
+                        />
+                      </div>
+                    ) : (
+                      <>
+                        <p className="text-xs font-medium text-rose-500 mt-0.5 mb-2">
+                          {mem.date}
+                        </p>
+                        <p className="text-sm sm:text-base text-rose-900/90 leading-relaxed">
+                          {mem.description}
+                        </p>
+                      </>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+
+          {/* =============================================================== */}
+          {/* 9. FINAL SCENE — A SUNSET PROMISE                               */}
+          {/* =============================================================== */}
+          <footer className="relative mt-10 pt-14 pb-20 px-4 bg-gradient-to-b from-rose-100/70 via-rose-200/80 to-rose-950 text-white overflow-hidden">
+            {/* Floating Sky Hearts */}
+            <div className="pointer-events-none absolute inset-0 overflow-hidden">
+              {skyHearts.map((h) => (
+                <span
+                  key={h.id}
+                  className="absolute bottom-24 text-3xl sm:text-4xl animate-sky-heart"
+                  style={{ left: `${h.left}%` }}
+                >
+                  💗
+                </span>
+              ))}
+            </div>
+
+            <div className="max-w-4xl mx-auto text-center relative z-10">
+              <span className="inline-block text-xs font-bold uppercase tracking-widest text-rose-900 bg-white/80 px-3.5 py-1 rounded-full mb-3">
+                Sunset Promise 🌅
+              </span>
+
+              <h2 className="font-serif text-3xl sm:text-5xl font-bold text-rose-950 mb-6">
+                Always Listening, Always Yours
+              </h2>
+
+              {/* Sunset Couple Scene */}
+              <GardenCoupleIllustration
+                bouquetExtended={true}
+                flowersTaken={flowersTaken}
+                onBouquetClick={handleBouquetClick}
+                isSunset={true}
+              />
+
+              <div className="max-w-2xl mx-auto mt-8 bg-rose-950/75 backdrop-blur-md border border-rose-300/30 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-4">
+                <p className="font-serif italic text-xl sm:text-2xl text-rose-100 leading-relaxed">
+                  “Rag hote pare, obhiman hote pare, kintu ami chai amra dujon dujonke kokhono bujhar cheshta bondho na kori. ❤️”
+                </p>
+
+                <p className="font-serif text-2xl sm:text-3xl font-bold text-amber-200">
+                  Will you let your pagol chele try again, my Pakhi? 💌
+                </p>
+
+                <div className="pt-2">
+                  <button
+                    onClick={handleSendSkyHeart}
+                    className="inline-flex items-center gap-2 bg-gradient-to-r from-rose-500 via-pink-500 to-amber-500 hover:from-rose-600 hover:to-pink-600 text-white font-semibold text-base sm:text-lg px-7 py-3.5 rounded-full shadow-xl transition-transform hover:scale-105 active:scale-95"
+                  >
+                    <span>Send a Little Heart ❤️</span>
+                  </button>
+                </div>
+
+                {sentHeartMessage && (
+                  <p className="text-sm sm:text-base font-medium text-rose-200 pt-2 animate-fadeIn">
+                    “One little heart, from Nahid to Mahmuda. Forever special. 💗”
+                  </p>
+                )}
+              </div>
+
+              <p className="text-xs text-rose-200/80 mt-10">
+                Handcrafted with love by Nahid Ibn Zaman for Mahmuda Khanum (Shundori Pakhi) ❤️
+              </p>
+            </div>
+          </footer>
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>
