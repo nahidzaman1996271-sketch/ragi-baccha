@@ -50,9 +50,6 @@
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-  <!-- GSAP 3.12.5 (Pinned Exact Version) for 60fps Motion Graphics -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-
   <!-- Canvas-Confetti for celebratory bursts -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
@@ -65,6 +62,7 @@
       margin: 0;
       padding: 0;
       overflow: hidden; /* Global viewport lock: no page-level scrolling */
+      background-color: #fff1f2;
     }
 
     #root {
@@ -90,6 +88,8 @@
       transform-origin: left center;
       transform-style: preserve-3d;
       will-change: transform;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
     }
 
     /* Inner container scrolling for small screens with hidden scrollbar */
@@ -110,40 +110,22 @@
     /* ========================================================= */
     /* 2. ATMOSPHERE & BACKGROUND MOTION GRAPHICS                */
     /* ========================================================= */
-    @keyframes atmosphereGradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
     .atmosphere-gradient {
       background: linear-gradient(
         135deg,
         #fff1f2 0%,
-        #ffe4e6 22%,
-        #fef3c7 48%,
-        #fed7aa 72%,
-        #fce7f3 90%,
-        #fff1f2 100%
+        #ffe4e6 25%,
+        #fef3c7 50%,
+        #fed7aa 75%,
+        #fce7f3 100%
       );
-      background-size: 260% 260%;
-      animation: atmosphereGradientShift 22s ease-in-out infinite;
     }
 
-    /* High-Performance Lightweight Glassmorphism Cards */
+    /* Ultra-Smooth Hardware-Accelerated Glass Cards */
     .glass-glow-card {
-      background: rgba(255, 255, 255, 0.94);
+      background: rgba(255, 255, 255, 0.95);
       border: 1px solid rgba(254, 205, 211, 0.65);
-      box-shadow: 
-        0 10px 28px -6px rgba(225, 29, 72, 0.12),
-        0 0 16px -2px rgba(251, 113, 133, 0.12);
-      transition: box-shadow 0.3s ease, border-color 0.3s ease;
-    }
-    .glass-glow-card:hover {
-      box-shadow: 
-        0 16px 36px -6px rgba(225, 29, 72, 0.18),
-        0 0 22px -2px rgba(244, 63, 94, 0.2);
-      border-color: rgba(251, 113, 133, 0.8);
+      box-shadow: 0 10px 26px -6px rgba(225, 29, 72, 0.1), 0 0 14px -2px rgba(251, 113, 133, 0.1);
     }
 
     /* ========================================================= */
@@ -164,7 +146,7 @@
 
     @keyframes ribbonNudgeLeft {
       0%, 100% { transform: translateX(0); }
-      50% { transform: translateX(-7px); }
+      50% { transform: translateX(-6px); }
     }
     @keyframes ribbonNudgeRight {
       0%, 100% { transform: translateX(0); }
@@ -181,19 +163,15 @@
     /* ========================================================= */
     @keyframes floatSlow {
       0%, 100% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-7px) rotate(1deg); }
+      50% { transform: translateY(-6px) rotate(1deg); }
     }
     @keyframes pulseGlow {
-      0%, 100% { filter: drop-shadow(0 0 12px rgba(244, 63, 94, 0.5)); transform: scale(1); }
-      50% { filter: drop-shadow(0 0 25px rgba(244, 63, 94, 0.8)); transform: scale(1.025); }
+      0%, 100% { filter: drop-shadow(0 0 10px rgba(244, 63, 94, 0.45)); transform: scale(1); }
+      50% { filter: drop-shadow(0 0 22px rgba(244, 63, 94, 0.75)); transform: scale(1.02); }
     }
     @keyframes gentleBreathing {
       0%, 100% { transform: scale(1) translateY(0); }
-      50% { transform: scale(1.015) translateY(-3px); }
-    }
-    @keyframes shimmerRotate {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+      50% { transform: scale(1.012) translateY(-3px); }
     }
     @keyframes spinDisc {
       0% { transform: rotate(0deg); }
@@ -218,7 +196,6 @@
     /* Shimmering gradient border animation */
     .shimmer-conic {
       background: conic-gradient(from 0deg, #f43f5e, #fbbf24, #ec4899, #f43f5e);
-      animation: shimmerRotate 4s linear infinite;
     }
 
     /* Soundwave Equalizer Bars */
@@ -232,18 +209,18 @@
     .paper-card {
       background-color: #fffbf5;
       background-image: 
-        radial-gradient(at 15% 15%, rgba(254, 205, 211, 0.35) 0px, transparent 55%),
-        radial-gradient(at 85% 85%, rgba(253, 230, 138, 0.25) 0px, transparent 50%),
-        repeating-linear-gradient(0deg, transparent, transparent 31px, rgba(244, 63, 94, 0.07) 31px, rgba(244, 63, 94, 0.07) 32px);
-      box-shadow: 0 20px 50px rgba(136, 19, 55, 0.12), inset 0 0 40px rgba(251, 113, 133, 0.07);
+        radial-gradient(at 15% 15%, rgba(254, 205, 211, 0.3) 0px, transparent 55%),
+        radial-gradient(at 85% 85%, rgba(253, 230, 138, 0.2) 0px, transparent 50%),
+        repeating-linear-gradient(0deg, transparent, transparent 31px, rgba(244, 63, 94, 0.06) 31px, rgba(244, 63, 94, 0.06) 32px);
+      box-shadow: 0 18px 45px rgba(136, 19, 55, 0.11), inset 0 0 35px rgba(251, 113, 133, 0.06);
     }
 
     /* Sticker Glow Effect */
     .sticker-shadow {
-      filter: drop-shadow(0 12px 22px rgba(225, 29, 72, 0.2)) drop-shadow(0 4px 6px rgba(0, 0, 0, 0.07));
+      filter: drop-shadow(0 10px 18px rgba(225, 29, 72, 0.18)) drop-shadow(0 3px 5px rgba(0, 0, 0, 0.06));
     }
     .sticker-sunset-shadow {
-      filter: drop-shadow(0 16px 30px rgba(245, 158, 11, 0.32)) drop-shadow(0 6px 12px rgba(190, 24, 93, 0.22));
+      filter: drop-shadow(0 14px 26px rgba(245, 158, 11, 0.3)) drop-shadow(0 5px 10px rgba(190, 24, 93, 0.2));
     }
 
     /* Vinyl Record Radial Grooves */
@@ -255,12 +232,6 @@
         #292524 5px,
         #1c1917 6px
       );
-    }
-
-    /* Letter reveal span styles (Fast GPU Transform & Opacity) */
-    .gsap-letter {
-      display: inline-block;
-      will-change: transform, opacity;
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -276,62 +247,20 @@
   <div id="root"></div>
 
   <script type="text/babel">
-    const { useState, useEffect, useRef, useMemo } = React;
+    const { useState, useEffect, useRef } = React;
 
     // =========================================================================
-    // CONFIGURATION: MOTION GRAPHICS, PHYSICS & SPEED SETTINGS
-    // Customize page flip speed, drag threshold, ribbon colors here:
+    // CONFIGURATION: BOOK PAGER & RIBBON SETTINGS
     // =========================================================================
-    const MOTION_CONFIG = {
-      // 3D Book & Turning Physics
-      book: {
-        dragThreshold: 0.38, // ~38% screen width to auto-turn page
-        flipDurationMs: 580,  // Milliseconds for snappy, buttery-smooth 3D flip
-      },
-
-      // Satin Ribbon (Fita) Aesthetics
+    const BOOK_CONFIG = {
+      dragThreshold: 0.35,  // 35% screen width to auto-turn page
+      flipDurationMs: 480,  // Snappy, ultra-responsive 480ms transition
       ribbon: {
         nextGradient: 'linear-gradient(135deg, #9f1239 0%, #e11d48 30%, #fecdd3 50%, #f43f5e 70%, #881337 100%)',
         prevGradient: 'linear-gradient(135deg, #881337 0%, #be123c 30%, #ffe4e6 50%, #e11d48 70%, #4c0519 100%)',
         knotAccent: '#fbbf24',
-        shadow: 'drop-shadow(0 6px 14px rgba(159, 18, 57, 0.4))',
-      },
-
-      // Page Entrance Stagger Timings (Hardware-Accelerated transform + opacity)
-      entrance: {
-        letterStagger: 0.016,    // Seconds between each headline letter reveal
-        letterDuration: 0.48,    // Duration of letter reveal
-        stickerDuration: 0.85,   // Sticker spring-in duration
-        stickerEase: 'back.out(1.6)', // Natural spring ease
-        cardStagger: 0.06,       // Stagger between cards and buttons
-        cardDuration: 0.55,      // Duration of cards fade-up
-      },
-
-      // Particle density
-      atmosphere: {
-        lowPowerPetals: 10,      // Low-end/mobile devices
-        highPowerPetals: 22,     // Modern desktop
-      },
-
-      // Finale Climax
-      finale: {
-        zoomScale: 1.035,        // Cinematic zoom scale factor on flower acceptance
-        zoomDuration: 2.8,       // Seconds for cinematic zoom
+        shadow: 'drop-shadow(0 5px 12px rgba(159, 18, 57, 0.35))',
       }
-    };
-
-    // Helper: Check if user prefers reduced motion
-    const checkReducedMotion = () => {
-      if (typeof window === 'undefined') return false;
-      return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    };
-
-    // Helper: Detect low-end mobile devices to optimize particles and 60fps
-    const isLowEndDevice = () => {
-      if (typeof navigator === 'undefined') return false;
-      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-      const cores = navigator.hardwareConcurrency || 4;
-      return isMobile || cores <= 4 || (typeof window !== 'undefined' && window.innerWidth < 640);
     };
 
     // =========================================================================
@@ -376,7 +305,7 @@
       }
     ];
 
-    // Default Cherished Memories with Fixed Grammar & Genuine Banter
+    // Default Cherished Memories
     const DEFAULT_MEMORIES = [
       {
         id: 'first-meeting',
@@ -416,7 +345,7 @@
     ];
 
     // =========================================================================
-    // 2. ROMANTIC PARTICLE CANVAS ENGINE (Ultra-Lightweight 60fps Petals)
+    // 2. ROMANTIC PARTICLE CANVAS ENGINE (Ultra-Fast 60fps Petals)
     // =========================================================================
     const RomanticParticleCanvas = () => {
       const canvasRef = useRef(null);
@@ -436,18 +365,16 @@
         };
         window.addEventListener('resize', handleResize, { passive: true });
 
-        const count = isLowEndDevice() ? MOTION_CONFIG.atmosphere.lowPowerPetals : MOTION_CONFIG.atmosphere.highPowerPetals;
-
-        // Falling Petals
-        const petals = Array.from({ length: count }).map(() => ({
+        // Lightweight 16 petals
+        const petals = Array.from({ length: 16 }).map(() => ({
           x: Math.random() * width,
           y: Math.random() * height,
-          size: 6 + Math.random() * 8,
-          speedY: 0.5 + Math.random() * 1.0,
-          speedX: (Math.random() - 0.5) * 0.7,
+          size: 5 + Math.random() * 7,
+          speedY: 0.5 + Math.random() * 0.9,
+          speedX: (Math.random() - 0.5) * 0.6,
           angle: Math.random() * Math.PI * 2,
-          spinSpeed: (Math.random() - 0.5) * 0.025,
-          color: Math.random() > 0.4 ? 'rgba(251, 113, 133, 0.4)' : 'rgba(244, 63, 94, 0.3)',
+          spinSpeed: (Math.random() - 0.5) * 0.02,
+          color: Math.random() > 0.4 ? 'rgba(251, 113, 133, 0.38)' : 'rgba(244, 63, 94, 0.28)',
           type: Math.random() > 0.5 ? 'petal' : 'heart'
         }));
 
@@ -457,7 +384,7 @@
           for (let i = 0; i < petals.length; i++) {
             const p = petals[i];
             p.y += p.speedY;
-            p.x += Math.sin(p.angle) * 0.7 + p.speedX;
+            p.x += Math.sin(p.angle) * 0.6 + p.speedX;
             p.angle += p.spinSpeed;
 
             if (p.y > height + 20) {
@@ -502,69 +429,7 @@
     };
 
     // =========================================================================
-    // 3. FAST GPU LETTER-BY-LETTER HEADLINE COMPONENT (Smooth Transform & Opacity)
-    // =========================================================================
-    const AnimatedHeadline = ({
-      text,
-      isActive = true,
-      className = "",
-      as: Tag = "h2"
-    }) => {
-      const containerRef = useRef(null);
-
-      const words = useMemo(() => {
-        return text.split(' ').map((word) => ({
-          word,
-          chars: Array.from(word)
-        }));
-      }, [text]);
-
-      useEffect(() => {
-        if (!isActive || !containerRef.current) return;
-        const letters = containerRef.current.querySelectorAll('.gsap-letter');
-        if (!letters || letters.length === 0) return;
-
-        if (checkReducedMotion()) {
-          gsap.set(letters, { opacity: 1, y: 0 });
-          return;
-        }
-
-        // Fast GPU initial state
-        gsap.set(letters, { opacity: 0, y: 12 });
-
-        // Stagger reveal letter-by-letter
-        const anim = gsap.to(letters, {
-          opacity: 1,
-          y: 0,
-          duration: MOTION_CONFIG.entrance.letterDuration,
-          stagger: MOTION_CONFIG.entrance.letterStagger,
-          ease: 'power2.out',
-          delay: 0.08
-        });
-
-        return () => {
-          anim.kill();
-        };
-      }, [isActive, text]);
-
-      return (
-        <Tag ref={containerRef} className={`${className} select-none`}>
-          {words.map((w, wIdx) => (
-            <span key={wIdx} className="inline-block whitespace-nowrap">
-              {w.chars.map((char, cIdx) => (
-                <span key={cIdx} className="gsap-letter">
-                  {char}
-                </span>
-              ))}
-              {wIdx < words.length - 1 && <span className="inline-block">&nbsp;</span>}
-            </span>
-          ))}
-        </Tag>
-      );
-    };
-
-    // =========================================================================
-    // 4. REUSABLE RIBBON HANDLE COMPONENT (Zero-Lag Direct Pointer Tracking)
+    // 3. ZERO-LAG RIBBON HANDLE COMPONENT
     // =========================================================================
     const RibbonHandle = ({
       position = 'right', // 'right' | 'left'
@@ -617,9 +482,9 @@
 
         dragInfoRef.current.totalDeltaX = deltaX;
 
-        // Direct DOM stretch without triggering React re-renders during drag!
+        // Instant direct DOM stretch without React re-render!
         if (ribbonStripRef.current) {
-          const stretch = 1 + Math.min(0.25, deltaX / 500);
+          const stretch = 1 + Math.min(0.2, deltaX / 600);
           ribbonStripRef.current.style.transform = `scaleX(${stretch})`;
         }
 
@@ -642,7 +507,6 @@
 
         const elapsedTime = Date.now() - startTime;
 
-        // Quick tap treated as click
         if (!isDragging || (totalDeltaX < 8 && elapsedTime < 320)) {
           if (onClick) onClick();
           if (onDragEnd) onDragEnd(0);
@@ -685,65 +549,57 @@
             ref={ribbonStripRef}
             className={`absolute top-0 bottom-0 ${isRight ? 'right-0 origin-right' : 'left-0 origin-left'} ${ribbonWidth} pointer-events-none overflow-hidden transition-transform duration-75`}
             style={{
-              background: isRight ? MOTION_CONFIG.ribbon.nextGradient : MOTION_CONFIG.ribbon.prevGradient,
+              background: isRight ? BOOK_CONFIG.ribbon.nextGradient : BOOK_CONFIG.ribbon.prevGradient,
               boxShadow: isRight
-                ? '-4px 0 16px rgba(136, 19, 55, 0.32), inset 1.5px 0 2px rgba(255, 255, 255, 0.4), inset -1.5px 0 2px rgba(0, 0, 0, 0.2)'
-                : '4px 0 16px rgba(136, 19, 55, 0.32), inset -1.5px 0 2px rgba(255, 255, 255, 0.4), inset 1.5px 0 2px rgba(0, 0, 0, 0.2)',
+                ? '-4px 0 14px rgba(136, 19, 55, 0.3), inset 1px 0 2px rgba(255, 255, 255, 0.4), inset -1px 0 2px rgba(0, 0, 0, 0.2)'
+                : '4px 0 14px rgba(136, 19, 55, 0.3), inset -1px 0 2px rgba(255, 255, 255, 0.4), inset 1px 0 2px rgba(0, 0, 0, 0.2)',
               borderRight: isRight ? '1px dashed rgba(254, 205, 211, 0.5)' : 'none',
               borderLeft: !isRight ? '1px dashed rgba(254, 205, 211, 0.5)' : 'none',
               willChange: 'transform'
             }}
           >
-            {/* Shimmer Highlight Sweep */}
             <div className="absolute inset-x-0 h-28 ribbon-shimmer-sweep animate-ribbon-shimmer pointer-events-none" />
             <div className="absolute inset-0 opacity-25 bg-gradient-to-b from-white/30 via-transparent to-black/25" />
           </div>
 
-          {/* Decorative Bow & Knot Drag Handle (With Idle Sway) */}
+          {/* Decorative Bow & Knot Drag Handle */}
           <div
             className={`absolute top-1/2 -translate-y-1/2 z-10 flex flex-col items-center justify-center animate-ribbon-sway transition-transform duration-200`}
             style={{
-              filter: MOTION_CONFIG.ribbon.shadow,
+              filter: BOOK_CONFIG.ribbon.shadow,
               transform: isHovered ? 'translateY(-50%) scale(1.1)' : 'translateY(-50%) scale(1)',
               willChange: 'transform'
             }}
           >
-            {/* Ornate Gold & Crimson Ribbon Knot SVG */}
+            {/* Ribbon Knot SVG */}
             <div className="relative">
               <svg
                 viewBox="0 0 100 80"
                 className={`${isSmall ? 'w-8 h-7 sm:w-9 sm:h-8' : (isCover ? 'w-14 h-12 sm:w-16 sm:h-14' : 'w-11 h-9 sm:w-13 sm:h-11')} filter drop-shadow-md`}
               >
-                {/* Left Bow Loop */}
                 <path
                   d="M50 40 C32 15, 8 20, 14 38 C20 54, 42 46, 50 40 Z"
                   fill={isRight ? "#f43f5e" : "#fb7185"}
                   stroke="#ffe4e6"
                   strokeWidth="2"
                 />
-                {/* Right Bow Loop */}
                 <path
                   d="M50 40 C68 15, 92 20, 86 38 C80 54, 58 46, 50 40 Z"
                   fill={isRight ? "#f43f5e" : "#fb7185"}
                   stroke="#ffe4e6"
                   strokeWidth="2"
                 />
-                {/* Left Ribbon Tail */}
                 <path d="M46 43 C38 58, 26 72, 18 78 L32 74 L42 63 Z" fill="#be123c" />
-                {/* Right Ribbon Tail */}
                 <path d="M54 43 C62 58, 74 72, 82 78 L68 74 L58 63 Z" fill="#be123c" />
-                {/* Center Knot (Golden Gem) */}
-                <circle cx="50" cy="40" r="8" fill={MOTION_CONFIG.ribbon.knotAccent} stroke="#fef08a" strokeWidth="2" />
+                <circle cx="50" cy="40" r="8" fill={BOOK_CONFIG.ribbon.knotAccent} stroke="#fef08a" strokeWidth="2" />
                 <circle cx="48" cy="38" r="3" fill="#ffffff" opacity="0.8" />
               </svg>
 
-              {/* Golden Pulse Aura on cover handle */}
               {isCover && (
                 <span className="absolute -inset-1 rounded-full bg-amber-300/40 blur-sm animate-ping -z-10" />
               )}
             </div>
 
-            {/* Optional Hint Text or Directional Arrow */}
             {hintText ? (
               <div className="absolute right-14 sm:right-16 top-1/2 -translate-y-1/2 whitespace-nowrap bg-rose-950/90 text-amber-200 border border-amber-300/50 text-xs sm:text-sm font-semibold px-3.5 py-1.5 rounded-full shadow-xl animate-nudge-left pointer-events-none flex items-center gap-1.5">
                 <span>{hintText}</span>
@@ -759,7 +615,7 @@
     };
 
     // =========================================================================
-    // 5. OPENING COVER COMPONENT (Zero-Lag 3D Peel, No Autoplay on Drag)
+    // 4. OPENING COVER COMPONENT (Zero-Lag 3D Peel, No Autoplay)
     // =========================================================================
     const OpeningCover = ({
       isOpen,
@@ -767,7 +623,6 @@
     }) => {
       const [isComplete, setIsComplete] = useState(false);
       const coverLeafRef = useRef(null);
-      const shadowOverlayRef = useRef(null);
       const isDraggingRef = useRef(false);
 
       if (isOpen && isComplete) return null;
@@ -784,12 +639,7 @@
         const screenWidth = window.innerWidth || 1000;
         const progress = Math.min(1, Math.max(0, deltaX / screenWidth));
         const angle = -(progress * 180);
-
-        // Direct hardware transform for instant 60fps tracking
         coverLeafRef.current.style.transform = `rotateY(${angle}deg)`;
-        if (shadowOverlayRef.current) {
-          shadowOverlayRef.current.style.opacity = `${Math.min(0.65, progress * 0.9)}`;
-        }
       };
 
       const handleDragEnd = (deltaX) => {
@@ -797,30 +647,25 @@
         const screenWidth = window.innerWidth || 1000;
         const progress = deltaX / screenWidth;
 
-        if (progress >= MOTION_CONFIG.book.dragThreshold) {
+        if (progress >= BOOK_CONFIG.dragThreshold) {
           completeCoverTurn();
         } else {
-          // Spring back smoothly to 0deg
           if (coverLeafRef.current) {
-            coverLeafRef.current.style.transition = `transform ${MOTION_CONFIG.book.flipDurationMs}ms cubic-bezier(0.2, 0.8, 0.25, 1)`;
+            coverLeafRef.current.style.transition = `transform ${BOOK_CONFIG.flipDurationMs}ms cubic-bezier(0.2, 0.8, 0.25, 1)`;
             coverLeafRef.current.style.transform = 'rotateY(0deg)';
-          }
-          if (shadowOverlayRef.current) {
-            shadowOverlayRef.current.style.transition = 'opacity 250ms ease';
-            shadowOverlayRef.current.style.opacity = '0';
           }
         }
       };
 
       const completeCoverTurn = () => {
         if (coverLeafRef.current) {
-          coverLeafRef.current.style.transition = `transform ${MOTION_CONFIG.book.flipDurationMs}ms cubic-bezier(0.2, 0.8, 0.25, 1)`;
+          coverLeafRef.current.style.transition = `transform ${BOOK_CONFIG.flipDurationMs}ms cubic-bezier(0.2, 0.8, 0.25, 1)`;
           coverLeafRef.current.style.transform = 'rotateY(-180deg)';
         }
 
-        if (window.confetti && !checkReducedMotion()) {
+        if (window.confetti) {
           window.confetti({
-            particleCount: isLowEndDevice() ? 25 : 50,
+            particleCount: 40,
             spread: 70,
             origin: { x: 0.5, y: 0.5 },
             colors: ['#f43f5e', '#fbbf24', '#ffffff']
@@ -830,7 +675,7 @@
         setTimeout(() => {
           setIsComplete(true);
           onOpenCover();
-        }, MOTION_CONFIG.book.flipDurationMs);
+        }, BOOK_CONFIG.flipDurationMs);
       };
 
       return (
@@ -849,19 +694,17 @@
               willChange: 'transform'
             }}
           >
-            {/* Front Face of the Gift Cover */}
+            {/* Front Face */}
             <div
               className="absolute inset-0 w-full h-full flex flex-col items-center justify-center text-center p-6 bg-gradient-to-br from-rose-950 via-rose-900 to-amber-950 text-white overflow-hidden"
               style={{ backfaceVisibility: 'hidden' }}
             >
               <div className="absolute inset-0 pointer-events-none opacity-20 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-200 via-rose-500 to-transparent" />
-              
               <div className="absolute inset-4 sm:inset-8 border-2 border-amber-300/30 rounded-3xl pointer-events-none" />
-              <div className="absolute inset-6 sm:inset-10 border border-rose-300/20 rounded-2xl pointer-events-none" />
 
               {/* Center Content */}
               <div className="relative z-10 max-w-md w-full flex flex-col items-center px-4">
-                {/* maf.jpg Portrait with Glowing Golden-Rose Frame */}
+                {/* maf.jpg Portrait */}
                 <div className="relative flex items-center justify-center w-36 h-36 sm:w-44 sm:h-44 rounded-full p-1.5 bg-gradient-to-tr from-amber-400 via-rose-400 to-pink-300 border-4 border-amber-200/90 shadow-2xl animate-pulse-glow mb-6 overflow-hidden">
                   <img
                     src="maf.jpg"
@@ -877,12 +720,9 @@
                   A Handwritten Apology From Nahid Ibn Zaman
                 </p>
 
-                <AnimatedHeadline
-                  text="For My Ragi Baccha, My Shundori Pakhi ❤️"
-                  isActive={!isOpen}
-                  as="h1"
-                  className="font-serif text-2xl sm:text-4xl font-semibold text-white mb-4 leading-tight"
-                />
+                <h1 className="font-serif text-2xl sm:text-4xl font-semibold text-white mb-4 leading-tight">
+                  For My Ragi Baccha, My Shundori Pakhi ❤️
+                </h1>
 
                 <p className="font-serif italic text-rose-200 text-sm sm:text-base max-w-xs mb-8">
                   “Amar ragi baccha ta, ektu shono na… ar rag kore theko na, please. 🥺❤️”
@@ -897,7 +737,7 @@
                 </button>
               </div>
 
-              {/* Satin Ribbon Fita (No autoplay on drag) */}
+              {/* Ribbon (No music autoplay) */}
               <RibbonHandle
                 position="right"
                 onDragStart={handleDragStart}
@@ -908,20 +748,9 @@
                 ariaLabel="Drag ribbon left to open the book"
                 hintText="Slide the ribbon to open 🎀"
               />
-
-              {/* Dynamic 3D Peel Shadow Overlay */}
-              <div
-                ref={shadowOverlayRef}
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  background: 'linear-gradient(to right, rgba(0,0,0,0.5), transparent)',
-                  opacity: 0,
-                  transition: 'opacity 150ms ease'
-                }}
-              />
             </div>
 
-            {/* Backside of the Cover (Interior Parchment texture as it turns) */}
+            {/* Backside of Cover */}
             <div
               className="absolute inset-0 w-full h-full bg-[#fcf8f2] border-r-4 border-rose-300 shadow-2xl flex items-center justify-center p-8 text-center"
               style={{
@@ -941,7 +770,7 @@
     };
 
     // =========================================================================
-    // 6. REUSABLE BOOK PAGER COMPONENT (Buttery-Smooth 60fps Turns)
+    // 5. ROCK-SOLID BOOK PAGER COMPONENT (Zero-Vanish, Ultra-Smooth Transitions)
     // =========================================================================
     const BookPager = ({
       pages,
@@ -954,39 +783,45 @@
       const wheelCooldownRef = useRef(0);
       const touchStartRef = useRef({ x: 0, y: 0, time: 0 });
 
-      // Trigger Confetti Burst on page turn
-      const triggerTurnBurst = (dir = 'next') => {
-        if (window.confetti && !checkReducedMotion()) {
-          window.confetti({
-            particleCount: isLowEndDevice() ? 12 : 24,
-            spread: 55,
-            startVelocity: 16,
-            origin: { x: dir === 'next' ? 0.8 : 0.2, y: 0.5 },
-            colors: ['#f43f5e', '#fb7185', '#fbbf24', '#ffffff'],
-            ticks: 80,
-            shapes: ['circle']
-          });
-        }
-      };
-
-      // Programmatic Page Navigation with 3D Flip
+      // Programmatic Navigation
       const goToPage = (targetIdx) => {
         if (isFlippingRef.current || targetIdx === currentPage || targetIdx < 0 || targetIdx >= totalPages) return;
 
         const isNext = targetIdx > currentPage;
         isFlippingRef.current = true;
-        triggerTurnBurst(isNext ? 'next' : 'prev');
 
-        const activeLeaf = leafRefs.current[isNext ? currentPage : targetIdx];
-        if (activeLeaf) {
-          activeLeaf.style.transition = `transform ${MOTION_CONFIG.book.flipDurationMs}ms cubic-bezier(0.2, 0.8, 0.25, 1)`;
-          activeLeaf.style.transform = isNext ? 'rotateY(-180deg)' : 'rotateY(0deg)';
+        if (window.confetti) {
+          window.confetti({
+            particleCount: 16,
+            spread: 50,
+            origin: { x: isNext ? 0.8 : 0.2, y: 0.5 },
+            colors: ['#f43f5e', '#fb7185', '#fbbf24', '#ffffff']
+          });
+        }
+
+        if (isNext) {
+          // Turning forward: current page turns to -180deg
+          const leaf = leafRefs.current[currentPage];
+          if (leaf) {
+            leaf.style.zIndex = '20';
+            leaf.style.transition = `transform ${BOOK_CONFIG.flipDurationMs}ms cubic-bezier(0.2, 0.8, 0.25, 1)`;
+            leaf.style.transform = 'rotateY(-180deg)';
+          }
+        } else {
+          // Turning backward: target page swings from -180deg to 0deg on top!
+          const leaf = leafRefs.current[targetIdx];
+          if (leaf) {
+            leaf.style.visibility = 'visible';
+            leaf.style.zIndex = '30';
+            leaf.style.transition = `transform ${BOOK_CONFIG.flipDurationMs}ms cubic-bezier(0.2, 0.8, 0.25, 1)`;
+            leaf.style.transform = 'rotateY(0deg)';
+          }
         }
 
         setTimeout(() => {
           onPageChange(targetIdx);
           isFlippingRef.current = false;
-        }, MOTION_CONFIG.book.flipDurationMs);
+        }, BOOK_CONFIG.flipDurationMs);
       };
 
       const goToNextPage = () => {
@@ -1001,7 +836,7 @@
         }
       };
 
-      // Keyboard Navigation
+      // Keyboard Arrows
       useEffect(() => {
         const handleKeyDown = (e) => {
           if (['INPUT', 'TEXTAREA'].includes(e.target.tagName)) return;
@@ -1018,7 +853,7 @@
         return () => window.removeEventListener('keydown', handleKeyDown);
       }, [currentPage]);
 
-      // Debounced Mouse Wheel Navigation
+      // Mouse Wheel Navigation
       const handleWheel = (e) => {
         if (isFlippingRef.current) return;
 
@@ -1069,12 +904,18 @@
         }
       };
 
-      // Fast Direct GPU Drag Handling (Zero React re-renders while dragging)
+      // Fast Direct GPU Drag Handling
       const handleRibbonDragStart = (direction) => {
         if (isFlippingRef.current) return;
         const leaf = direction === 'next' ? leafRefs.current[currentPage] : leafRefs.current[currentPage - 1];
         if (leaf) {
           leaf.style.transition = 'none';
+          if (direction === 'prev') {
+            leaf.style.visibility = 'visible';
+            leaf.style.zIndex = '30';
+          } else {
+            leaf.style.zIndex = '20';
+          }
         }
       };
 
@@ -1101,24 +942,24 @@
         const screenWidth = window.innerWidth || 1000;
         const progress = deltaX / screenWidth;
 
-        if (progress >= MOTION_CONFIG.book.dragThreshold) {
+        if (progress >= BOOK_CONFIG.dragThreshold) {
           if (direction === 'next' && currentPage < totalPages - 1) {
             goToNextPage();
           } else if (direction === 'prev' && currentPage > 0) {
             goToPrevPage();
           }
         } else {
-          // Rebound to initial angle
+          // Snap back
           if (direction === 'next') {
             const leaf = leafRefs.current[currentPage];
             if (leaf) {
-              leaf.style.transition = `transform ${MOTION_CONFIG.book.flipDurationMs}ms cubic-bezier(0.2, 0.8, 0.25, 1)`;
+              leaf.style.transition = `transform ${BOOK_CONFIG.flipDurationMs}ms cubic-bezier(0.2, 0.8, 0.25, 1)`;
               leaf.style.transform = 'rotateY(0deg)';
             }
           } else if (direction === 'prev' && currentPage > 0) {
             const leaf = leafRefs.current[currentPage - 1];
             if (leaf) {
-              leaf.style.transition = `transform ${MOTION_CONFIG.book.flipDurationMs}ms cubic-bezier(0.2, 0.8, 0.25, 1)`;
+              leaf.style.transition = `transform ${BOOK_CONFIG.flipDurationMs}ms cubic-bezier(0.2, 0.8, 0.25, 1)`;
               leaf.style.transform = 'rotateY(-180deg)';
             }
           }
@@ -1136,6 +977,7 @@
           {pages.map((PageComponent, idx) => {
             const isTurned = idx < currentPage;
             const isCurrent = idx === currentPage;
+            const isVisible = Math.abs(idx - currentPage) <= 1; // Only render adjacent leaves for 60fps
             const zIndex = isCurrent ? 10 : (idx < currentPage ? 1 : 5);
 
             return (
@@ -1147,10 +989,11 @@
                   transformOrigin: 'left center',
                   transform: isTurned ? 'rotateY(-180deg)' : 'rotateY(0deg)',
                   zIndex,
+                  visibility: isVisible ? 'visible' : 'hidden',
                   transformStyle: 'preserve-3d'
                 }}
               >
-                {/* Front Face of the Page */}
+                {/* Front Face of the Page (Solid, Never Vanishes) */}
                 <div
                   className="absolute inset-0 w-full h-full atmosphere-gradient text-rose-950 overflow-hidden"
                   style={{
@@ -1163,7 +1006,7 @@
                     <PageComponent isActive={isCurrent} goToPage={goToPage} />
                   </div>
 
-                  {/* Right Ribbon (Next Page) — On pages 1, 2, 3 */}
+                  {/* Right Ribbon (Next Page) */}
                   {idx < totalPages - 1 && isCurrent && (
                     <RibbonHandle
                       position="right"
@@ -1176,7 +1019,7 @@
                     />
                   )}
 
-                  {/* Left Ribbon (Previous Page) — On pages 2, 3, 4 */}
+                  {/* Left Ribbon (Previous Page) */}
                   {idx > 0 && isCurrent && (
                     <RibbonHandle
                       position="left"
@@ -1191,7 +1034,7 @@
                   )}
                 </div>
 
-                {/* Backside of the Page (Parchment Paper texture when turning) */}
+                {/* Backside Parchment Paper */}
                 <div
                   className="absolute inset-0 w-full h-full paper-card border-r-2 border-rose-200/90 shadow-2xl flex items-center justify-center p-8 select-none"
                   style={{
@@ -1254,12 +1097,11 @@
     };
 
     // =========================================================================
-    // 7. CLEAN PAGE COMPONENTS (Fast Re-renders, Rock-Solid Logic)
+    // 6. ROCK-SOLID PAGE COMPONENTS (Visible, Never Vanishing, Crisp)
     // =========================================================================
 
     // PAGE 1: HERO / THE FLOWER APOLOGY
-    const PageOne = ({ isActive, goToPage }) => {
-      const pageRef = useRef(null);
+    const PageOne = ({ goToPage }) => {
       const [petalBurst, setPetalBurst] = useState([]);
       const [showHeartQuote, setShowHeartQuote] = useState(false);
       const [typedText, setTypedText] = useState('');
@@ -1267,7 +1109,7 @@
 
       const handleBouquetClick = () => {
         setShowHeartQuote(true);
-        if (window.confetti && !checkReducedMotion()) {
+        if (window.confetti) {
           window.confetti({
             particleCount: 40,
             spread: 65,
@@ -1289,49 +1131,25 @@
           idx += 1;
           setTypedText(fullHeroQuote.slice(0, idx));
           if (idx >= fullHeroQuote.length) clearInterval(interval);
-        }, 34);
+        }, 30);
       };
 
-      useEffect(() => {
-        if (!isActive || !pageRef.current) return;
-        const ctx = gsap.context(() => {
-          if (checkReducedMotion()) return;
-
-          // Sticker spring
-          gsap.fromTo('.p1-sticker',
-            { opacity: 0, scale: 0.78, y: 16 },
-            { opacity: 1, scale: 1, y: 0, duration: MOTION_CONFIG.entrance.stickerDuration, ease: MOTION_CONFIG.entrance.stickerEase, delay: 0.1 }
-          );
-
-          // Cards fade-up
-          gsap.fromTo('.p1-fade',
-            { opacity: 0, y: 14 },
-            { opacity: 1, y: 0, duration: MOTION_CONFIG.entrance.cardDuration, stagger: MOTION_CONFIG.entrance.cardStagger, ease: 'power2.out', delay: 0.15 }
-          );
-        }, pageRef);
-
-        return () => ctx.revert();
-      }, [isActive]);
-
       return (
-        <div ref={pageRef} className="min-h-full flex flex-col justify-center items-center py-4 sm:py-6 px-3 sm:px-6 max-w-4xl mx-auto text-center">
+        <div className="min-h-full flex flex-col justify-center items-center py-4 sm:py-6 px-3 sm:px-6 max-w-4xl mx-auto text-center select-none">
           {/* Dedication Pill */}
-          <div className="p1-fade inline-flex items-center gap-2 bg-rose-100/90 border border-rose-200 text-rose-800 text-xs sm:text-sm font-semibold px-4 py-1 rounded-full mb-2 shadow-sm">
+          <div className="inline-flex items-center gap-2 bg-rose-100/90 border border-rose-200 text-rose-800 text-xs sm:text-sm font-semibold px-4 py-1 rounded-full mb-2 shadow-sm">
             <span>🕊️ For Mahmuda Khanum (My Shundori Pakhi)</span>
           </div>
 
-          {/* Letter-by-Letter Blur-to-Sharp Headline */}
-          <AnimatedHeadline
-            text="For My Ragi Baccha, My Shundori Pakhi ❤️"
-            isActive={isActive}
-            as="h1"
-            className="font-serif text-[clamp(1.5rem,3.2vw,2.6rem)] font-bold text-rose-950 tracking-tight leading-tight mb-2"
-          />
+          {/* Headline */}
+          <h1 className="font-serif text-[clamp(1.5rem,3.2vw,2.6rem)] font-bold text-rose-950 tracking-tight leading-tight mb-2">
+            For My Ragi Baccha, My Shundori Pakhi ❤️
+          </h1>
 
           {/* Floating Name Badges */}
           <div className="grid grid-cols-2 gap-3 sm:gap-6 max-w-xl mx-auto mb-3 px-2 z-20 relative w-full">
             <div className="flex justify-center sm:justify-start">
-              <div className="p1-fade bg-white/95 backdrop-blur-md border border-rose-200 shadow-md rounded-2xl px-3 py-1.5 text-center sm:text-left animate-float-slow">
+              <div className="bg-white/95 backdrop-blur-md border border-rose-200 shadow-md rounded-2xl px-3 py-1.5 text-center sm:text-left animate-float-slow">
                 <p className="text-xs sm:text-sm font-bold text-rose-950 leading-tight">
                   Nahid Ibn Zaman
                 </p>
@@ -1342,7 +1160,7 @@
             </div>
 
             <div className="flex justify-center sm:justify-end">
-              <div className="p1-fade bg-white/95 backdrop-blur-md border border-rose-200 shadow-md rounded-2xl px-3 py-1.5 text-center sm:text-right animate-float-slow" style={{ animationDelay: '1.2s' }}>
+              <div className="bg-white/95 backdrop-blur-md border border-rose-200 shadow-md rounded-2xl px-3 py-1.5 text-center sm:text-right animate-float-slow" style={{ animationDelay: '1.2s' }}>
                 <p className="text-xs sm:text-sm font-bold text-rose-950 leading-tight">
                   Mahmuda Khanum
                 </p>
@@ -1354,7 +1172,7 @@
           </div>
 
           {/* Romantic Garden Stage with Flower Apology Sticker Artwork */}
-          <div className="p1-fade glass-glow-card relative w-full max-w-2xl mx-auto rounded-3xl overflow-hidden p-3 sm:p-5">
+          <div className="glass-glow-card relative w-full max-w-2xl mx-auto rounded-3xl overflow-hidden p-3 sm:p-5">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-gradient-to-tr from-amber-200/50 to-rose-300/40 blur-3xl pointer-events-none" />
 
             {/* Floating Petals Burst when clicked */}
@@ -1370,7 +1188,7 @@
 
             {/* Main Sticker Artwork: Nahid Offering Flowers to Pakhi */}
             <div className="relative z-10 flex flex-col items-center">
-              <div className="p1-sticker relative max-w-sm mx-auto animate-breathe">
+              <div className="relative max-w-sm mx-auto animate-breathe">
                 <picture>
                   <source srcSet="stickers/couple-flower-apology.webp" type="image/webp" />
                   <img
@@ -1418,42 +1236,19 @@
       );
     };
 
-    // PAGE 2: THE EMOTIONAL LETTER
-    const PageTwo = ({ isActive }) => {
-      const pageRef = useRef(null);
+    // PAGE 2: THE EMOTIONAL LETTER (Never Vanishes, Rock-Solid)
+    const PageTwo = () => {
       const [letterOpened, setLetterOpened] = useState(true);
 
-      useEffect(() => {
-        if (!isActive || !pageRef.current) return;
-        const ctx = gsap.context(() => {
-          if (checkReducedMotion()) return;
-
-          gsap.fromTo('.p2-sticker',
-            { opacity: 0, scale: 0.8, y: 16 },
-            { opacity: 1, scale: 1, y: 0, duration: MOTION_CONFIG.entrance.stickerDuration, ease: MOTION_CONFIG.entrance.stickerEase, stagger: 0.1, delay: 0.1 }
-          );
-
-          gsap.fromTo('.p2-fade',
-            { opacity: 0, y: 16 },
-            { opacity: 1, y: 0, duration: MOTION_CONFIG.entrance.cardDuration, ease: 'power2.out', delay: 0.15 }
-          );
-        }, pageRef);
-
-        return () => ctx.revert();
-      }, [isActive]);
-
       return (
-        <div ref={pageRef} className="min-h-full flex flex-col justify-center items-center py-6 sm:py-10 px-3 sm:px-6 max-w-3xl mx-auto">
+        <div className="min-h-full flex flex-col justify-center items-center py-6 sm:py-10 px-3 sm:px-6 max-w-3xl mx-auto">
           <div className="text-center mb-4">
             <span className="text-xs font-bold uppercase tracking-widest text-rose-500">
               From Nahid’s Heart to Yours
             </span>
-            <AnimatedHeadline
-              text="A Letter For My Shundori Pakhi 💌"
-              isActive={isActive}
-              as="h2"
-              className="font-serif text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-rose-950 mt-1"
-            />
+            <h2 className="font-serif text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-rose-950 mt-1">
+              A Letter For My Shundori Pakhi 💌
+            </h2>
           </div>
 
           {/* Wax Seal Envelope Toggle */}
@@ -1467,7 +1262,7 @@
           </div>
 
           {letterOpened && (
-            <article className="p2-fade paper-card relative rounded-3xl p-5 sm:p-9 md:p-10 border border-rose-200/90 text-rose-950 shadow-2xl w-full">
+            <article className="paper-card relative rounded-3xl p-5 sm:p-9 md:p-10 border border-rose-200/90 text-rose-950 shadow-2xl w-full">
               {/* Wax Seal Stamp at Top Center */}
               <div className="mx-auto -mt-9 sm:-mt-13 mb-4 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gradient-to-br from-rose-600 to-rose-900 border-4 border-amber-200 shadow-xl flex items-center justify-center text-white text-xl sm:text-2xl select-none animate-pulse">
                 ❤️
@@ -1476,7 +1271,7 @@
               <div className="space-y-4 font-serif text-base sm:text-lg leading-relaxed text-rose-950">
                 {/* Top Opening Paragraph with Nahid Looking Lovingly Sticker */}
                 <div className="overflow-hidden">
-                  <div className="p2-sticker float-right ml-3 mb-2 max-w-[100px] sm:max-w-[140px] text-center">
+                  <div className="float-right ml-3 mb-2 max-w-[100px] sm:max-w-[140px] text-center">
                     <picture>
                       <source srcSet="stickers/nahid-loving.webp" type="image/webp" />
                       <img
@@ -1501,7 +1296,7 @@
 
                 {/* Middle Paragraph with Cute Angry Pakhi Sticker */}
                 <div className="overflow-hidden pt-1">
-                  <div className="p2-sticker float-left mr-3 mb-2 max-w-[95px] sm:max-w-[130px] text-center">
+                  <div className="float-left mr-3 mb-2 max-w-[95px] sm:max-w-[130px] text-center">
                     <picture>
                       <source srcSet="stickers/pakhi-angry.webp" type="image/webp" />
                       <img
@@ -1538,7 +1333,7 @@
 
                 {/* Romantic Paragraph with Couple Hug Sticker */}
                 <div className="bg-rose-50/80 border border-rose-200/90 rounded-2xl p-3 sm:p-4 my-2 flex flex-col sm:flex-row items-center gap-3">
-                  <div className="p2-sticker shrink-0 w-28 sm:w-36">
+                  <div className="shrink-0 w-28 sm:w-36">
                     <picture>
                       <source srcSet="stickers/couple-hug.webp" type="image/webp" />
                       <img
@@ -1572,8 +1367,7 @@
     };
 
     // PAGE 3: "MY RAGI BACCHA" INTERACTIVE SECTION + "OUR LITTLE WORLD" MEMORIES
-    const PageThree = ({ isActive }) => {
-      const pageRef = useRef(null);
+    const PageThree = () => {
       const [emotionalChoice, setEmotionalChoice] = useState(null);
 
       // LocalStorage persistence for memories
@@ -1610,46 +1404,24 @@
         setEditingId(newChapter.id);
       };
 
-      useEffect(() => {
-        if (!isActive || !pageRef.current) return;
-        const ctx = gsap.context(() => {
-          if (checkReducedMotion()) return;
-
-          gsap.fromTo('.p3-sticker',
-            { opacity: 0, scale: 0.8, y: 16 },
-            { opacity: 1, scale: 1, y: 0, duration: MOTION_CONFIG.entrance.stickerDuration, ease: MOTION_CONFIG.entrance.stickerEase, stagger: 0.1, delay: 0.1 }
-          );
-
-          gsap.fromTo('.p3-fade',
-            { opacity: 0, y: 14 },
-            { opacity: 1, y: 0, duration: MOTION_CONFIG.entrance.cardDuration, stagger: MOTION_CONFIG.entrance.cardStagger, ease: 'power2.out', delay: 0.15 }
-          );
-        }, pageRef);
-
-        return () => ctx.revert();
-      }, [isActive]);
-
       return (
-        <div ref={pageRef} className="min-h-full py-8 sm:py-12 px-3 sm:px-6 max-w-4xl mx-auto space-y-10">
+        <div className="min-h-full py-8 sm:py-12 px-3 sm:px-6 max-w-4xl mx-auto space-y-10">
           {/* SECTION 1: THE “MY RAGI BACCHA” INTERACTIVE SECTION */}
           <section className="text-center max-w-2xl mx-auto">
             <span className="text-xs font-bold uppercase tracking-widest text-rose-500">
               Interactive Emotion
             </span>
-            <AnimatedHeadline
-              text="What Does Your Heart Say Right Now, Amar Pakhi? 💗"
-              isActive={isActive}
-              as="h3"
-              className="font-serif text-[clamp(1.4rem,2.8vw,2.2rem)] font-bold text-rose-950 mt-1 mb-1.5"
-            />
+            <h3 className="font-serif text-[clamp(1.4rem,2.8vw,2.2rem)] font-bold text-rose-950 mt-1 mb-1.5">
+              What Does Your Heart Say Right Now, Amar Pakhi? 💗
+            </h3>
             <p className="text-xs sm:text-sm text-rose-700 mb-5 font-medium max-w-md mx-auto">
               Take all the time you need — both of your feelings are completely safe with me.
             </p>
 
             {/* Split Reactions Display */}
             <div className="grid grid-cols-2 gap-3 sm:gap-5 max-w-sm mx-auto mb-5">
-              <div className="p3-fade glass-glow-card rounded-2xl p-2.5 flex flex-col items-center">
-                <picture className="p3-sticker">
+              <div className="glass-glow-card rounded-2xl p-2.5 flex flex-col items-center">
+                <picture>
                   <source srcSet="stickers/nahid-loving.webp" type="image/webp" />
                   <img
                     src="stickers/nahid-loving.png"
@@ -1660,8 +1432,8 @@
                 <p className="text-[10px] sm:text-[11px] font-bold text-rose-800 mt-1.5">Always Listening ❤️</p>
               </div>
 
-              <div className="p3-fade glass-glow-card rounded-2xl p-2.5 flex flex-col items-center">
-                <picture className="p3-sticker">
+              <div className="glass-glow-card rounded-2xl p-2.5 flex flex-col items-center">
+                <picture>
                   <source srcSet="stickers/pakhi-angry.webp" type="image/webp" />
                   <img
                     src="stickers/pakhi-angry.png"
@@ -1678,11 +1450,11 @@
               <button
                 onClick={() => {
                   setEmotionalChoice('ador');
-                  if (window.confetti && !checkReducedMotion()) {
+                  if (window.confetti) {
                     window.confetti({ particleCount: 35, spread: 60, origin: { y: 0.6 } });
                   }
                 }}
-                className={`p3-fade flex-1 py-3 px-5 rounded-2xl font-bold text-sm sm:text-base shadow-md transition-all active:scale-95 ${
+                className={`flex-1 py-3 px-5 rounded-2xl font-bold text-sm sm:text-base shadow-md transition-all active:scale-95 ${
                   emotionalChoice === 'ador'
                     ? 'bg-rose-600 text-white ring-4 ring-rose-300'
                     : 'bg-white hover:bg-rose-50 text-rose-900 border border-rose-300'
@@ -1693,7 +1465,7 @@
 
               <button
                 onClick={() => setEmotionalChoice('rag')}
-                className={`p3-fade flex-1 py-3 px-5 rounded-2xl font-bold text-sm sm:text-base shadow-md transition-all active:scale-95 ${
+                className={`flex-1 py-3 px-5 rounded-2xl font-bold text-sm sm:text-base shadow-md transition-all active:scale-95 ${
                   emotionalChoice === 'rag'
                     ? 'bg-rose-800 text-white ring-4 ring-rose-300'
                     : 'bg-white hover:bg-rose-50 text-rose-900 border border-rose-300'
@@ -1705,7 +1477,7 @@
 
             {/* Respectful Response Displays */}
             {emotionalChoice === 'ador' && (
-              <div className="mt-6 bg-white/95 backdrop-blur-md border-2 border-rose-300 rounded-3xl p-5 sm:p-7 shadow-2xl animate-fadeIn max-w-md mx-auto">
+              <div className="mt-6 bg-white/95 backdrop-blur-md border-2 border-rose-300 rounded-3xl p-5 sm:p-7 shadow-2xl max-w-md mx-auto">
                 <div className="max-w-[150px] mx-auto mb-3 animate-breathe">
                   <picture>
                     <source srcSet="stickers/couple-hug.webp" type="image/webp" />
@@ -1724,7 +1496,7 @@
             )}
 
             {emotionalChoice === 'rag' && (
-              <div className="mt-6 bg-white/95 backdrop-blur-md border-2 border-rose-300 rounded-3xl p-5 sm:p-7 shadow-2xl animate-fadeIn max-w-md mx-auto">
+              <div className="mt-6 bg-white/95 backdrop-blur-md border-2 border-rose-300 rounded-3xl p-5 sm:p-7 shadow-2xl max-w-md mx-auto">
                 <div className="max-w-[130px] mx-auto mb-3">
                   <picture>
                     <source srcSet="stickers/pakhi-angry.webp" type="image/webp" />
@@ -1749,12 +1521,9 @@
               <span className="text-xs font-bold uppercase tracking-widest text-rose-500">
                 Cherished Keepsake Timeline
               </span>
-              <AnimatedHeadline
-                text="Our Little World ❤️"
-                isActive={isActive}
-                as="h2"
-                className="font-serif text-[clamp(1.5rem,3vw,2.4rem)] font-bold text-rose-950 mt-1"
-              />
+              <h2 className="font-serif text-[clamp(1.5rem,3vw,2.4rem)] font-bold text-rose-950 mt-1">
+                Our Little World ❤️
+              </h2>
               <p className="text-xs sm:text-sm text-rose-700 mt-1 font-medium">
                 Saved permanently in browser storage. Tap any memory to edit, or add new chapters!
               </p>
@@ -1766,7 +1535,7 @@
                 return (
                   <div
                     key={mem.id}
-                    className="p3-fade glass-glow-card relative rounded-2xl p-4 sm:p-5"
+                    className="glass-glow-card relative rounded-2xl p-4 sm:p-5"
                   >
                     <span className="absolute -left-[25px] sm:-left-[37px] top-5 w-3.5 h-3.5 rounded-full bg-rose-500 ring-4 ring-rose-100" />
 
@@ -1829,7 +1598,7 @@
             <div className="mt-6 text-center">
               <button
                 onClick={handleAddChapter}
-                className="p3-fade inline-flex items-center gap-2 bg-white/95 hover:bg-rose-50 border border-rose-300 text-rose-800 font-bold text-xs sm:text-sm px-5 py-2 rounded-full shadow-sm active:scale-95 transition-all"
+                className="inline-flex items-center gap-2 bg-white/95 hover:bg-rose-50 border border-rose-300 text-rose-800 font-bold text-xs sm:text-sm px-5 py-2 rounded-full shadow-sm active:scale-95 transition-all"
               >
                 <span>➕ Add a New Chapter Together</span>
               </button>
@@ -1840,13 +1609,12 @@
     };
 
     // PAGE 4: THE FINAL PAGE (ACCEPTANCE + SURPRISE SONG + FOOTER)
-    const PageFour = ({ isActive, goToPage }) => {
-      const pageRef = useRef(null);
+    const PageFour = ({ goToPage }) => {
       const [acceptedSunset, setAcceptedSunset] = useState(false);
       const [skyLanterns, setSkyLanterns] = useState([]);
 
       const handleSendSkyLantern = () => {
-        if (window.confetti && !checkReducedMotion()) {
+        if (window.confetti) {
           window.confetti({ particleCount: 30, spread: 60, origin: { y: 0.6 } });
         }
         const lanternMessages = [
@@ -1868,25 +1636,15 @@
       const handleAcceptSunset = () => {
         setAcceptedSunset(true);
 
-        if (window.confetti && !checkReducedMotion()) {
+        if (window.confetti) {
           window.confetti({
-            particleCount: 55,
+            particleCount: 50,
             spread: 75,
             origin: { y: 0.55 },
             colors: ['#f43f5e', '#fb7185', '#fbbf24', '#ffffff']
           });
         }
 
-        // Snappy Cinematic Zoom
-        const container = document.getElementById('sunset-garden-container');
-        if (container && !checkReducedMotion()) {
-          gsap.fromTo(container,
-            { scale: 0.98 },
-            { scale: MOTION_CONFIG.finale.zoomScale, duration: MOTION_CONFIG.finale.zoomDuration, ease: 'power2.out' }
-          );
-        }
-
-        // Staggered sky lanterns
         const messages = [
           "Amar Shundori Pakhi 🕊️",
           "Always Yours, Nahid ❤️",
@@ -1900,31 +1658,12 @@
               text: msg
             };
             setSkyLanterns(prev => [...prev.slice(-6), l]);
-          }, i * 600);
+          }, i * 500);
         });
       };
 
-      useEffect(() => {
-        if (!isActive || !pageRef.current) return;
-        const ctx = gsap.context(() => {
-          if (checkReducedMotion()) return;
-
-          gsap.fromTo('.p4-sticker',
-            { opacity: 0, scale: 0.8, y: 16 },
-            { opacity: 1, scale: 1, y: 0, duration: MOTION_CONFIG.entrance.stickerDuration, ease: MOTION_CONFIG.entrance.stickerEase, delay: 0.1 }
-          );
-
-          gsap.fromTo('.p4-fade',
-            { opacity: 0, y: 16 },
-            { opacity: 1, y: 0, duration: MOTION_CONFIG.entrance.cardDuration, stagger: MOTION_CONFIG.entrance.cardStagger, ease: 'power2.out', delay: 0.15 }
-          );
-        }, pageRef);
-
-        return () => ctx.revert();
-      }, [isActive]);
-
       return (
-        <div ref={pageRef} className="relative min-h-full flex flex-col justify-between pt-8 pb-14 px-3 sm:px-6 bg-gradient-to-b from-rose-100/70 via-rose-300/80 to-rose-950 text-white overflow-hidden">
+        <div className="relative min-h-full flex flex-col justify-between pt-8 pb-14 px-3 sm:px-6 bg-gradient-to-b from-rose-100/70 via-rose-300/80 to-rose-950 text-white overflow-hidden">
           {/* Animated Sky Lanterns */}
           <div className="pointer-events-none absolute inset-0 overflow-hidden">
             {skyLanterns.map((l) => (
@@ -1942,27 +1681,24 @@
           </div>
 
           <div className="max-w-3xl mx-auto text-center relative z-10 w-full my-auto">
-            <span className="p4-fade inline-block text-xs font-bold uppercase tracking-widest text-rose-950 bg-white/90 px-3.5 py-1 rounded-full mb-2 shadow-md">
+            <span className="inline-block text-xs font-bold uppercase tracking-widest text-rose-950 bg-white/90 px-3.5 py-1 rounded-full mb-2 shadow-md">
               Sunset Promise 🌅
             </span>
 
-            <AnimatedHeadline
-              text="Always Listening, Always Yours"
-              isActive={isActive}
-              as="h2"
-              className="font-serif text-[clamp(1.5rem,3.2vw,2.6rem)] font-bold text-rose-950 mb-4 leading-tight"
-            />
+            <h2 className="font-serif text-[clamp(1.5rem,3.2vw,2.6rem)] font-bold text-rose-950 mb-4 leading-tight">
+              Always Listening, Always Yours
+            </h2>
 
             {/* Sunset Garden Scene Container */}
             <div
               id="sunset-garden-container"
-              className="p4-fade relative max-w-xl mx-auto rounded-3xl overflow-hidden shadow-2xl border-2 border-white/80 bg-gradient-to-b from-amber-200/40 via-rose-900/60 to-rose-950 p-4 sm:p-7 text-white backdrop-blur-md will-change-transform"
+              className="relative max-w-xl mx-auto rounded-3xl overflow-hidden shadow-2xl border-2 border-white/80 bg-gradient-to-b from-amber-200/40 via-rose-900/60 to-rose-950 p-4 sm:p-7 text-white backdrop-blur-md"
             >
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-gradient-to-tr from-amber-400/40 via-rose-500/50 to-pink-500/30 blur-2xl pointer-events-none" />
 
               {!acceptedSunset ? (
-                <div className="relative z-10 flex flex-col items-center animate-fadeIn">
-                  <div className="p4-sticker max-w-xs mx-auto mb-4">
+                <div className="relative z-10 flex flex-col items-center">
+                  <div className="max-w-xs mx-auto mb-4">
                     <picture>
                       <source srcSet="stickers/couple-flower-apology.webp" type="image/webp" />
                       <img
@@ -1986,8 +1722,8 @@
                   </button>
                 </div>
               ) : (
-                <div className="relative z-10 flex flex-col items-center animate-fadeIn">
-                  <div className="p4-sticker max-w-[200px] sm:max-w-[240px] mx-auto mb-4 animate-breathe">
+                <div className="relative z-10 flex flex-col items-center">
+                  <div className="max-w-[200px] sm:max-w-[240px] mx-auto mb-4 animate-breathe">
                     <picture>
                       <source srcSet="stickers/couple-hug.webp" type="image/webp" />
                       <img
@@ -2031,7 +1767,7 @@
               <button
                 onClick={() => {
                   goToPage(0);
-                  if (window.confetti && !checkReducedMotion()) {
+                  if (window.confetti) {
                     window.confetti({ particleCount: 35, spread: 60, origin: { y: 0.6 } });
                   }
                 }}
@@ -2050,16 +1786,15 @@
     };
 
     // =========================================================================
-    // 8. MAIN APPLICATION COMPONENT
+    // 7. MAIN APPLICATION COMPONENT
     // =========================================================================
     function App() {
-      // 1. Cover & Page Navigation State
       const [isCoverOpen, setIsCoverOpen] = useState(false);
-      const [currentPage, setCurrentPage] = useState(0); // 0 = Page 1, 1 = Page 2, 2 = Page 3, 3 = Page 4
+      const [currentPage, setCurrentPage] = useState(0);
 
-      // 2. Complete Audio Player Engine (Fixed outside pages so music never stops)
+      // Audio Player Engine (Fixed outside pages so music never stops)
       const audioRef = useRef(null);
-      const [currentTrackIndex, setCurrentTrackIndex] = useState(0); // 0 = Surprise Song
+      const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
       const [isPlaying, setIsPlaying] = useState(false);
       const [currentTime, setCurrentTime] = useState(0);
       const [duration, setDuration] = useState(0);
@@ -2156,10 +1891,10 @@
 
       return (
         <div className="relative w-full h-[100dvh] overflow-hidden atmosphere-gradient text-rose-950">
-          {/* Background Romantic Petals Canvas */}
+          {/* Background Petals Canvas */}
           <RomanticParticleCanvas />
 
-          {/* Hidden Core Audio Element (Music only plays when YOU choose!) */}
+          {/* Core Audio Element (Music only plays when YOU choose!) */}
           <audio
             ref={audioRef}
             src={currentTrack.src}
@@ -2168,7 +1903,7 @@
             onEnded={handleAudioEnded}
           />
 
-          {/* Floating Live Toast Notification */}
+          {/* Floating Toast Notification */}
           {toastMessage && (
             <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-rose-900/95 text-white px-5 py-2.5 rounded-full shadow-2xl border border-rose-300/50 text-xs sm:text-sm font-semibold flex items-center gap-2 animate-bounce">
               <span>{toastMessage}</span>
@@ -2203,7 +1938,7 @@
                 </span>
               </button>
 
-              {/* Animated Equalizer Soundwave Bars when Playing */}
+              {/* Equalizer Soundwave Bars when Playing */}
               {isPlaying && (
                 <div className="flex items-end gap-0.5 h-5 px-1">
                   <span className="w-1 bg-rose-500 rounded-full equalizer-bar" />
@@ -2225,7 +1960,7 @@
               </button>
             </div>
 
-            {/* Expandable Glassmorphic Playlist & Scrubber Drawer */}
+            {/* Expandable Playlist & Scrubber Drawer */}
             {showPlaylistDrawer && (
               <div className="mt-2 w-80 sm:w-96 bg-white/95 backdrop-blur-xl border border-rose-200 rounded-3xl p-4 sm:p-5 shadow-2xl text-rose-950">
                 <div className="flex items-center justify-between pb-3 border-b border-rose-100">
