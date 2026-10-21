@@ -78,7 +78,7 @@
       width: 100vw;
       height: 100dvh;
       overflow: hidden;
-      perspective: 2200px;
+      perspective: 2000px;
       perspective-origin: center center;
     }
 
@@ -120,33 +120,30 @@
       background: linear-gradient(
         135deg,
         #fff1f2 0%,
-        #ffe4e6 20%,
-        #fef3c7 45%,
-        #fed7aa 70%,
+        #ffe4e6 22%,
+        #fef3c7 48%,
+        #fed7aa 72%,
         #fce7f3 90%,
         #fff1f2 100%
       );
       background-size: 260% 260%;
-      animation: atmosphereGradientShift 20s ease-in-out infinite;
+      animation: atmosphereGradientShift 22s ease-in-out infinite;
     }
 
-    /* Glassmorphism Cards with Soft Glowing Border */
+    /* High-Performance Lightweight Glassmorphism Cards */
     .glass-glow-card {
-      background: rgba(255, 255, 255, 0.88);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid rgba(254, 205, 211, 0.65);
       box-shadow: 
-        0 14px 34px -10px rgba(225, 29, 72, 0.12),
-        0 0 0 1px rgba(254, 205, 211, 0.4),
-        0 0 22px -4px rgba(251, 113, 133, 0.15);
-      transition: box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.4s ease;
+        0 10px 28px -6px rgba(225, 29, 72, 0.12),
+        0 0 16px -2px rgba(251, 113, 133, 0.12);
+      transition: box-shadow 0.3s ease, border-color 0.3s ease;
     }
     .glass-glow-card:hover {
       box-shadow: 
-        0 20px 42px -8px rgba(225, 29, 72, 0.2),
-        0 0 0 1px rgba(244, 63, 94, 0.55),
-        0 0 30px -2px rgba(244, 63, 94, 0.25);
+        0 16px 36px -6px rgba(225, 29, 72, 0.18),
+        0 0 22px -2px rgba(244, 63, 94, 0.2);
+      border-color: rgba(251, 113, 133, 0.8);
     }
 
     /* ========================================================= */
@@ -154,24 +151,24 @@
     /* ========================================================= */
     @keyframes ribbonIdleSway {
       0%, 100% { transform: translateY(-50%) rotate(0deg); }
-      25% { transform: translateY(-50%) rotate(-2.5deg); }
-      75% { transform: translateY(-50%) rotate(2.5deg); }
+      25% { transform: translateY(-50%) rotate(-2deg); }
+      75% { transform: translateY(-50%) rotate(2deg); }
     }
 
     @keyframes ribbonShimmerSweep {
       0% { transform: translateY(-120%); opacity: 0; }
-      20% { opacity: 0.85; }
+      20% { opacity: 0.8; }
       50% { transform: translateY(220%); opacity: 0; }
       100% { transform: translateY(220%); opacity: 0; }
     }
 
     @keyframes ribbonNudgeLeft {
       0%, 100% { transform: translateX(0); }
-      50% { transform: translateX(-8px); }
+      50% { transform: translateX(-7px); }
     }
     @keyframes ribbonNudgeRight {
       0%, 100% { transform: translateX(0); }
-      50% { transform: translateX(6px); }
+      50% { transform: translateX(5px); }
     }
 
     .animate-ribbon-sway { animation: ribbonIdleSway 3.4s ease-in-out infinite; }
@@ -184,15 +181,15 @@
     /* ========================================================= */
     @keyframes floatSlow {
       0%, 100% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-8px) rotate(1deg); }
+      50% { transform: translateY(-7px) rotate(1deg); }
     }
     @keyframes pulseGlow {
-      0%, 100% { filter: drop-shadow(0 0 14px rgba(244, 63, 94, 0.55)); transform: scale(1); }
-      50% { filter: drop-shadow(0 0 30px rgba(244, 63, 94, 0.9)); transform: scale(1.03); }
+      0%, 100% { filter: drop-shadow(0 0 12px rgba(244, 63, 94, 0.5)); transform: scale(1); }
+      50% { filter: drop-shadow(0 0 25px rgba(244, 63, 94, 0.8)); transform: scale(1.025); }
     }
     @keyframes gentleBreathing {
       0%, 100% { transform: scale(1) translateY(0); }
-      50% { transform: scale(1.015) translateY(-4px); }
+      50% { transform: scale(1.015) translateY(-3px); }
     }
     @keyframes shimmerRotate {
       0% { transform: rotate(0deg); }
@@ -238,15 +235,15 @@
         radial-gradient(at 15% 15%, rgba(254, 205, 211, 0.35) 0px, transparent 55%),
         radial-gradient(at 85% 85%, rgba(253, 230, 138, 0.25) 0px, transparent 50%),
         repeating-linear-gradient(0deg, transparent, transparent 31px, rgba(244, 63, 94, 0.07) 31px, rgba(244, 63, 94, 0.07) 32px);
-      box-shadow: 0 25px 60px rgba(136, 19, 55, 0.14), inset 0 0 45px rgba(251, 113, 133, 0.08);
+      box-shadow: 0 20px 50px rgba(136, 19, 55, 0.12), inset 0 0 40px rgba(251, 113, 133, 0.07);
     }
 
     /* Sticker Glow Effect */
     .sticker-shadow {
-      filter: drop-shadow(0 14px 25px rgba(225, 29, 72, 0.22)) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.08));
+      filter: drop-shadow(0 12px 22px rgba(225, 29, 72, 0.2)) drop-shadow(0 4px 6px rgba(0, 0, 0, 0.07));
     }
     .sticker-sunset-shadow {
-      filter: drop-shadow(0 18px 35px rgba(245, 158, 11, 0.35)) drop-shadow(0 8px 16px rgba(190, 24, 93, 0.25));
+      filter: drop-shadow(0 16px 30px rgba(245, 158, 11, 0.32)) drop-shadow(0 6px 12px rgba(190, 24, 93, 0.22));
     }
 
     /* Vinyl Record Radial Grooves */
@@ -260,10 +257,10 @@
       );
     }
 
-    /* Letter reveal span styles */
+    /* Letter reveal span styles (Fast GPU Transform & Opacity) */
     .gsap-letter {
       display: inline-block;
-      will-change: transform, opacity, filter;
+      will-change: transform, opacity;
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -282,51 +279,44 @@
     const { useState, useEffect, useRef, useMemo } = React;
 
     // =========================================================================
-    // CONFIGURATION: MOTION GRAPHICS, GSAP & PHYSICS SETTINGS
-    // Customize animation speeds, staggers, ribbon elasticity, and parallax here:
+    // CONFIGURATION: MOTION GRAPHICS, PHYSICS & SPEED SETTINGS
+    // Customize page flip speed, drag threshold, ribbon colors here:
     // =========================================================================
     const MOTION_CONFIG = {
       // 3D Book & Turning Physics
       book: {
-        dragThreshold: 0.40, // 40% screen width to auto-turn page
-        flipDurationMs: 650,  // Milliseconds for 3D flip animation
+        dragThreshold: 0.38, // ~38% screen width to auto-turn page
+        flipDurationMs: 580,  // Milliseconds for snappy, buttery-smooth 3D flip
       },
 
-      // Satin Ribbon (Fita) Aesthetics & Elasticity
+      // Satin Ribbon (Fita) Aesthetics
       ribbon: {
-        // Right ribbon (Next page) — Rich crimson rose satin gradient
         nextGradient: 'linear-gradient(135deg, #9f1239 0%, #e11d48 30%, #fecdd3 50%, #f43f5e 70%, #881337 100%)',
-        // Left ribbon (Previous page) — Deep ruby wine satin gradient
         prevGradient: 'linear-gradient(135deg, #881337 0%, #be123c 30%, #ffe4e6 50%, #e11d48 70%, #4c0519 100%)',
         knotAccent: '#fbbf24',
-        shadow: 'drop-shadow(0 8px 18px rgba(159, 18, 57, 0.45))',
-        elasticityFactor: 0.28, // Dynamic stretch multiplier while dragged
-        idleSwayDuration: 3.4,  // Seconds for gentle idle sway
+        shadow: 'drop-shadow(0 6px 14px rgba(159, 18, 57, 0.4))',
       },
 
-      // Page Entrance Stagger Timings
+      // Page Entrance Stagger Timings (Hardware-Accelerated transform + opacity)
       entrance: {
-        letterStagger: 0.022,    // Seconds between each headline letter reveal
-        letterDuration: 0.65,    // Duration of letter blur-to-sharp
-        stickerDuration: 1.05,   // Sticker spring-in duration
-        stickerEase: 'back.out(1.8)', // Spring ease curve
-        cardStagger: 0.08,       // Stagger between cards and buttons
-        cardDuration: 0.75,      // Duration of cards fade-up
+        letterStagger: 0.016,    // Seconds between each headline letter reveal
+        letterDuration: 0.48,    // Duration of letter reveal
+        stickerDuration: 0.85,   // Sticker spring-in duration
+        stickerEase: 'back.out(1.6)', // Natural spring ease
+        cardStagger: 0.06,       // Stagger between cards and buttons
+        cardDuration: 0.55,      // Duration of cards fade-up
       },
 
-      // Atmosphere, Parallax & Magnetic Hover
+      // Particle density
       atmosphere: {
-        parallaxStrength: 12,    // Max pixel offset for mouse/tilt parallax on stickers
-        bgParallaxStrength: 5,   // Max pixel offset for background layers
-        magneticStrength: 0.28,  // Button magnetic pull multiplier (0.28 = 28% of mouse distance)
-        lowPowerPetals: 12,      // Petal count for mobile/low-end devices
-        highPowerPetals: 26,     // Petal count for modern desktop
+        lowPowerPetals: 10,      // Low-end/mobile devices
+        highPowerPetals: 22,     // Modern desktop
       },
 
-      // Finale Page 4 Climax
+      // Finale Climax
       finale: {
-        zoomScale: 1.045,        // Cinematic zoom scale factor on flower acceptance
-        zoomDuration: 3.2,       // Seconds for cinematic zoom
+        zoomScale: 1.035,        // Cinematic zoom scale factor on flower acceptance
+        zoomDuration: 2.8,       // Seconds for cinematic zoom
       }
     };
 
@@ -426,7 +416,7 @@
     ];
 
     // =========================================================================
-    // 2. ROMANTIC PARTICLE CANVAS ENGINE (With Bokeh & Mobile Optimization)
+    // 2. ROMANTIC PARTICLE CANVAS ENGINE (Ultra-Lightweight 60fps Petals)
     // =========================================================================
     const RomanticParticleCanvas = () => {
       const canvasRef = useRef(null);
@@ -434,7 +424,7 @@
       useEffect(() => {
         const canvas = canvasRef.current;
         if (!canvas) return;
-        const ctx = canvas.getContext('2d');
+        const ctx = canvas.getContext('2d', { alpha: true });
         let animationFrameId;
 
         let width = (canvas.width = window.innerWidth);
@@ -444,55 +434,30 @@
           width = canvas.width = window.innerWidth;
           height = canvas.height = window.innerHeight;
         };
-        window.addEventListener('resize', handleResize);
+        window.addEventListener('resize', handleResize, { passive: true });
 
-        // Adjust particle count for low-end devices
         const count = isLowEndDevice() ? MOTION_CONFIG.atmosphere.lowPowerPetals : MOTION_CONFIG.atmosphere.highPowerPetals;
 
-        // Falling Petals & Glow Bokeh Orbs
+        // Falling Petals
         const petals = Array.from({ length: count }).map(() => ({
           x: Math.random() * width,
           y: Math.random() * height,
-          size: 6 + Math.random() * 9,
-          speedY: 0.5 + Math.random() * 1.1,
-          speedX: (Math.random() - 0.5) * 0.8,
+          size: 6 + Math.random() * 8,
+          speedY: 0.5 + Math.random() * 1.0,
+          speedX: (Math.random() - 0.5) * 0.7,
           angle: Math.random() * Math.PI * 2,
           spinSpeed: (Math.random() - 0.5) * 0.025,
-          color: Math.random() > 0.4 ? 'rgba(251, 113, 133, 0.42)' : 'rgba(244, 63, 94, 0.32)',
+          color: Math.random() > 0.4 ? 'rgba(251, 113, 133, 0.4)' : 'rgba(244, 63, 94, 0.3)',
           type: Math.random() > 0.5 ? 'petal' : 'heart'
         }));
-
-        // Interactive Sparkle Trail on pointer movement
-        const sparkleTrails = [];
-        const handlePointer = (e) => {
-          if (checkReducedMotion()) return;
-          const clientX = e.clientX || (e.touches && e.touches[0] ? e.touches[0].clientX : null);
-          const clientY = e.clientY || (e.touches && e.touches[0] ? e.touches[0].clientY : null);
-          if (clientX == null || clientY == null) return;
-
-          for (let i = 0; i < 2; i++) {
-            sparkleTrails.push({
-              x: clientX + (Math.random() - 0.5) * 18,
-              y: clientY + (Math.random() - 0.5) * 18,
-              size: 2.5 + Math.random() * 4,
-              alpha: 0.9,
-              vx: (Math.random() - 0.5) * 1.4,
-              vy: -0.7 - Math.random() * 1.4,
-              color: Math.random() > 0.5 ? '#fda4af' : '#fef08a'
-            });
-          }
-        };
-
-        window.addEventListener('pointermove', handlePointer, { passive: true });
-        window.addEventListener('touchstart', handlePointer, { passive: true });
 
         const render = () => {
           ctx.clearRect(0, 0, width, height);
 
-          // 1. Draw drifting petals
-          for (let p of petals) {
+          for (let i = 0; i < petals.length; i++) {
+            const p = petals[i];
             p.y += p.speedY;
-            p.x += Math.sin(p.angle) * 0.8 + p.speedX;
+            p.x += Math.sin(p.angle) * 0.7 + p.speedX;
             p.angle += p.spinSpeed;
 
             if (p.y > height + 20) {
@@ -509,7 +474,7 @@
 
             if (p.type === 'heart') {
               ctx.beginPath();
-              const s = p.size * 0.65;
+              const s = p.size * 0.6;
               ctx.moveTo(0, s / 3);
               ctx.bezierCurveTo(-s, -s / 2, -s, s, 0, s * 1.5);
               ctx.bezierCurveTo(s, s, s, -s / 2, 0, s / 3);
@@ -522,27 +487,6 @@
             ctx.restore();
           }
 
-          // 2. Draw interactive sparkle trail
-          for (let i = sparkleTrails.length - 1; i >= 0; i--) {
-            const sp = sparkleTrails[i];
-            sp.x += sp.vx;
-            sp.y += sp.vy;
-            sp.alpha -= 0.025;
-
-            if (sp.alpha <= 0) {
-              sparkleTrails.splice(i, 1);
-              continue;
-            }
-
-            ctx.save();
-            ctx.globalAlpha = sp.alpha;
-            ctx.fillStyle = sp.color;
-            ctx.beginPath();
-            ctx.arc(sp.x, sp.y, sp.size, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.restore();
-          }
-
           animationFrameId = requestAnimationFrame(render);
         };
 
@@ -551,8 +495,6 @@
         return () => {
           cancelAnimationFrame(animationFrameId);
           window.removeEventListener('resize', handleResize);
-          window.removeEventListener('pointermove', handlePointer);
-          window.removeEventListener('touchstart', handlePointer);
         };
       }, []);
 
@@ -560,7 +502,7 @@
     };
 
     // =========================================================================
-    // 3. LETTER-BY-LETTER BLUR-TO-SHARP HEADLINE COMPONENT (GSAP 3.12.x)
+    // 3. FAST GPU LETTER-BY-LETTER HEADLINE COMPONENT (Smooth Transform & Opacity)
     // =========================================================================
     const AnimatedHeadline = ({
       text,
@@ -570,7 +512,6 @@
     }) => {
       const containerRef = useRef(null);
 
-      // Split text into words, preserving spaces & emojis safely
       const words = useMemo(() => {
         return text.split(' ').map((word) => ({
           word,
@@ -584,27 +525,21 @@
         if (!letters || letters.length === 0) return;
 
         if (checkReducedMotion()) {
-          gsap.set(letters, { opacity: 1, y: 0, filter: 'blur(0px)' });
+          gsap.set(letters, { opacity: 1, y: 0 });
           return;
         }
 
-        // Set initial state: shifted down with blur
-        gsap.set(letters, {
-          opacity: 0,
-          y: 18,
-          filter: 'blur(8px)',
-          willChange: 'transform, opacity, filter'
-        });
+        // Fast GPU initial state
+        gsap.set(letters, { opacity: 0, y: 12 });
 
-        // Stagger reveal letter-by-letter to sharp focus
+        // Stagger reveal letter-by-letter
         const anim = gsap.to(letters, {
           opacity: 1,
           y: 0,
-          filter: 'blur(0px)',
           duration: MOTION_CONFIG.entrance.letterDuration,
           stagger: MOTION_CONFIG.entrance.letterStagger,
-          ease: 'power3.out',
-          delay: 0.12
+          ease: 'power2.out',
+          delay: 0.08
         });
 
         return () => {
@@ -629,63 +564,7 @@
     };
 
     // =========================================================================
-    // 4. MAGNETIC HOVER BUTTON COMPONENT (GSAP Magnetic Pull & Spring Release)
-    // =========================================================================
-    const MagneticButton = ({
-      children,
-      onClick,
-      className = "",
-      ariaLabel,
-      strength = MOTION_CONFIG.atmosphere.magneticStrength,
-      ...props
-    }) => {
-      const btnRef = useRef(null);
-
-      const handleMouseMove = (e) => {
-        if (checkReducedMotion() || !btnRef.current) return;
-        const rect = btnRef.current.getBoundingClientRect();
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
-        const dx = e.clientX - centerX;
-        const dy = e.clientY - centerY;
-
-        gsap.to(btnRef.current, {
-          x: dx * strength,
-          y: dy * strength,
-          duration: 0.3,
-          ease: 'power2.out',
-          overwrite: 'auto'
-        });
-      };
-
-      const handleMouseLeave = () => {
-        if (checkReducedMotion() || !btnRef.current) return;
-        gsap.to(btnRef.current, {
-          x: 0,
-          y: 0,
-          duration: 0.7,
-          ease: 'elastic.out(1.1, 0.4)',
-          overwrite: 'auto'
-        });
-      };
-
-      return (
-        <button
-          ref={btnRef}
-          onClick={onClick}
-          onMouseMove={handleMouseMove}
-          onMouseLeave={handleMouseLeave}
-          aria-label={ariaLabel}
-          className={`${className} will-change-transform`}
-          {...props}
-        >
-          {children}
-        </button>
-      );
-    };
-
-    // =========================================================================
-    // 5. REUSABLE RIBBON HANDLE COMPONENT (Fita with Sway, Shimmer & Stretch)
+    // 4. REUSABLE RIBBON HANDLE COMPONENT (Zero-Lag Direct Pointer Tracking)
     // =========================================================================
     const RibbonHandle = ({
       position = 'right', // 'right' | 'left'
@@ -699,11 +578,8 @@
       isCover = false
     }) => {
       const [isHovered, setIsHovered] = useState(false);
-      const [isPressing, setIsPressing] = useState(false);
-      const [dragDistance, setDragDistance] = useState(0);
       const dragInfoRef = useRef({ startX: 0, startY: 0, totalDeltaX: 0, startTime: 0, isDragging: false });
-      const ribbonRef = useRef(null);
-      const knotRef = useRef(null);
+      const ribbonStripRef = useRef(null);
 
       const handlePointerDown = (e) => {
         if (e.button !== undefined && e.button !== 0) return;
@@ -713,7 +589,6 @@
           e.currentTarget.setPointerCapture(e.pointerId);
         } catch (err) {}
 
-        setIsPressing(true);
         const startX = e.clientX;
         const startY = e.clientY;
         dragInfoRef.current = {
@@ -728,14 +603,11 @@
       };
 
       const handlePointerMove = (e) => {
-        if (!isPressing) return;
+        const { startX, startTime } = dragInfoRef.current;
+        if (startTime === 0) return;
         e.stopPropagation();
 
         const currentX = e.clientX;
-        const startX = dragInfoRef.current.startX;
-
-        // Right ribbon: dragging left (startX - currentX) is positive
-        // Left ribbon: dragging right (currentX - startX) is positive
         const rawDelta = position === 'right' ? (startX - currentX) : (currentX - startX);
         const deltaX = Math.max(0, rawDelta);
 
@@ -744,25 +616,33 @@
         }
 
         dragInfoRef.current.totalDeltaX = deltaX;
-        setDragDistance(deltaX);
+
+        // Direct DOM stretch without triggering React re-renders during drag!
+        if (ribbonStripRef.current) {
+          const stretch = 1 + Math.min(0.25, deltaX / 500);
+          ribbonStripRef.current.style.transform = `scaleX(${stretch})`;
+        }
 
         if (onDrag) onDrag(deltaX, currentX);
       };
 
       const handlePointerUp = (e) => {
-        if (!isPressing) return;
+        const { isDragging, totalDeltaX, startTime } = dragInfoRef.current;
+        if (startTime === 0) return;
         e.stopPropagation();
-        setIsPressing(false);
-        setDragDistance(0);
+        dragInfoRef.current.startTime = 0;
+
+        if (ribbonStripRef.current) {
+          ribbonStripRef.current.style.transform = 'scaleX(1)';
+        }
 
         try {
           e.currentTarget.releasePointerCapture(e.pointerId);
         } catch (err) {}
 
-        const { isDragging, totalDeltaX, startTime } = dragInfoRef.current;
         const elapsedTime = Date.now() - startTime;
 
-        // If it was a quick tap or minimal drag, treat as a click!
+        // Quick tap treated as click
         if (!isDragging || (totalDeltaX < 8 && elapsedTime < 320)) {
           if (onClick) onClick();
           if (onDragEnd) onDragEnd(0);
@@ -772,9 +652,10 @@
       };
 
       const handlePointerCancel = (e) => {
-        if (!isPressing) return;
-        setIsPressing(false);
-        setDragDistance(0);
+        dragInfoRef.current.startTime = 0;
+        if (ribbonStripRef.current) {
+          ribbonStripRef.current.style.transform = 'scaleX(1)';
+        }
         try {
           e.currentTarget.releasePointerCapture(e.pointerId);
         } catch (err) {}
@@ -784,9 +665,6 @@
       const isRight = position === 'right';
       const ribbonWidth = isCover ? 'w-10 sm:w-12' : (isSmall ? 'w-6 sm:w-7' : 'w-8 sm:w-10');
       const hitboxWidth = isCover ? 'w-16 sm:w-20' : (isSmall ? 'w-12 sm:w-14' : 'w-14 sm:w-16');
-
-      // Dynamic stretch multiplier while dragging
-      const stretchScale = 1 + Math.min(0.35, (dragDistance / 450) * MOTION_CONFIG.ribbon.elasticityFactor);
 
       return (
         <div
@@ -802,37 +680,31 @@
           style={{ touchAction: 'none' }}
           className={`absolute top-0 bottom-0 ${isRight ? 'right-0' : 'left-0'} ${hitboxWidth} z-30 flex items-center justify-center select-none cursor-pointer`}
         >
-          {/* Satin Ribbon (Fita) Hanging Strip with Elastic Stretch */}
+          {/* Satin Ribbon (Fita) Hanging Strip */}
           <div
-            ref={ribbonRef}
-            className={`absolute top-0 bottom-0 ${isRight ? 'right-0 origin-right' : 'left-0 origin-left'} ${ribbonWidth} pointer-events-none overflow-hidden transition-transform duration-150`}
+            ref={ribbonStripRef}
+            className={`absolute top-0 bottom-0 ${isRight ? 'right-0 origin-right' : 'left-0 origin-left'} ${ribbonWidth} pointer-events-none overflow-hidden transition-transform duration-75`}
             style={{
               background: isRight ? MOTION_CONFIG.ribbon.nextGradient : MOTION_CONFIG.ribbon.prevGradient,
               boxShadow: isRight
-                ? '-5px 0 18px rgba(136, 19, 55, 0.35), inset 2px 0 3px rgba(255, 255, 255, 0.4), inset -2px 0 3px rgba(0, 0, 0, 0.25)'
-                : '5px 0 18px rgba(136, 19, 55, 0.35), inset -2px 0 3px rgba(255, 255, 255, 0.4), inset 2px 0 3px rgba(0, 0, 0, 0.25)',
+                ? '-4px 0 16px rgba(136, 19, 55, 0.32), inset 1.5px 0 2px rgba(255, 255, 255, 0.4), inset -1.5px 0 2px rgba(0, 0, 0, 0.2)'
+                : '4px 0 16px rgba(136, 19, 55, 0.32), inset -1.5px 0 2px rgba(255, 255, 255, 0.4), inset 1.5px 0 2px rgba(0, 0, 0, 0.2)',
               borderRight: isRight ? '1px dashed rgba(254, 205, 211, 0.5)' : 'none',
               borderLeft: !isRight ? '1px dashed rgba(254, 205, 211, 0.5)' : 'none',
-              transform: `scaleX(${isPressing ? stretchScale : 1})`,
               willChange: 'transform'
             }}
           >
             {/* Shimmer Highlight Sweep */}
             <div className="absolute inset-x-0 h-28 ribbon-shimmer-sweep animate-ribbon-shimmer pointer-events-none" />
-            <div className="absolute inset-0 opacity-30 bg-gradient-to-b from-white/30 via-transparent to-black/25" />
+            <div className="absolute inset-0 opacity-25 bg-gradient-to-b from-white/30 via-transparent to-black/25" />
           </div>
 
-          {/* Decorative Bow & Knot Drag Handle (With Idle Sway & Drag Spring) */}
+          {/* Decorative Bow & Knot Drag Handle (With Idle Sway) */}
           <div
-            ref={knotRef}
-            className={`absolute top-1/2 -translate-y-1/2 z-10 flex flex-col items-center justify-center ${
-              !isPressing ? 'animate-ribbon-sway' : ''
-            } transition-transform duration-200`}
+            className={`absolute top-1/2 -translate-y-1/2 z-10 flex flex-col items-center justify-center animate-ribbon-sway transition-transform duration-200`}
             style={{
               filter: MOTION_CONFIG.ribbon.shadow,
-              transform: isPressing
-                ? `translateY(-50%) scale(${isRight ? -1 : 1} * 1.08, 0.95)`
-                : (isHovered ? 'translateY(-50%) scale(1.12)' : 'translateY(-50%) scale(1)'),
+              transform: isHovered ? 'translateY(-50%) scale(1.1)' : 'translateY(-50%) scale(1)',
               willChange: 'transform'
             }}
           >
@@ -887,63 +759,71 @@
     };
 
     // =========================================================================
-    // 6. OPENING COVER COMPONENT (Full-Screen Gift-Style 3D Peeling Cover)
+    // 5. OPENING COVER COMPONENT (Zero-Lag 3D Peel, No Autoplay on Drag)
     // =========================================================================
     const OpeningCover = ({
       isOpen,
-      onOpenCover,
-      onFirstInteraction
+      onOpenCover
     }) => {
-      const [dragProgress, setDragProgress] = useState(0); // 0 to 1
-      const [isDragging, setIsDragging] = useState(false);
-      const [isSpringing, setIsSpringing] = useState(false);
       const [isComplete, setIsComplete] = useState(false);
       const coverLeafRef = useRef(null);
+      const shadowOverlayRef = useRef(null);
+      const isDraggingRef = useRef(false);
 
       if (isOpen && isComplete) return null;
 
       const handleDragStart = () => {
-        onFirstInteraction();
-        setIsDragging(true);
-        setIsSpringing(false);
+        isDraggingRef.current = true;
+        if (coverLeafRef.current) {
+          coverLeafRef.current.style.transition = 'none';
+        }
       };
 
       const handleDrag = (deltaX) => {
+        if (!isDraggingRef.current || !coverLeafRef.current) return;
         const screenWidth = window.innerWidth || 1000;
         const progress = Math.min(1, Math.max(0, deltaX / screenWidth));
-        setDragProgress(progress);
+        const angle = -(progress * 180);
+
+        // Direct hardware transform for instant 60fps tracking
+        coverLeafRef.current.style.transform = `rotateY(${angle}deg)`;
+        if (shadowOverlayRef.current) {
+          shadowOverlayRef.current.style.opacity = `${Math.min(0.65, progress * 0.9)}`;
+        }
       };
 
       const handleDragEnd = (deltaX) => {
-        setIsDragging(false);
+        isDraggingRef.current = false;
         const screenWidth = window.innerWidth || 1000;
         const progress = deltaX / screenWidth;
 
         if (progress >= MOTION_CONFIG.book.dragThreshold) {
           completeCoverTurn();
         } else {
-          setIsSpringing(true);
-          setDragProgress(0);
-          setTimeout(() => setIsSpringing(false), MOTION_CONFIG.book.flipDurationMs);
+          // Spring back smoothly to 0deg
+          if (coverLeafRef.current) {
+            coverLeafRef.current.style.transition = `transform ${MOTION_CONFIG.book.flipDurationMs}ms cubic-bezier(0.2, 0.8, 0.25, 1)`;
+            coverLeafRef.current.style.transform = 'rotateY(0deg)';
+          }
+          if (shadowOverlayRef.current) {
+            shadowOverlayRef.current.style.transition = 'opacity 250ms ease';
+            shadowOverlayRef.current.style.opacity = '0';
+          }
         }
       };
 
-      const handleCoverRibbonClick = () => {
-        onFirstInteraction();
-        completeCoverTurn();
-      };
-
       const completeCoverTurn = () => {
-        setIsSpringing(true);
-        setDragProgress(1);
+        if (coverLeafRef.current) {
+          coverLeafRef.current.style.transition = `transform ${MOTION_CONFIG.book.flipDurationMs}ms cubic-bezier(0.2, 0.8, 0.25, 1)`;
+          coverLeafRef.current.style.transform = 'rotateY(-180deg)';
+        }
 
-        // Confetti & Petals Burst upon unlocking the gift
         if (window.confetti && !checkReducedMotion()) {
           window.confetti({
-            particleCount: isLowEndDevice() ? 30 : 60,
-            spread: 75,
+            particleCount: isLowEndDevice() ? 25 : 50,
+            spread: 70,
             origin: { x: 0.5, y: 0.5 },
-            colors: ['#f43f5e', '#fb7185', '#fbbf24', '#ffffff']
+            colors: ['#f43f5e', '#fbbf24', '#ffffff']
           });
         }
 
@@ -953,14 +833,10 @@
         }, MOTION_CONFIG.book.flipDurationMs);
       };
 
-      // 3D Rotation angle: 0deg -> -180deg
-      const currentAngle = -(dragProgress * 180);
-      const shadowOpacity = Math.min(0.65, dragProgress * 0.9);
-
       return (
         <div
           className="fixed inset-0 z-50 overflow-hidden pointer-events-auto select-none"
-          style={{ perspective: '2200px' }}
+          style={{ perspective: '2000px' }}
         >
           {/* 3D Turning Leaf for the Cover */}
           <div
@@ -968,9 +844,8 @@
             className="relative w-full h-full"
             style={{
               transformOrigin: 'left center',
-              transform: `rotateY(${currentAngle}deg)`,
+              transform: 'rotateY(0deg)',
               transformStyle: 'preserve-3d',
-              transition: isDragging ? 'none' : `transform ${MOTION_CONFIG.book.flipDurationMs}ms cubic-bezier(0.25, 1, 0.5, 1)`,
               willChange: 'transform'
             }}
           >
@@ -979,10 +854,8 @@
               className="absolute inset-0 w-full h-full flex flex-col items-center justify-center text-center p-6 bg-gradient-to-br from-rose-950 via-rose-900 to-amber-950 text-white overflow-hidden"
               style={{ backfaceVisibility: 'hidden' }}
             >
-              {/* Subtle Gift Wrap Satin Cross Pattern & Glows */}
               <div className="absolute inset-0 pointer-events-none opacity-20 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-200 via-rose-500 to-transparent" />
               
-              {/* Decorative Gift Box Border */}
               <div className="absolute inset-4 sm:inset-8 border-2 border-amber-300/30 rounded-3xl pointer-events-none" />
               <div className="absolute inset-6 sm:inset-10 border border-rose-300/20 rounded-2xl pointer-events-none" />
 
@@ -1000,7 +873,6 @@
                   </span>
                 </div>
 
-                {/* Dedication Text */}
                 <p className="text-amber-200/90 text-xs sm:text-sm uppercase tracking-widest mb-2 font-semibold">
                   A Handwritten Apology From Nahid Ibn Zaman
                 </p>
@@ -1016,23 +888,22 @@
                   “Amar ragi baccha ta, ektu shono na… ar rag kore theko na, please. 🥺❤️”
                 </p>
 
-                {/* Magnetic Tap/Slide Hint Button */}
-                <MagneticButton
-                  onClick={handleCoverRibbonClick}
-                  className="group inline-flex items-center gap-2 bg-gradient-to-r from-rose-500 via-pink-500 to-amber-500 hover:from-rose-600 hover:to-pink-600 text-white font-bold text-sm sm:text-base px-7 py-3 rounded-full shadow-2xl transition-all duration-300 hover:scale-105 active:scale-95"
+                <button
+                  onClick={completeCoverTurn}
+                  className="group inline-flex items-center gap-2 bg-gradient-to-r from-rose-500 via-pink-500 to-amber-500 hover:from-rose-600 hover:to-pink-600 text-white font-bold text-sm sm:text-base px-7 py-3 rounded-full shadow-2xl transition-transform duration-200 active:scale-95"
                 >
                   <span>Slide the ribbon to open 🎀</span>
                   <span className="animate-nudge-right">👈</span>
-                </MagneticButton>
+                </button>
               </div>
 
-              {/* Satin Ribbon Fita with Bow Knot Drag Handle on the Right Edge */}
+              {/* Satin Ribbon Fita (No autoplay on drag) */}
               <RibbonHandle
                 position="right"
                 onDragStart={handleDragStart}
                 onDrag={handleDrag}
                 onDragEnd={handleDragEnd}
-                onClick={handleCoverRibbonClick}
+                onClick={completeCoverTurn}
                 isCover={true}
                 ariaLabel="Drag ribbon left to open the book"
                 hintText="Slide the ribbon to open 🎀"
@@ -1040,10 +911,12 @@
 
               {/* Dynamic 3D Peel Shadow Overlay */}
               <div
-                className="absolute inset-0 pointer-events-none transition-opacity duration-150"
+                ref={shadowOverlayRef}
+                className="absolute inset-0 pointer-events-none"
                 style={{
                   background: 'linear-gradient(to right, rgba(0,0,0,0.5), transparent)',
-                  opacity: shadowOpacity
+                  opacity: 0,
+                  transition: 'opacity 150ms ease'
                 }}
               />
             </div>
@@ -1068,52 +941,51 @@
     };
 
     // =========================================================================
-    // 7. REUSABLE BOOK PAGER COMPONENT (Page Entrance GSAP, Parallax & Light Sweep)
+    // 6. REUSABLE BOOK PAGER COMPONENT (Buttery-Smooth 60fps Turns)
     // =========================================================================
     const BookPager = ({
       pages,
       currentPage,
-      onPageChange,
-      onFirstInteraction
+      onPageChange
     }) => {
       const totalPages = pages.length;
-      const [isFlipping, setIsFlipping] = useState(false);
-      const [flipDirection, setFlipDirection] = useState(null); // 'next' | 'prev'
-      const [dragOffset, setDragOffset] = useState(0);
-      const [isDragging, setIsDragging] = useState(false);
-      const [dragDirection, setDragDirection] = useState(null); // 'next' | 'prev'
+      const isFlippingRef = useRef(false);
+      const leafRefs = useRef([]);
       const wheelCooldownRef = useRef(0);
       const touchStartRef = useRef({ x: 0, y: 0, time: 0 });
 
-      // Trigger Confetti & Bokeh Burst on page turn
+      // Trigger Confetti Burst on page turn
       const triggerTurnBurst = (dir = 'next') => {
         if (window.confetti && !checkReducedMotion()) {
           window.confetti({
-            particleCount: isLowEndDevice() ? 14 : 26,
-            spread: 60,
-            startVelocity: 18,
+            particleCount: isLowEndDevice() ? 12 : 24,
+            spread: 55,
+            startVelocity: 16,
             origin: { x: dir === 'next' ? 0.8 : 0.2, y: 0.5 },
             colors: ['#f43f5e', '#fb7185', '#fbbf24', '#ffffff'],
-            ticks: 100,
-            gravity: 0.75,
+            ticks: 80,
             shapes: ['circle']
           });
         }
       };
 
-      // 1. Programmatic Page Navigation with 3D Flip Animation
+      // Programmatic Page Navigation with 3D Flip
       const goToPage = (targetIdx) => {
-        if (isFlipping || targetIdx === currentPage || targetIdx < 0 || targetIdx >= totalPages) return;
+        if (isFlippingRef.current || targetIdx === currentPage || targetIdx < 0 || targetIdx >= totalPages) return;
 
-        const direction = targetIdx > currentPage ? 'next' : 'prev';
-        setFlipDirection(direction);
-        setIsFlipping(true);
-        triggerTurnBurst(direction);
+        const isNext = targetIdx > currentPage;
+        isFlippingRef.current = true;
+        triggerTurnBurst(isNext ? 'next' : 'prev');
+
+        const activeLeaf = leafRefs.current[isNext ? currentPage : targetIdx];
+        if (activeLeaf) {
+          activeLeaf.style.transition = `transform ${MOTION_CONFIG.book.flipDurationMs}ms cubic-bezier(0.2, 0.8, 0.25, 1)`;
+          activeLeaf.style.transform = isNext ? 'rotateY(-180deg)' : 'rotateY(0deg)';
+        }
 
         setTimeout(() => {
           onPageChange(targetIdx);
-          setIsFlipping(false);
-          setFlipDirection(null);
+          isFlippingRef.current = false;
         }, MOTION_CONFIG.book.flipDurationMs);
       };
 
@@ -1129,7 +1001,7 @@
         }
       };
 
-      // 2. Keyboard Navigation (Arrow keys & Page Up/Down)
+      // Keyboard Navigation
       useEffect(() => {
         const handleKeyDown = (e) => {
           if (['INPUT', 'TEXTAREA'].includes(e.target.tagName)) return;
@@ -1144,11 +1016,11 @@
         };
         window.addEventListener('keydown', handleKeyDown);
         return () => window.removeEventListener('keydown', handleKeyDown);
-      }, [currentPage, isFlipping]);
+      }, [currentPage]);
 
-      // 3. Debounced Mouse Wheel Navigation (One page per gesture, respects inner scrolling)
+      // Debounced Mouse Wheel Navigation
       const handleWheel = (e) => {
-        if (isFlipping || isDragging) return;
+        if (isFlippingRef.current) return;
 
         const scrollContainer = e.target.closest('.page-scroll-container');
         if (scrollContainer) {
@@ -1161,18 +1033,18 @@
         }
 
         const now = Date.now();
-        if (now - wheelCooldownRef.current < 850) return;
+        if (now - wheelCooldownRef.current < 650) return;
 
-        if (e.deltaY > 40) {
+        if (e.deltaY > 35) {
           wheelCooldownRef.current = now;
           goToNextPage();
-        } else if (e.deltaY < -40) {
+        } else if (e.deltaY < -35) {
           wheelCooldownRef.current = now;
           goToPrevPage();
         }
       };
 
-      // 4. Touch Horizontal Swipe Gesture Detection
+      // Touch Horizontal Swipe Gesture Detection
       const handleTouchStart = (e) => {
         if (e.touches.length !== 1) return;
         touchStartRef.current = {
@@ -1183,12 +1055,12 @@
       };
 
       const handleTouchEnd = (e) => {
-        if (isFlipping || isDragging) return;
+        if (isFlippingRef.current) return;
         const dx = e.changedTouches[0].clientX - touchStartRef.current.x;
         const dy = e.changedTouches[0].clientY - touchStartRef.current.y;
         const dt = Date.now() - touchStartRef.current.time;
 
-        if (Math.abs(dx) > 65 && Math.abs(dx) > Math.abs(dy) * 1.5 && dt < 500) {
+        if (Math.abs(dx) > 65 && Math.abs(dx) > Math.abs(dy) * 1.5 && dt < 450) {
           if (dx < 0) {
             goToNextPage();
           } else {
@@ -1197,41 +1069,61 @@
         }
       };
 
-      // 5. Ribbon Drag Handling for Next (Right Ribbon) & Prev (Left Ribbon)
+      // Fast Direct GPU Drag Handling (Zero React re-renders while dragging)
       const handleRibbonDragStart = (direction) => {
-        if (isFlipping) return;
-        onFirstInteraction();
-        setIsDragging(true);
-        setDragDirection(direction);
-        setDragOffset(0);
+        if (isFlippingRef.current) return;
+        const leaf = direction === 'next' ? leafRefs.current[currentPage] : leafRefs.current[currentPage - 1];
+        if (leaf) {
+          leaf.style.transition = 'none';
+        }
       };
 
-      const handleRibbonDrag = (deltaX) => {
-        if (!isDragging) return;
-        setDragOffset(deltaX);
+      const handleRibbonDrag = (deltaX, direction) => {
+        if (isFlippingRef.current) return;
+        const screenWidth = window.innerWidth || 1000;
+        const progress = Math.min(1, Math.max(0, deltaX / screenWidth));
+
+        if (direction === 'next') {
+          const leaf = leafRefs.current[currentPage];
+          if (leaf) {
+            leaf.style.transform = `rotateY(${-(progress * 180)}deg)`;
+          }
+        } else if (direction === 'prev' && currentPage > 0) {
+          const leaf = leafRefs.current[currentPage - 1];
+          if (leaf) {
+            leaf.style.transform = `rotateY(${-180 + progress * 180}deg)`;
+          }
+        }
       };
 
-      const handleRibbonDragEnd = (deltaX) => {
-        if (!isDragging) return;
-        setIsDragging(false);
-
+      const handleRibbonDragEnd = (deltaX, direction) => {
+        if (isFlippingRef.current) return;
         const screenWidth = window.innerWidth || 1000;
         const progress = deltaX / screenWidth;
 
         if (progress >= MOTION_CONFIG.book.dragThreshold) {
-          triggerTurnBurst(dragDirection);
-          if (dragDirection === 'next' && currentPage < totalPages - 1) {
+          if (direction === 'next' && currentPage < totalPages - 1) {
             goToNextPage();
-          } else if (dragDirection === 'prev' && currentPage > 0) {
+          } else if (direction === 'prev' && currentPage > 0) {
             goToPrevPage();
           }
+        } else {
+          // Rebound to initial angle
+          if (direction === 'next') {
+            const leaf = leafRefs.current[currentPage];
+            if (leaf) {
+              leaf.style.transition = `transform ${MOTION_CONFIG.book.flipDurationMs}ms cubic-bezier(0.2, 0.8, 0.25, 1)`;
+              leaf.style.transform = 'rotateY(0deg)';
+            }
+          } else if (direction === 'prev' && currentPage > 0) {
+            const leaf = leafRefs.current[currentPage - 1];
+            if (leaf) {
+              leaf.style.transition = `transform ${MOTION_CONFIG.book.flipDurationMs}ms cubic-bezier(0.2, 0.8, 0.25, 1)`;
+              leaf.style.transform = 'rotateY(-180deg)';
+            }
+          }
         }
-        setDragOffset(0);
-        setDragDirection(null);
       };
-
-      const screenWidth = window.innerWidth || 1000;
-      const currentDragProgress = isDragging ? Math.min(1, Math.max(0, dragOffset / screenWidth)) : 0;
 
       return (
         <div
@@ -1241,53 +1133,20 @@
           className="book-container relative w-full h-[100dvh] overflow-hidden select-none"
         >
           {/* 4 Book Pages */}
-          {pages.map((pageContent, idx) => {
-            let transform = 'rotateY(0deg)';
-            let zIndex = 5;
-            let pointerEvents = 'none';
-            let transition = isDragging ? 'none' : `transform ${MOTION_CONFIG.book.flipDurationMs}ms cubic-bezier(0.25, 1, 0.5, 1)`;
-
-            if (idx < currentPage) {
-              transform = 'rotateY(-180deg)';
-              zIndex = 1;
-            } else if (idx === currentPage) {
-              zIndex = 10;
-              pointerEvents = 'auto';
-
-              if (isDragging && dragDirection === 'next') {
-                const angle = -(currentDragProgress * 180);
-                transform = `rotateY(${angle}deg)`;
-                zIndex = 20;
-              } else if (isFlipping && flipDirection === 'next') {
-                transform = 'rotateY(-180deg)';
-                zIndex = 20;
-              }
-            } else if (idx === currentPage + 1) {
-              zIndex = 5;
-              // Parallax depth on incoming page underneath
-              const parallaxX = (isDragging && dragDirection === 'next') ? (1 - currentDragProgress) * 16 : 0;
-              transform = `rotateY(0deg) translateX(${parallaxX}px)`;
-            }
-
-            // Dragging backward from left ribbon
-            if (isDragging && dragDirection === 'prev' && idx === currentPage - 1) {
-              const angle = -180 + (currentDragProgress * 180);
-              transform = `rotateY(${angle}deg)`;
-              zIndex = 25;
-            } else if (isFlipping && flipDirection === 'prev' && idx === currentPage - 1) {
-              transform = 'rotateY(0deg)';
-              zIndex = 25;
-            }
+          {pages.map((PageComponent, idx) => {
+            const isTurned = idx < currentPage;
+            const isCurrent = idx === currentPage;
+            const zIndex = isCurrent ? 10 : (idx < currentPage ? 1 : 5);
 
             return (
               <div
                 key={idx}
+                ref={(el) => (leafRefs.current[idx] = el)}
                 className="book-page-leaf absolute inset-0 w-full h-full"
                 style={{
                   transformOrigin: 'left center',
-                  transform,
+                  transform: isTurned ? 'rotateY(-180deg)' : 'rotateY(0deg)',
                   zIndex,
-                  transition,
                   transformStyle: 'preserve-3d'
                 }}
               >
@@ -1296,32 +1155,21 @@
                   className="absolute inset-0 w-full h-full atmosphere-gradient text-rose-950 overflow-hidden"
                   style={{
                     backfaceVisibility: 'hidden',
-                    pointerEvents
+                    pointerEvents: isCurrent ? 'auto' : 'none'
                   }}
                 >
-                  {/* Soft Light Sweep Gradient across turning page */}
-                  <div
-                    className="absolute inset-0 pointer-events-none z-30 transition-opacity duration-300"
-                    style={{
-                      background: 'linear-gradient(115deg, transparent 20%, rgba(255,255,255,0.4) 48%, rgba(254,240,138,0.45) 52%, transparent 75%)',
-                      opacity: (isDragging || isFlipping) ? Math.sin((currentDragProgress || 0.5) * Math.PI) * 0.85 : 0,
-                      transform: `translateX(${((currentDragProgress || 0.5) - 0.5) * 80}%)`,
-                      willChange: 'transform, opacity'
-                    }}
-                  />
-
                   {/* Inner scrollable container for small screens */}
                   <div className="page-scroll-container">
-                    {pageContent(idx === currentPage)}
+                    <PageComponent isActive={isCurrent} goToPage={goToPage} />
                   </div>
 
                   {/* Right Ribbon (Next Page) — On pages 1, 2, 3 */}
-                  {idx < totalPages - 1 && (
+                  {idx < totalPages - 1 && isCurrent && (
                     <RibbonHandle
                       position="right"
                       onDragStart={() => handleRibbonDragStart('next')}
-                      onDrag={handleRibbonDrag}
-                      onDragEnd={handleRibbonDragEnd}
+                      onDrag={(dx) => handleRibbonDrag(dx, 'next')}
+                      onDragEnd={(dx) => handleRibbonDragEnd(dx, 'next')}
                       onClick={goToNextPage}
                       ariaLabel={`Turn to Page ${idx + 2}`}
                       hintText=""
@@ -1329,13 +1177,13 @@
                   )}
 
                   {/* Left Ribbon (Previous Page) — On pages 2, 3, 4 */}
-                  {idx > 0 && (
+                  {idx > 0 && isCurrent && (
                     <RibbonHandle
                       position="left"
                       isSmall={true}
                       onDragStart={() => handleRibbonDragStart('prev')}
-                      onDrag={handleRibbonDrag}
-                      onDragEnd={handleRibbonDragEnd}
+                      onDrag={(dx) => handleRibbonDrag(dx, 'prev')}
+                      onDragEnd={(dx) => handleRibbonDragEnd(dx, 'prev')}
                       onClick={goToPrevPage}
                       ariaLabel={`Turn back to Page ${idx}`}
                       hintText=""
@@ -1380,7 +1228,7 @@
                   onClick={() => goToPage(dotIdx)}
                   title={pageLabels[dotIdx]}
                   aria-label={pageLabels[dotIdx]}
-                  className={`relative flex items-center justify-center transition-all duration-300 ${
+                  className={`relative flex items-center justify-center transition-transform duration-200 ${
                     isActive
                       ? 'w-8 h-8 rounded-full bg-rose-600 text-white font-bold text-xs shadow-md ring-2 ring-rose-300 scale-110'
                       : 'w-6 h-6 rounded-full bg-rose-100 hover:bg-rose-200 text-rose-700 font-semibold text-[10px]'
@@ -1406,30 +1254,329 @@
     };
 
     // =========================================================================
-    // 8. MAIN APPLICATION COMPONENT
+    // 7. CLEAN PAGE COMPONENTS (Fast Re-renders, Rock-Solid Logic)
     // =========================================================================
-    function App() {
-      // 1. Cover & Page Navigation State
-      const [isCoverOpen, setIsCoverOpen] = useState(false);
-      const [currentPage, setCurrentPage] = useState(0); // 0 = Page 1, 1 = Page 2, 2 = Page 3, 3 = Page 4
 
-      // 2. Bouquet Tap & Typewriter Apology (Page 1)
-      const [bouquetBloomed, setBouquetBloomed] = useState(false);
+    // PAGE 1: HERO / THE FLOWER APOLOGY
+    const PageOne = ({ isActive, goToPage }) => {
+      const pageRef = useRef(null);
+      const [petalBurst, setPetalBurst] = useState([]);
       const [showHeartQuote, setShowHeartQuote] = useState(false);
       const [typedText, setTypedText] = useState('');
       const fullHeroQuote = "Amar ragi baccha ta, ektu shono na… ar rag kore theko na, please. 🥺❤️";
-      const [petalBurst, setPetalBurst] = useState([]);
 
-      // 3. Love Letter Envelope (Page 2)
+      const handleBouquetClick = () => {
+        setShowHeartQuote(true);
+        if (window.confetti && !checkReducedMotion()) {
+          window.confetti({
+            particleCount: 40,
+            spread: 65,
+            origin: { y: 0.6 },
+            colors: ['#f43f5e', '#fb7185', '#fbbf24', '#ffffff']
+          });
+        }
+
+        const burst = Array.from({ length: 12 }).map((_, i) => ({
+          id: Date.now() + i,
+          left: 20 + Math.random() * 60,
+          emoji: i % 2 === 0 ? '🌹' : '💖'
+        }));
+        setPetalBurst(burst);
+
+        let idx = 0;
+        setTypedText('');
+        const interval = setInterval(() => {
+          idx += 1;
+          setTypedText(fullHeroQuote.slice(0, idx));
+          if (idx >= fullHeroQuote.length) clearInterval(interval);
+        }, 34);
+      };
+
+      useEffect(() => {
+        if (!isActive || !pageRef.current) return;
+        const ctx = gsap.context(() => {
+          if (checkReducedMotion()) return;
+
+          // Sticker spring
+          gsap.fromTo('.p1-sticker',
+            { opacity: 0, scale: 0.78, y: 16 },
+            { opacity: 1, scale: 1, y: 0, duration: MOTION_CONFIG.entrance.stickerDuration, ease: MOTION_CONFIG.entrance.stickerEase, delay: 0.1 }
+          );
+
+          // Cards fade-up
+          gsap.fromTo('.p1-fade',
+            { opacity: 0, y: 14 },
+            { opacity: 1, y: 0, duration: MOTION_CONFIG.entrance.cardDuration, stagger: MOTION_CONFIG.entrance.cardStagger, ease: 'power2.out', delay: 0.15 }
+          );
+        }, pageRef);
+
+        return () => ctx.revert();
+      }, [isActive]);
+
+      return (
+        <div ref={pageRef} className="min-h-full flex flex-col justify-center items-center py-4 sm:py-6 px-3 sm:px-6 max-w-4xl mx-auto text-center">
+          {/* Dedication Pill */}
+          <div className="p1-fade inline-flex items-center gap-2 bg-rose-100/90 border border-rose-200 text-rose-800 text-xs sm:text-sm font-semibold px-4 py-1 rounded-full mb-2 shadow-sm">
+            <span>🕊️ For Mahmuda Khanum (My Shundori Pakhi)</span>
+          </div>
+
+          {/* Letter-by-Letter Blur-to-Sharp Headline */}
+          <AnimatedHeadline
+            text="For My Ragi Baccha, My Shundori Pakhi ❤️"
+            isActive={isActive}
+            as="h1"
+            className="font-serif text-[clamp(1.5rem,3.2vw,2.6rem)] font-bold text-rose-950 tracking-tight leading-tight mb-2"
+          />
+
+          {/* Floating Name Badges */}
+          <div className="grid grid-cols-2 gap-3 sm:gap-6 max-w-xl mx-auto mb-3 px-2 z-20 relative w-full">
+            <div className="flex justify-center sm:justify-start">
+              <div className="p1-fade bg-white/95 backdrop-blur-md border border-rose-200 shadow-md rounded-2xl px-3 py-1.5 text-center sm:text-left animate-float-slow">
+                <p className="text-xs sm:text-sm font-bold text-rose-950 leading-tight">
+                  Nahid Ibn Zaman
+                </p>
+                <p className="text-[10px] sm:text-xs font-semibold text-rose-600 leading-tight mt-0.5">
+                  Ragi Pakhi-r Pagol Chele ❤️
+                </p>
+              </div>
+            </div>
+
+            <div className="flex justify-center sm:justify-end">
+              <div className="p1-fade bg-white/95 backdrop-blur-md border border-rose-200 shadow-md rounded-2xl px-3 py-1.5 text-center sm:text-right animate-float-slow" style={{ animationDelay: '1.2s' }}>
+                <p className="text-xs sm:text-sm font-bold text-rose-950 leading-tight">
+                  Mahmuda Khanum
+                </p>
+                <p className="text-[10px] sm:text-xs font-semibold text-rose-600 leading-tight mt-0.5">
+                  Shundori Pakhi 🐦💗
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Romantic Garden Stage with Flower Apology Sticker Artwork */}
+          <div className="p1-fade glass-glow-card relative w-full max-w-2xl mx-auto rounded-3xl overflow-hidden p-3 sm:p-5">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-gradient-to-tr from-amber-200/50 to-rose-300/40 blur-3xl pointer-events-none" />
+
+            {/* Floating Petals Burst when clicked */}
+            {petalBurst.map((p) => (
+              <span
+                key={p.id}
+                className="pointer-events-none absolute bottom-12 text-3xl animate-lantern z-30"
+                style={{ left: `${p.left}%` }}
+              >
+                {p.emoji}
+              </span>
+            ))}
+
+            {/* Main Sticker Artwork: Nahid Offering Flowers to Pakhi */}
+            <div className="relative z-10 flex flex-col items-center">
+              <div className="p1-sticker relative max-w-sm mx-auto animate-breathe">
+                <picture>
+                  <source srcSet="stickers/couple-flower-apology.webp" type="image/webp" />
+                  <img
+                    src="stickers/couple-flower-apology.png"
+                    alt="Nahid offering flowers to Pakhi"
+                    className="w-full max-h-[32vh] sm:max-h-[38vh] md:max-h-[42vh] object-contain sticker-shadow select-none transition-transform duration-500 hover:scale-[1.02]"
+                  />
+                </picture>
+
+                <button
+                  onClick={handleBouquetClick}
+                  aria-label="Tap the bouquet of roses"
+                  className="absolute left-[38%] top-[38%] -translate-x-1/2 -translate-y-1/2 z-30 bg-white/95 hover:bg-white text-rose-700 text-xs sm:text-sm font-bold px-3.5 py-1.5 rounded-full shadow-2xl border-2 border-rose-300/90 flex items-center gap-1.5 transition-transform active:scale-95 hover:scale-105"
+                >
+                  <span>🌹</span>
+                  <span>Tap the Bouquet</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Status Caption */}
+            <div className="relative z-10 mt-2 inline-block bg-white/90 backdrop-blur-md px-3.5 py-1 rounded-full border border-rose-200 text-[11px] sm:text-xs font-semibold text-rose-800 shadow-sm">
+              <span>🥀 Pakhi is in Obhiman 😤 • Tap the bouquet to ask for forgiveness</span>
+            </div>
+          </div>
+
+          {/* Animated Apology Display after clicking the bouquet */}
+          {showHeartQuote && (
+            <div className="max-w-lg mx-auto mt-3 bg-white/95 border border-rose-200 rounded-2xl p-3 sm:p-4 shadow-xl">
+              <p className="font-serif italic text-base sm:text-xl text-rose-900 min-h-[2.5rem] flex items-center justify-center leading-relaxed">
+                “{typedText}”
+              </p>
+
+              <div className="mt-2.5 pt-2 border-t border-rose-100 flex justify-center">
+                <button
+                  onClick={() => goToPage(1)}
+                  className="inline-flex items-center gap-2 bg-gradient-to-r from-rose-600 via-rose-500 to-pink-500 hover:from-rose-700 hover:to-pink-600 text-white font-bold text-sm sm:text-base px-6 py-2 rounded-full shadow-xl transition-transform active:scale-95"
+                >
+                  <span>Open My Heart 💌</span>
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+      );
+    };
+
+    // PAGE 2: THE EMOTIONAL LETTER
+    const PageTwo = ({ isActive }) => {
+      const pageRef = useRef(null);
       const [letterOpened, setLetterOpened] = useState(true);
 
-      // 4. Emotional Choice (Page 3)
+      useEffect(() => {
+        if (!isActive || !pageRef.current) return;
+        const ctx = gsap.context(() => {
+          if (checkReducedMotion()) return;
+
+          gsap.fromTo('.p2-sticker',
+            { opacity: 0, scale: 0.8, y: 16 },
+            { opacity: 1, scale: 1, y: 0, duration: MOTION_CONFIG.entrance.stickerDuration, ease: MOTION_CONFIG.entrance.stickerEase, stagger: 0.1, delay: 0.1 }
+          );
+
+          gsap.fromTo('.p2-fade',
+            { opacity: 0, y: 16 },
+            { opacity: 1, y: 0, duration: MOTION_CONFIG.entrance.cardDuration, ease: 'power2.out', delay: 0.15 }
+          );
+        }, pageRef);
+
+        return () => ctx.revert();
+      }, [isActive]);
+
+      return (
+        <div ref={pageRef} className="min-h-full flex flex-col justify-center items-center py-6 sm:py-10 px-3 sm:px-6 max-w-3xl mx-auto">
+          <div className="text-center mb-4">
+            <span className="text-xs font-bold uppercase tracking-widest text-rose-500">
+              From Nahid’s Heart to Yours
+            </span>
+            <AnimatedHeadline
+              text="A Letter For My Shundori Pakhi 💌"
+              isActive={isActive}
+              as="h2"
+              className="font-serif text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-rose-950 mt-1"
+            />
+          </div>
+
+          {/* Wax Seal Envelope Toggle */}
+          <div className="flex justify-center mb-3">
+            <button
+              onClick={() => setLetterOpened(!letterOpened)}
+              className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-rose-800 bg-white/95 border border-rose-200 px-4 py-1.5 rounded-full shadow-sm hover:bg-rose-50 transition-colors"
+            >
+              <span>{letterOpened ? '📜 Fold Letter' : '💌 Unfold Wax-Sealed Letter'}</span>
+            </button>
+          </div>
+
+          {letterOpened && (
+            <article className="p2-fade paper-card relative rounded-3xl p-5 sm:p-9 md:p-10 border border-rose-200/90 text-rose-950 shadow-2xl w-full">
+              {/* Wax Seal Stamp at Top Center */}
+              <div className="mx-auto -mt-9 sm:-mt-13 mb-4 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gradient-to-br from-rose-600 to-rose-900 border-4 border-amber-200 shadow-xl flex items-center justify-center text-white text-xl sm:text-2xl select-none animate-pulse">
+                ❤️
+              </div>
+
+              <div className="space-y-4 font-serif text-base sm:text-lg leading-relaxed text-rose-950">
+                {/* Top Opening Paragraph with Nahid Looking Lovingly Sticker */}
+                <div className="overflow-hidden">
+                  <div className="p2-sticker float-right ml-3 mb-2 max-w-[100px] sm:max-w-[140px] text-center">
+                    <picture>
+                      <source srcSet="stickers/nahid-loving.webp" type="image/webp" />
+                      <img
+                        src="stickers/nahid-loving.png"
+                        alt="Nahid looking lovingly"
+                        className="w-full object-contain sticker-shadow rounded-2xl"
+                      />
+                    </picture>
+                    <span className="text-[9px] sm:text-[10px] font-sans font-bold text-rose-600 block mt-0.5">
+                      Looking at you ❤️
+                    </span>
+                  </div>
+
+                  <p className="font-semibold text-lg sm:text-xl text-rose-900">
+                    Amar ragi baccha ta, ektu shono na… ar rag kore theko na, please.
+                  </p>
+
+                  <p className="mt-2 text-sm sm:text-base">
+                    Amar pither gosto julano Pakhi ta, esho na amar kole esho. Tomake ektu ador kore dei, tomar kopale ekta kiss kori, ar tomake buker moddhe joriye dhore rakhi. Ummmwwahhhh! 😘💋
+                  </p>
+                </div>
+
+                {/* Middle Paragraph with Cute Angry Pakhi Sticker */}
+                <div className="overflow-hidden pt-1">
+                  <div className="p2-sticker float-left mr-3 mb-2 max-w-[95px] sm:max-w-[130px] text-center">
+                    <picture>
+                      <source srcSet="stickers/pakhi-angry.webp" type="image/webp" />
+                      <img
+                        src="stickers/pakhi-angry.png"
+                        alt="Angry Pakhi pouting"
+                        className="w-full object-contain sticker-shadow rounded-2xl"
+                      />
+                    </picture>
+                    <span className="text-[9px] sm:text-[10px] font-sans font-bold text-rose-700 block mt-0.5">
+                      My Ragi Baccha 🥺
+                    </span>
+                  </div>
+
+                  <p className="text-sm sm:text-base">
+                    Tumi jano na, ami tomake koto ta bhalobashi. Kintu majhe majhe tomar kichu kotha amar khub koshto dey. Tumi-i bolo, amar ki koshto hoy na? Amio to ekta manush. Amaro feelings ache, amaro mon kharap hoy.
+                  </p>
+
+                  <p className="italic text-rose-900 font-medium mt-2 text-sm sm:text-base">
+                    Am I a robot, my love? Obviously not. I feel things too, and sometimes it hurts so much, my Pakhi.
+                  </p>
+                </div>
+
+                <p className="text-sm sm:text-base">
+                  But do you know one thing? I don't hate you. I hate the fact that even when I'm hurt, even when I'm upset, I still can't hate you. Karon amar mon-ta je shudhu tomar-i. ❤️
+                </p>
+
+                <p className="bg-rose-100/70 border-l-4 border-rose-500 pl-3.5 py-2 rounded-r-xl font-medium text-sm sm:text-base">
+                  Ami perfect relationship chai na, Pakhi. Ami chai amra dujon dujonke bujhi, bhul hole sorry boli, ar ekjon arekjoner pashe thaki.
+                </p>
+
+                <p className="text-sm sm:text-base">
+                  I'm sorry, my love. Jodi amar kono kothay ba kaj-e tomar mon kharap hoye thake, amake bolo. Ami tomar kotha shunte chai, tomake bujhte chai.
+                </p>
+
+                {/* Romantic Paragraph with Couple Hug Sticker */}
+                <div className="bg-rose-50/80 border border-rose-200/90 rounded-2xl p-3 sm:p-4 my-2 flex flex-col sm:flex-row items-center gap-3">
+                  <div className="p2-sticker shrink-0 w-28 sm:w-36">
+                    <picture>
+                      <source srcSet="stickers/couple-hug.webp" type="image/webp" />
+                      <img
+                        src="stickers/couple-hug.png"
+                        alt="Nahid and Mahmuda in sweet embrace"
+                        className="w-full object-contain sticker-shadow rounded-xl"
+                      />
+                    </picture>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-rose-900 text-sm sm:text-base">
+                      Nao, tomar jonno ekta boro bouquet of roses! 🌹💐 Ebar amar kache esho, amar buke matha rakho, ar tomar ei pagol chele-take ektu ador korte dao.
+                    </p>
+                    <p className="mt-1.5 text-rose-950 text-xs sm:text-sm">
+                      I love you, Mahmuda Khanum — my Shundori Pakhi, my Janu, my forever favorite person.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="pt-3 border-t border-rose-200/80 text-right">
+                  <p className="text-sm sm:text-base text-rose-700">Forever your pagol,</p>
+                  <p className="font-script text-2xl sm:text-3xl text-rose-900 mt-0.5">
+                    Nahid Ibn Zaman ❤️
+                  </p>
+                </div>
+              </div>
+            </article>
+          )}
+        </div>
+      );
+    };
+
+    // PAGE 3: "MY RAGI BACCHA" INTERACTIVE SECTION + "OUR LITTLE WORLD" MEMORIES
+    const PageThree = ({ isActive }) => {
+      const pageRef = useRef(null);
       const [emotionalChoice, setEmotionalChoice] = useState(null);
 
-      // 5. Sunset Acceptance (Page 4)
-      const [acceptedSunset, setAcceptedSunset] = useState(false);
-
-      // 6. Memories Timeline with LocalStorage Persistence (Page 3)
+      // LocalStorage persistence for memories
       const STORAGE_KEY = 'pakhi_cherished_memories_v2';
       const [memories, setMemories] = useState(() => {
         try {
@@ -1446,7 +1593,471 @@
         } catch (e) {}
       }, [memories]);
 
-      // 7. Complete Audio Player Engine (Fixed outside pages so music never stops)
+      const handleUpdateMemory = (id, field, value) => {
+        setMemories(prev => prev.map(m => (m.id === id ? { ...m, [field]: value } : m)));
+      };
+
+      const handleAddChapter = () => {
+        const nextNum = memories.length + 1;
+        const newChapter = {
+          id: `chapter-${Date.now()}`,
+          badge: `Chapter 0${nextNum}`,
+          title: `Our New Memory Together 💖`,
+          date: `Today & Always`,
+          description: `Write down something beautiful we did or said today...`
+        };
+        setMemories(prev => [...prev, newChapter]);
+        setEditingId(newChapter.id);
+      };
+
+      useEffect(() => {
+        if (!isActive || !pageRef.current) return;
+        const ctx = gsap.context(() => {
+          if (checkReducedMotion()) return;
+
+          gsap.fromTo('.p3-sticker',
+            { opacity: 0, scale: 0.8, y: 16 },
+            { opacity: 1, scale: 1, y: 0, duration: MOTION_CONFIG.entrance.stickerDuration, ease: MOTION_CONFIG.entrance.stickerEase, stagger: 0.1, delay: 0.1 }
+          );
+
+          gsap.fromTo('.p3-fade',
+            { opacity: 0, y: 14 },
+            { opacity: 1, y: 0, duration: MOTION_CONFIG.entrance.cardDuration, stagger: MOTION_CONFIG.entrance.cardStagger, ease: 'power2.out', delay: 0.15 }
+          );
+        }, pageRef);
+
+        return () => ctx.revert();
+      }, [isActive]);
+
+      return (
+        <div ref={pageRef} className="min-h-full py-8 sm:py-12 px-3 sm:px-6 max-w-4xl mx-auto space-y-10">
+          {/* SECTION 1: THE “MY RAGI BACCHA” INTERACTIVE SECTION */}
+          <section className="text-center max-w-2xl mx-auto">
+            <span className="text-xs font-bold uppercase tracking-widest text-rose-500">
+              Interactive Emotion
+            </span>
+            <AnimatedHeadline
+              text="What Does Your Heart Say Right Now, Amar Pakhi? 💗"
+              isActive={isActive}
+              as="h3"
+              className="font-serif text-[clamp(1.4rem,2.8vw,2.2rem)] font-bold text-rose-950 mt-1 mb-1.5"
+            />
+            <p className="text-xs sm:text-sm text-rose-700 mb-5 font-medium max-w-md mx-auto">
+              Take all the time you need — both of your feelings are completely safe with me.
+            </p>
+
+            {/* Split Reactions Display */}
+            <div className="grid grid-cols-2 gap-3 sm:gap-5 max-w-sm mx-auto mb-5">
+              <div className="p3-fade glass-glow-card rounded-2xl p-2.5 flex flex-col items-center">
+                <picture className="p3-sticker">
+                  <source srcSet="stickers/nahid-loving.webp" type="image/webp" />
+                  <img
+                    src="stickers/nahid-loving.png"
+                    alt="Nahid listening lovingly"
+                    className="h-24 sm:h-30 object-contain sticker-shadow"
+                  />
+                </picture>
+                <p className="text-[10px] sm:text-[11px] font-bold text-rose-800 mt-1.5">Always Listening ❤️</p>
+              </div>
+
+              <div className="p3-fade glass-glow-card rounded-2xl p-2.5 flex flex-col items-center">
+                <picture className="p3-sticker">
+                  <source srcSet="stickers/pakhi-angry.webp" type="image/webp" />
+                  <img
+                    src="stickers/pakhi-angry.png"
+                    alt="Pakhi pouting"
+                    className="h-24 sm:h-30 object-contain sticker-shadow"
+                  />
+                </picture>
+                <p className="text-[10px] sm:text-[11px] font-bold text-rose-800 mt-1.5">My Ragi Baccha 😤</p>
+              </div>
+            </div>
+
+            {/* Two Working Interactive Choice Buttons */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 max-w-md mx-auto">
+              <button
+                onClick={() => {
+                  setEmotionalChoice('ador');
+                  if (window.confetti && !checkReducedMotion()) {
+                    window.confetti({ particleCount: 35, spread: 60, origin: { y: 0.6 } });
+                  }
+                }}
+                className={`p3-fade flex-1 py-3 px-5 rounded-2xl font-bold text-sm sm:text-base shadow-md transition-all active:scale-95 ${
+                  emotionalChoice === 'ador'
+                    ? 'bg-rose-600 text-white ring-4 ring-rose-300'
+                    : 'bg-white hover:bg-rose-50 text-rose-900 border border-rose-300'
+                }`}
+              >
+                Ektu Ador Koro 🥺❤️
+              </button>
+
+              <button
+                onClick={() => setEmotionalChoice('rag')}
+                className={`p3-fade flex-1 py-3 px-5 rounded-2xl font-bold text-sm sm:text-base shadow-md transition-all active:scale-95 ${
+                  emotionalChoice === 'rag'
+                    ? 'bg-rose-800 text-white ring-4 ring-rose-300'
+                    : 'bg-white hover:bg-rose-50 text-rose-900 border border-rose-300'
+                }`}
+              >
+                Ami Ekhono Rag Kore Achi 😤
+              </button>
+            </div>
+
+            {/* Respectful Response Displays */}
+            {emotionalChoice === 'ador' && (
+              <div className="mt-6 bg-white/95 backdrop-blur-md border-2 border-rose-300 rounded-3xl p-5 sm:p-7 shadow-2xl animate-fadeIn max-w-md mx-auto">
+                <div className="max-w-[150px] mx-auto mb-3 animate-breathe">
+                  <picture>
+                    <source srcSet="stickers/couple-hug.webp" type="image/webp" />
+                    <img
+                      src="stickers/couple-hug.png"
+                      alt="Warm couple embrace"
+                      className="w-full object-contain sticker-shadow rounded-2xl"
+                    />
+                  </picture>
+                </div>
+                <div className="text-2xl mb-1.5 animate-bounce">🤗💞🌸</div>
+                <p className="font-serif text-lg sm:text-xl font-bold text-rose-900 leading-relaxed">
+                  “Asho amar Pakhi, shob obhiman bhule ektu kache asho. Tomake buke joriye rakhi. ❤️”
+                </p>
+              </div>
+            )}
+
+            {emotionalChoice === 'rag' && (
+              <div className="mt-6 bg-white/95 backdrop-blur-md border-2 border-rose-300 rounded-3xl p-5 sm:p-7 shadow-2xl animate-fadeIn max-w-md mx-auto">
+                <div className="max-w-[130px] mx-auto mb-3">
+                  <picture>
+                    <source srcSet="stickers/pakhi-angry.webp" type="image/webp" />
+                    <img
+                      src="stickers/pakhi-angry.png"
+                      alt="Pakhi taking her time"
+                      className="w-full object-contain sticker-shadow rounded-2xl"
+                    />
+                  </picture>
+                </div>
+                <div className="text-2xl mb-1.5 animate-float-slow">🥺🌷🕊️</div>
+                <p className="font-serif text-lg sm:text-xl font-semibold text-rose-900 leading-relaxed">
+                  “Thik ache, amar Pakhi. Tumi joto khon shomoy chao nao. Ami tomar kotha shunte ar tomake bujhte ekhanei achi. 🌷”
+                </p>
+              </div>
+            )}
+          </section>
+
+          {/* SECTION 2: THE LITTLE MEMORIES SECTION — "OUR LITTLE WORLD ❤️" */}
+          <section className="pt-6 border-t border-rose-200/60 max-w-3xl mx-auto">
+            <div className="text-center mb-6">
+              <span className="text-xs font-bold uppercase tracking-widest text-rose-500">
+                Cherished Keepsake Timeline
+              </span>
+              <AnimatedHeadline
+                text="Our Little World ❤️"
+                isActive={isActive}
+                as="h2"
+                className="font-serif text-[clamp(1.5rem,3vw,2.4rem)] font-bold text-rose-950 mt-1"
+              />
+              <p className="text-xs sm:text-sm text-rose-700 mt-1 font-medium">
+                Saved permanently in browser storage. Tap any memory to edit, or add new chapters!
+              </p>
+            </div>
+
+            <div className="relative border-l-2 border-rose-300 ml-3 sm:ml-6 pl-4 sm:pl-7 space-y-4">
+              {memories.map((mem) => {
+                const isEditing = editingId === mem.id;
+                return (
+                  <div
+                    key={mem.id}
+                    className="p3-fade glass-glow-card relative rounded-2xl p-4 sm:p-5"
+                  >
+                    <span className="absolute -left-[25px] sm:-left-[37px] top-5 w-3.5 h-3.5 rounded-full bg-rose-500 ring-4 ring-rose-100" />
+
+                    <div className="flex flex-wrap items-center justify-between gap-2 mb-1.5">
+                      <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-rose-100 text-rose-700">
+                        {mem.badge}
+                      </span>
+                      <button
+                        onClick={() => setEditingId(isEditing ? null : mem.id)}
+                        className="text-xs font-bold text-rose-600 hover:text-rose-900 underline"
+                      >
+                        {isEditing ? 'Save Changes ✓' : 'Edit Memory ✏️'}
+                      </button>
+                    </div>
+
+                    <h4 className="font-serif text-lg sm:text-xl font-bold text-rose-950">
+                      {mem.title}
+                    </h4>
+
+                    {isEditing ? (
+                      <div className="mt-2.5 space-y-2">
+                        <input
+                          type="text"
+                          value={mem.title}
+                          onChange={(e) => handleUpdateMemory(mem.id, 'title', e.target.value)}
+                          className="w-full text-sm font-bold px-3 py-1.5 rounded-xl border border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-400"
+                          placeholder="Chapter Title..."
+                        />
+                        <input
+                          type="text"
+                          value={mem.date}
+                          onChange={(e) => handleUpdateMemory(mem.id, 'date', e.target.value)}
+                          className="w-full text-xs sm:text-sm px-3 py-1.5 rounded-xl border border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-400"
+                          placeholder="Date or Location..."
+                        />
+                        <textarea
+                          rows="3"
+                          value={mem.description}
+                          onChange={(e) => handleUpdateMemory(mem.id, 'description', e.target.value)}
+                          className="w-full text-xs sm:text-sm px-3 py-1.5 rounded-xl border border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-400"
+                          placeholder="Write our sweet memory here..."
+                        />
+                      </div>
+                    ) : (
+                      <>
+                        <p className="text-[11px] sm:text-xs font-semibold text-rose-500 mt-0.5 mb-1.5">
+                          {mem.date}
+                        </p>
+                        <p className="text-xs sm:text-sm text-rose-900/95 leading-relaxed">
+                          {mem.description}
+                        </p>
+                      </>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Add New Memory Chapter Button */}
+            <div className="mt-6 text-center">
+              <button
+                onClick={handleAddChapter}
+                className="p3-fade inline-flex items-center gap-2 bg-white/95 hover:bg-rose-50 border border-rose-300 text-rose-800 font-bold text-xs sm:text-sm px-5 py-2 rounded-full shadow-sm active:scale-95 transition-all"
+              >
+                <span>➕ Add a New Chapter Together</span>
+              </button>
+            </div>
+          </section>
+        </div>
+      );
+    };
+
+    // PAGE 4: THE FINAL PAGE (ACCEPTANCE + SURPRISE SONG + FOOTER)
+    const PageFour = ({ isActive, goToPage }) => {
+      const pageRef = useRef(null);
+      const [acceptedSunset, setAcceptedSunset] = useState(false);
+      const [skyLanterns, setSkyLanterns] = useState([]);
+
+      const handleSendSkyLantern = () => {
+        if (window.confetti && !checkReducedMotion()) {
+          window.confetti({ particleCount: 30, spread: 60, origin: { y: 0.6 } });
+        }
+        const lanternMessages = [
+          "Amar Shundori Pakhi 🕊️",
+          "Always Yours, Nahid ❤️",
+          "Forever & Always 💫",
+          "Nahid Loves Pakhi 💖",
+          "Tomake Khub Bhalobashi 🌹"
+        ];
+        const randomMsg = lanternMessages[Math.floor(Math.random() * lanternMessages.length)];
+        const newLantern = {
+          id: Date.now() + Math.random(),
+          left: 30 + Math.random() * 40,
+          text: randomMsg
+        };
+        setSkyLanterns(prev => [...prev.slice(-6), newLantern]);
+      };
+
+      const handleAcceptSunset = () => {
+        setAcceptedSunset(true);
+
+        if (window.confetti && !checkReducedMotion()) {
+          window.confetti({
+            particleCount: 55,
+            spread: 75,
+            origin: { y: 0.55 },
+            colors: ['#f43f5e', '#fb7185', '#fbbf24', '#ffffff']
+          });
+        }
+
+        // Snappy Cinematic Zoom
+        const container = document.getElementById('sunset-garden-container');
+        if (container && !checkReducedMotion()) {
+          gsap.fromTo(container,
+            { scale: 0.98 },
+            { scale: MOTION_CONFIG.finale.zoomScale, duration: MOTION_CONFIG.finale.zoomDuration, ease: 'power2.out' }
+          );
+        }
+
+        // Staggered sky lanterns
+        const messages = [
+          "Amar Shundori Pakhi 🕊️",
+          "Always Yours, Nahid ❤️",
+          "Forever & Always 💫"
+        ];
+        messages.forEach((msg, i) => {
+          setTimeout(() => {
+            const l = {
+              id: Date.now() + Math.random(),
+              left: 25 + i * 22,
+              text: msg
+            };
+            setSkyLanterns(prev => [...prev.slice(-6), l]);
+          }, i * 600);
+        });
+      };
+
+      useEffect(() => {
+        if (!isActive || !pageRef.current) return;
+        const ctx = gsap.context(() => {
+          if (checkReducedMotion()) return;
+
+          gsap.fromTo('.p4-sticker',
+            { opacity: 0, scale: 0.8, y: 16 },
+            { opacity: 1, scale: 1, y: 0, duration: MOTION_CONFIG.entrance.stickerDuration, ease: MOTION_CONFIG.entrance.stickerEase, delay: 0.1 }
+          );
+
+          gsap.fromTo('.p4-fade',
+            { opacity: 0, y: 16 },
+            { opacity: 1, y: 0, duration: MOTION_CONFIG.entrance.cardDuration, stagger: MOTION_CONFIG.entrance.cardStagger, ease: 'power2.out', delay: 0.15 }
+          );
+        }, pageRef);
+
+        return () => ctx.revert();
+      }, [isActive]);
+
+      return (
+        <div ref={pageRef} className="relative min-h-full flex flex-col justify-between pt-8 pb-14 px-3 sm:px-6 bg-gradient-to-b from-rose-100/70 via-rose-300/80 to-rose-950 text-white overflow-hidden">
+          {/* Animated Sky Lanterns */}
+          <div className="pointer-events-none absolute inset-0 overflow-hidden">
+            {skyLanterns.map((l) => (
+              <div
+                key={l.id}
+                className="absolute bottom-20 flex flex-col items-center animate-lantern"
+                style={{ left: `${l.left}%` }}
+              >
+                <span className="text-3xl sm:text-4xl filter drop-shadow-[0_0_15px_#f59e0b]">🏮</span>
+                <span className="text-[10px] font-bold text-amber-200 bg-rose-950/80 px-2 py-0.5 rounded-full mt-1 border border-amber-300/40 whitespace-nowrap">
+                  {l.text}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          <div className="max-w-3xl mx-auto text-center relative z-10 w-full my-auto">
+            <span className="p4-fade inline-block text-xs font-bold uppercase tracking-widest text-rose-950 bg-white/90 px-3.5 py-1 rounded-full mb-2 shadow-md">
+              Sunset Promise 🌅
+            </span>
+
+            <AnimatedHeadline
+              text="Always Listening, Always Yours"
+              isActive={isActive}
+              as="h2"
+              className="font-serif text-[clamp(1.5rem,3.2vw,2.6rem)] font-bold text-rose-950 mb-4 leading-tight"
+            />
+
+            {/* Sunset Garden Scene Container */}
+            <div
+              id="sunset-garden-container"
+              className="p4-fade relative max-w-xl mx-auto rounded-3xl overflow-hidden shadow-2xl border-2 border-white/80 bg-gradient-to-b from-amber-200/40 via-rose-900/60 to-rose-950 p-4 sm:p-7 text-white backdrop-blur-md will-change-transform"
+            >
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-gradient-to-tr from-amber-400/40 via-rose-500/50 to-pink-500/30 blur-2xl pointer-events-none" />
+
+              {!acceptedSunset ? (
+                <div className="relative z-10 flex flex-col items-center animate-fadeIn">
+                  <div className="p4-sticker max-w-xs mx-auto mb-4">
+                    <picture>
+                      <source srcSet="stickers/couple-flower-apology.webp" type="image/webp" />
+                      <img
+                        src="stickers/couple-flower-apology.png"
+                        alt="Nahid offering flowers at sunset"
+                        className="w-full max-h-[28vh] sm:max-h-[34vh] object-contain sticker-sunset-shadow"
+                      />
+                    </picture>
+                  </div>
+
+                  <p className="font-serif italic text-base sm:text-lg text-rose-100 max-w-md mx-auto mb-3">
+                    “Nahid is standing with the flowers, waiting patiently with all his heart…”
+                  </p>
+
+                  <button
+                    onClick={handleAcceptSunset}
+                    className="group inline-flex items-center gap-2 bg-gradient-to-r from-rose-500 via-pink-500 to-amber-400 hover:from-rose-600 hover:to-pink-600 text-white font-bold text-sm sm:text-base px-6 py-2.5 rounded-full shadow-2xl transition-transform active:scale-95"
+                  >
+                    <span className="text-lg">💐</span>
+                    <span>Accept the Flowers 🌹💗</span>
+                  </button>
+                </div>
+              ) : (
+                <div className="relative z-10 flex flex-col items-center animate-fadeIn">
+                  <div className="p4-sticker max-w-[200px] sm:max-w-[240px] mx-auto mb-4 animate-breathe">
+                    <picture>
+                      <source srcSet="stickers/couple-hug.webp" type="image/webp" />
+                      <img
+                        src="stickers/couple-hug.png"
+                        alt="Pakhi happily accepts and hugs Nahid"
+                        className="w-full object-contain sticker-sunset-shadow rounded-2xl"
+                      />
+                    </picture>
+                  </div>
+
+                  <div className="space-y-3 max-w-lg mx-auto">
+                    <p className="font-serif italic text-base sm:text-xl text-rose-100 leading-relaxed">
+                      “Rag hote pare, obhiman hote pare, kintu ami chai amra dujon dujonke bujhar cheshta kokhono bondho na kori. ❤️”
+                    </p>
+
+                    <div className="p-3 sm:p-4 rounded-2xl bg-white/10 border border-rose-300/30 backdrop-blur-md">
+                      <p className="font-serif text-xl sm:text-2xl font-bold text-amber-200">
+                        “My Shundori Pakhi, these flowers are for you. 🌹”
+                      </p>
+                      <p className="font-serif text-base sm:text-xl font-semibold text-rose-200 mt-1.5">
+                        “I love you, Mahmuda Khanum. — Your Nahid ❤️”
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Lantern Release Button */}
+              <div className="mt-5 pt-3 border-t border-rose-300/20 flex justify-center">
+                <button
+                  onClick={handleSendSkyLantern}
+                  className="inline-flex items-center gap-2 bg-white/20 hover:bg-white/30 text-white border border-rose-300/40 font-bold text-xs sm:text-sm px-5 py-2 rounded-full shadow-lg active:scale-95 transition-all"
+                >
+                  <span>Release a Glowing Sky Lantern 🏮❤️</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Read Again 🔁 Action Button */}
+            <div className="mt-6 flex justify-center">
+              <button
+                onClick={() => {
+                  goToPage(0);
+                  if (window.confetti && !checkReducedMotion()) {
+                    window.confetti({ particleCount: 35, spread: 60, origin: { y: 0.6 } });
+                  }
+                }}
+                className="inline-flex items-center gap-2 bg-white/20 hover:bg-white/30 text-white border border-rose-300/40 font-bold text-xs sm:text-sm px-6 py-2 rounded-full shadow-md active:scale-95 transition-all"
+              >
+                <span>Read again 🔁</span>
+              </button>
+            </div>
+
+            <p className="text-[11px] sm:text-xs text-rose-200/80 mt-6">
+              Handcrafted with love by Nahid Ibn Zaman for Mahmuda Khanum (Shundori Pakhi) ❤️
+            </p>
+          </div>
+        </div>
+      );
+    };
+
+    // =========================================================================
+    // 8. MAIN APPLICATION COMPONENT
+    // =========================================================================
+    function App() {
+      // 1. Cover & Page Navigation State
+      const [isCoverOpen, setIsCoverOpen] = useState(false);
+      const [currentPage, setCurrentPage] = useState(0); // 0 = Page 1, 1 = Page 2, 2 = Page 3, 3 = Page 4
+
+      // 2. Complete Audio Player Engine (Fixed outside pages so music never stops)
       const audioRef = useRef(null);
       const [currentTrackIndex, setCurrentTrackIndex] = useState(0); // 0 = Surprise Song
       const [isPlaying, setIsPlaying] = useState(false);
@@ -1457,30 +2068,13 @@
       const [showPlaylistDrawer, setShowPlaylistDrawer] = useState(false);
       const [toastMessage, setToastMessage] = useState('');
 
-      // 8. Sunset Sky Lanterns (Page 4)
-      const [skyLanterns, setSkyLanterns] = useState([]);
-
       const currentTrack = PLAYLIST[currentTrackIndex];
 
-      // Toast Notification Helper
       const triggerToast = (msg) => {
         setToastMessage(msg);
-        setTimeout(() => setToastMessage(''), 4500);
+        setTimeout(() => setToastMessage(''), 4000);
       };
 
-      // Confetti & Petals Explosion Helper
-      const launchCelebration = () => {
-        if (window.confetti && !checkReducedMotion()) {
-          window.confetti({
-            particleCount: 50,
-            spread: 70,
-            origin: { y: 0.6 },
-            colors: ['#f43f5e', '#fb7185', '#fbbf24', '#ffffff']
-          });
-        }
-      };
-
-      // Play Specific Track by Index
       const playTrack = (index) => {
         setCurrentTrackIndex(index);
         const targetTrack = PLAYLIST[index];
@@ -1491,13 +2085,12 @@
             setIsPlaying(true);
             triggerToast(`Playing: ${targetTrack.title} — ${targetTrack.subtitle} 🎶`);
           }).catch(err => {
-            console.warn("Audio play prevented:", err);
+            console.warn("Audio play error:", err);
             triggerToast(`Tap Play to start: ${targetTrack.title} 🎵`);
           });
         }
       };
 
-      // Toggle Play/Pause
       const togglePlayPause = () => {
         if (!audioRef.current) return;
         if (isPlaying) {
@@ -1512,29 +2105,11 @@
         }
       };
 
-      // Dedicated Button Click — Plays Surprise Love Song
-      const handleDedicatedSurpriseClick = () => {
-        const surpriseIndex = PLAYLIST.findIndex(t => t.id === 'surprise-song');
-        launchCelebration();
-
-        if (currentTrackIndex === surpriseIndex && isPlaying) {
-          audioRef.current.pause();
-          setIsPlaying(false);
-          triggerToast("⏸️ Paused our surprise song");
-          return;
-        }
-
-        playTrack(surpriseIndex);
-        triggerToast("💖 Playing Nahid’s special surprise song for Pakhi!");
-      };
-
-      // Track Ended -> Auto-play Next Song
       const handleAudioEnded = () => {
         const nextIndex = (currentTrackIndex + 1) % PLAYLIST.length;
         playTrack(nextIndex);
       };
 
-      // Audio Time Update
       const handleTimeUpdate = () => {
         if (audioRef.current) {
           setCurrentTime(audioRef.current.currentTime);
@@ -1542,7 +2117,6 @@
         }
       };
 
-      // Format Seconds to MM:SS
       const formatTime = (sec) => {
         if (isNaN(sec) || sec === 0) return '0:00';
         const mins = Math.floor(sec / 60);
@@ -1550,7 +2124,6 @@
         return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
       };
 
-      // Handle Scrubber Seek
       const handleSeek = (e) => {
         const newTime = parseFloat(e.target.value);
         if (audioRef.current) {
@@ -1559,7 +2132,6 @@
         }
       };
 
-      // Handle Volume
       const handleVolumeChange = (e) => {
         const val = parseFloat(e.target.value);
         setVolume(val);
@@ -1580,998 +2152,14 @@
         }
       };
 
-      // First Drag/Click starts music to bypass browser autoplay restrictions
-      const handleFirstInteraction = () => {
-        if (audioRef.current && !isPlaying) {
-          audioRef.current.play().then(() => {
-            setIsPlaying(true);
-          }).catch(err => {
-            console.warn("Autoplay bypass note:", err);
-          });
-        }
-      };
-
-      // Typewriter Quote Triggered when Bouquet is Tapped on Page 1
-      const handleBouquetClick = () => {
-        setBouquetBloomed(true);
-        setShowHeartQuote(true);
-        launchCelebration();
-
-        // Spawn floating rose petals
-        const burst = Array.from({ length: 14 }).map((_, i) => ({
-          id: Date.now() + i,
-          left: 20 + Math.random() * 60,
-          emoji: i % 2 === 0 ? '🌹' : '💖'
-        }));
-        setPetalBurst(burst);
-
-        // Typewriter animation
-        let idx = 0;
-        setTypedText('');
-        const interval = setInterval(() => {
-          idx += 1;
-          setTypedText(fullHeroQuote.slice(0, idx));
-          if (idx >= fullHeroQuote.length) clearInterval(interval);
-        }, 38);
-      };
-
-      // Update Memory on Page 3
-      const handleUpdateMemory = (id, field, value) => {
-        setMemories(prev => prev.map(m => (m.id === id ? { ...m, [field]: value } : m)));
-      };
-
-      // Add New Chapter on Page 3
-      const handleAddChapter = () => {
-        const nextNum = memories.length + 1;
-        const newChapter = {
-          id: `chapter-${Date.now()}`,
-          badge: `Chapter 0${nextNum}`,
-          title: `Our New Memory Together 💖`,
-          date: `Today & Always`,
-          description: `Write down something beautiful we did or said today...`
-        };
-        setMemories(prev => [...prev, newChapter]);
-        setEditingId(newChapter.id);
-      };
-
-      // Launch Sunset Sky Lantern on Page 4
-      const handleSendSkyLantern = () => {
-        launchCelebration();
-        const lanternMessages = [
-          "Amar Shundori Pakhi 🕊️",
-          "Always Yours, Nahid ❤️",
-          "Forever & Always 💫",
-          "Nahid Loves Pakhi 💖",
-          "Tomake Khub Bhalobashi 🌹"
-        ];
-        const randomMsg = lanternMessages[Math.floor(Math.random() * lanternMessages.length)];
-        const newLantern = {
-          id: Date.now() + Math.random(),
-          left: 30 + Math.random() * 40,
-          text: randomMsg
-        };
-        setSkyLanterns(prev => [...prev.slice(-6), newLantern]);
-        triggerToast("A glowing lantern carrying your love has been sent to the sky 🌅");
-      };
-
-      // Finale Action on Page 4 (Accept Flowers)
-      const handleAcceptSunset = () => {
-        setAcceptedSunset(true);
-        launchCelebration();
-
-        // Cinematic Zoom effect on Garden Stage Container
-        const container = document.getElementById('sunset-garden-container');
-        if (container && !checkReducedMotion()) {
-          gsap.fromTo(container,
-            { scale: 0.98 },
-            { scale: MOTION_CONFIG.finale.zoomScale, duration: MOTION_CONFIG.finale.zoomDuration, ease: 'power2.out' }
-          );
-        }
-
-        // Auto release multiple romantic sky lanterns in celebratory wave
-        const messages = [
-          "Amar Shundori Pakhi 🕊️",
-          "Always Yours, Nahid ❤️",
-          "Forever & Always 💫"
-        ];
-        messages.forEach((msg, i) => {
-          setTimeout(() => {
-            const l = {
-              id: Date.now() + Math.random(),
-              left: 25 + i * 22,
-              text: msg
-            };
-            setSkyLanterns(prev => [...prev.slice(-6), l]);
-          }, i * 700);
-        });
-      };
-
-      // =======================================================================
-      // MOUSE & DEVICE TILT PARALLAX SYSTEM
-      // =======================================================================
-      useEffect(() => {
-        if (checkReducedMotion()) return;
-
-        let mouseX = 0, mouseY = 0;
-        let currentX = 0, currentY = 0;
-        let animId;
-
-        const handlePointerMove = (e) => {
-          mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
-          mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
-        };
-
-        const handleOrientation = (e) => {
-          if (e.gamma != null && e.beta != null) {
-            mouseX = Math.min(1, Math.max(-1, e.gamma / 30));
-            mouseY = Math.min(1, Math.max(-1, (e.beta - 45) / 30));
-          }
-        };
-
-        window.addEventListener('pointermove', handlePointerMove, { passive: true });
-        if (window.DeviceOrientationEvent) {
-          window.addEventListener('deviceorientation', handleOrientation, { passive: true });
-        }
-
-        const loop = () => {
-          // Smooth lerp dampening
-          currentX += (mouseX - currentX) * 0.08;
-          currentY += (mouseY - currentY) * 0.08;
-
-          const stickers = document.querySelectorAll('.motion-sticker');
-          stickers.forEach(s => {
-            s.style.transform = `translate3d(${currentX * MOTION_CONFIG.atmosphere.parallaxStrength}px, ${currentY * MOTION_CONFIG.atmosphere.parallaxStrength}px, 0)`;
-          });
-
-          const bgCards = document.querySelectorAll('.motion-card');
-          bgCards.forEach(c => {
-            c.style.transform = `translate3d(${-currentX * MOTION_CONFIG.atmosphere.bgParallaxStrength}px, ${-currentY * MOTION_CONFIG.atmosphere.bgParallaxStrength}px, 0)`;
-          });
-
-          animId = requestAnimationFrame(loop);
-        };
-
-        loop();
-
-        return () => {
-          cancelAnimationFrame(animId);
-          window.removeEventListener('pointermove', handlePointerMove);
-          window.removeEventListener('deviceorientation', handleOrientation);
-        };
-      }, []);
-
-      // =======================================================================
-      // THE 4 BOOK PAGES RENDER FUNCTIONS (With GSAP Stagger Entrance Hooks)
-      // =======================================================================
-
-      // PAGE 1: HERO / THE FLOWER APOLOGY
-      const renderPageOne = (isActive) => {
-        const pageRef = useRef(null);
-
-        useEffect(() => {
-          if (!isActive || !pageRef.current) return;
-          const ctx = gsap.context(() => {
-            if (checkReducedMotion()) {
-              gsap.set('.motion-sticker, .motion-card, .motion-btn', { opacity: 1, y: 0, scale: 1 });
-              return;
-            }
-
-            // Stickers spring in with elastic ease
-            const stickers = pageRef.current.querySelectorAll('.motion-sticker');
-            if (stickers.length) {
-              gsap.fromTo(stickers,
-                { opacity: 0, scale: 0.72, y: 26 },
-                {
-                  opacity: 1,
-                  scale: 1,
-                  y: 0,
-                  duration: MOTION_CONFIG.entrance.stickerDuration,
-                  ease: MOTION_CONFIG.entrance.stickerEase,
-                  stagger: 0.12,
-                  delay: 0.2
-                }
-              );
-            }
-
-            // Cards & buttons fade up with stagger
-            const cards = pageRef.current.querySelectorAll('.motion-card, .motion-btn');
-            if (cards.length) {
-              gsap.fromTo(cards,
-                { opacity: 0, y: 20 },
-                {
-                  opacity: 1,
-                  y: 0,
-                  duration: MOTION_CONFIG.entrance.cardDuration,
-                  ease: 'power2.out',
-                  stagger: MOTION_CONFIG.entrance.cardStagger,
-                  delay: 0.28
-                }
-              );
-            }
-          }, pageRef);
-
-          return () => ctx.revert();
-        }, [isActive]);
-
-        return (
-          <div ref={pageRef} className="min-h-full flex flex-col justify-center items-center py-4 sm:py-6 px-3 sm:px-6 max-w-4xl mx-auto text-center">
-            {/* Dedication Pill */}
-            <div className="motion-card inline-flex items-center gap-2 bg-rose-100/90 border border-rose-200 text-rose-800 text-xs sm:text-sm font-semibold px-4 py-1 rounded-full mb-2 shadow-sm">
-              <span>🕊️ For Mahmuda Khanum (My Shundori Pakhi)</span>
-            </div>
-
-            {/* Letter-by-Letter Blur-to-Sharp Headline */}
-            <AnimatedHeadline
-              text="For My Ragi Baccha, My Shundori Pakhi ❤️"
-              isActive={isActive}
-              as="h1"
-              className="font-serif text-[clamp(1.5rem,3.2vw,2.6rem)] font-bold text-rose-950 tracking-tight leading-tight mb-2"
-            />
-
-            {/* Floating Name Badges */}
-            <div className="grid grid-cols-2 gap-3 sm:gap-6 max-w-xl mx-auto mb-3 px-2 z-20 relative w-full">
-              <div className="flex justify-center sm:justify-start">
-                <div className="motion-card bg-white/95 backdrop-blur-md border border-rose-200 shadow-md rounded-2xl px-3 py-1.5 text-center sm:text-left animate-float-slow">
-                  <p className="text-xs sm:text-sm font-bold text-rose-950 leading-tight">
-                    Nahid Ibn Zaman
-                  </p>
-                  <p className="text-[10px] sm:text-xs font-semibold text-rose-600 leading-tight mt-0.5">
-                    Ragi Pakhi-r Pagol Chele ❤️
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex justify-center sm:justify-end">
-                <div className="motion-card bg-white/95 backdrop-blur-md border border-rose-200 shadow-md rounded-2xl px-3 py-1.5 text-center sm:text-right animate-float-slow" style={{ animationDelay: '1.2s' }}>
-                  <p className="text-xs sm:text-sm font-bold text-rose-950 leading-tight">
-                    Mahmuda Khanum
-                  </p>
-                  <p className="text-[10px] sm:text-xs font-semibold text-rose-600 leading-tight mt-0.5">
-                    Shundori Pakhi 🐦💗
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Romantic Garden Stage with Flower Apology Sticker Artwork */}
-            <div className="motion-card glass-glow-card relative w-full max-w-2xl mx-auto rounded-3xl overflow-hidden p-3 sm:p-5">
-              {/* Sun Glow Orb Backdrop */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-gradient-to-tr from-amber-200/50 to-rose-300/40 blur-3xl pointer-events-none" />
-
-              {/* Floating Petals Burst when clicked */}
-              {petalBurst.map((p) => (
-                <span
-                  key={p.id}
-                  className="pointer-events-none absolute bottom-12 text-3xl animate-lantern z-30"
-                  style={{ left: `${p.left}%` }}
-                >
-                  {p.emoji}
-                </span>
-              ))}
-
-              {/* Main Sticker Artwork: Nahid Offering Flowers to Pakhi */}
-              <div className="relative z-10 flex flex-col items-center">
-                <div className="relative max-w-sm mx-auto animate-breathe motion-sticker">
-                  <picture>
-                    <source srcSet="stickers/couple-flower-apology.webp" type="image/webp" />
-                    <img
-                      src="stickers/couple-flower-apology.png"
-                      alt="Nahid offering flowers to Pakhi"
-                      className="w-full max-h-[32vh] sm:max-h-[38vh] md:max-h-[42vh] object-contain sticker-shadow select-none transition-transform duration-500 hover:scale-[1.02]"
-                    />
-                  </picture>
-
-                  {/* Magnetic "Tap the Bouquet" Button */}
-                  <MagneticButton
-                    onClick={handleBouquetClick}
-                    ariaLabel="Tap the bouquet of roses"
-                    className="motion-btn absolute left-[38%] top-[38%] -translate-x-1/2 -translate-y-1/2 z-30 bg-white/95 hover:bg-white text-rose-700 text-xs sm:text-sm font-bold px-3.5 py-1.5 rounded-full shadow-2xl border-2 border-rose-300/90 flex items-center gap-1.5 transition-transform active:scale-95 hover:scale-110"
-                  >
-                    <span>🌹</span>
-                    <span>Tap the Bouquet</span>
-                  </MagneticButton>
-                </div>
-              </div>
-
-              {/* Status Caption */}
-              <div className="relative z-10 mt-2 inline-block bg-white/85 backdrop-blur-md px-3.5 py-1 rounded-full border border-rose-200 text-[11px] sm:text-xs font-semibold text-rose-800 shadow-sm">
-                <span>🥀 Pakhi is in Obhiman 😤 • Tap the bouquet to ask for forgiveness</span>
-              </div>
-            </div>
-
-            {/* Animated Apology Display after clicking the bouquet */}
-            {showHeartQuote && (
-              <div className="max-w-lg mx-auto mt-3 bg-white/90 backdrop-blur-md border border-rose-200/90 rounded-2xl p-3 sm:p-4 shadow-xl animate-fadeIn">
-                <p className="font-serif italic text-base sm:text-xl text-rose-900 min-h-[2.5rem] flex items-center justify-center leading-relaxed">
-                  “{typedText}”
-                </p>
-
-                <div className="mt-2.5 pt-2 border-t border-rose-100 flex justify-center">
-                  <MagneticButton
-                    onClick={() => setCurrentPage(1)}
-                    className="inline-flex items-center gap-2 bg-gradient-to-r from-rose-600 via-rose-500 to-pink-500 hover:from-rose-700 hover:to-pink-600 text-white font-bold text-sm sm:text-base px-6 py-2 rounded-full shadow-xl shadow-rose-500/25 transition-all hover:scale-105 active:scale-95"
-                  >
-                    <span>Open My Heart 💌</span>
-                  </MagneticButton>
-                </div>
-              </div>
-            )}
-          </div>
-        );
-      };
-
-      // PAGE 2: THE EMOTIONAL LETTER
-      const renderPageTwo = (isActive) => {
-        const pageRef = useRef(null);
-
-        useEffect(() => {
-          if (!isActive || !pageRef.current) return;
-          const ctx = gsap.context(() => {
-            if (checkReducedMotion()) {
-              gsap.set('.motion-sticker, .motion-card', { opacity: 1, y: 0, scale: 1 });
-              return;
-            }
-
-            const stickers = pageRef.current.querySelectorAll('.motion-sticker');
-            if (stickers.length) {
-              gsap.fromTo(stickers,
-                { opacity: 0, scale: 0.75, y: 24 },
-                {
-                  opacity: 1,
-                  scale: 1,
-                  y: 0,
-                  duration: MOTION_CONFIG.entrance.stickerDuration,
-                  ease: MOTION_CONFIG.entrance.stickerEase,
-                  stagger: 0.14,
-                  delay: 0.22
-                }
-              );
-            }
-
-            const cards = pageRef.current.querySelectorAll('.motion-card');
-            if (cards.length) {
-              gsap.fromTo(cards,
-                { opacity: 0, y: 22 },
-                {
-                  opacity: 1,
-                  y: 0,
-                  duration: MOTION_CONFIG.entrance.cardDuration,
-                  ease: 'power2.out',
-                  delay: 0.28
-                }
-              );
-            }
-          }, pageRef);
-
-          return () => ctx.revert();
-        }, [isActive]);
-
-        return (
-          <div ref={pageRef} className="min-h-full flex flex-col justify-center items-center py-6 sm:py-10 px-3 sm:px-6 max-w-3xl mx-auto">
-            <div className="text-center mb-4">
-              <span className="text-xs font-bold uppercase tracking-widest text-rose-500">
-                From Nahid’s Heart to Yours
-              </span>
-              <AnimatedHeadline
-                text="A Letter For My Shundori Pakhi 💌"
-                isActive={isActive}
-                as="h2"
-                className="font-serif text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-rose-950 mt-1"
-              />
-            </div>
-
-            {/* Wax Seal Envelope Toggle */}
-            <div className="flex justify-center mb-3">
-              <MagneticButton
-                onClick={() => setLetterOpened(!letterOpened)}
-                className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-rose-800 bg-white/95 border border-rose-200 px-4 py-1.5 rounded-full shadow-sm hover:bg-rose-50 transition-colors"
-              >
-                <span>{letterOpened ? '📜 Fold Letter' : '💌 Unfold Wax-Sealed Letter'}</span>
-              </MagneticButton>
-            </div>
-
-            {letterOpened && (
-              <article className="motion-card paper-card relative rounded-3xl p-5 sm:p-9 md:p-10 border border-rose-200/90 text-rose-950 shadow-2xl animate-fadeIn w-full">
-                {/* Wax Seal Stamp at Top Center */}
-                <div className="mx-auto -mt-9 sm:-mt-13 mb-4 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gradient-to-br from-rose-600 to-rose-900 border-4 border-amber-200 shadow-xl flex items-center justify-center text-white text-xl sm:text-2xl select-none animate-pulse">
-                  ❤️
-                </div>
-
-                <div className="space-y-4 font-serif text-base sm:text-lg leading-relaxed text-rose-950">
-                  {/* Top Opening Paragraph with Nahid Looking Lovingly Sticker */}
-                  <div className="overflow-hidden">
-                    <div className="motion-sticker float-right ml-3 mb-2 max-w-[100px] sm:max-w-[140px] text-center">
-                      <picture>
-                        <source srcSet="stickers/nahid-loving.webp" type="image/webp" />
-                        <img
-                          src="stickers/nahid-loving.png"
-                          alt="Nahid looking lovingly"
-                          className="w-full object-contain sticker-shadow rounded-2xl"
-                        />
-                      </picture>
-                      <span className="text-[9px] sm:text-[10px] font-sans font-bold text-rose-600 block mt-0.5">
-                        Looking at you ❤️
-                      </span>
-                    </div>
-
-                    <p className="font-semibold text-lg sm:text-xl text-rose-900">
-                      Amar ragi baccha ta, ektu shono na… ar rag kore theko na, please.
-                    </p>
-
-                    <p className="mt-2 text-sm sm:text-base">
-                      Amar pither gosto julano Pakhi ta, esho na amar kole esho. Tomake ektu ador kore dei, tomar kopale ekta kiss kori, ar tomake buker moddhe joriye dhore rakhi. Ummmwwahhhh! 😘💋
-                    </p>
-                  </div>
-
-                  {/* Middle Paragraph with Cute Angry Pakhi Sticker */}
-                  <div className="overflow-hidden pt-1">
-                    <div className="motion-sticker float-left mr-3 mb-2 max-w-[95px] sm:max-w-[130px] text-center">
-                      <picture>
-                        <source srcSet="stickers/pakhi-angry.webp" type="image/webp" />
-                        <img
-                          src="stickers/pakhi-angry.png"
-                          alt="Angry Pakhi pouting"
-                          className="w-full object-contain sticker-shadow rounded-2xl"
-                        />
-                      </picture>
-                      <span className="text-[9px] sm:text-[10px] font-sans font-bold text-rose-700 block mt-0.5">
-                        My Ragi Baccha 🥺
-                      </span>
-                    </div>
-
-                    <p className="text-sm sm:text-base">
-                      Tumi jano na, ami tomake koto ta bhalobashi. Kintu majhe majhe tomar kichu kotha amar khub koshto dey. Tumi-i bolo, amar ki koshto hoy na? Amio to ekta manush. Amaro feelings ache, amaro mon kharap hoy.
-                    </p>
-
-                    <p className="italic text-rose-900 font-medium mt-2 text-sm sm:text-base">
-                      Am I a robot, my love? Obviously not. I feel things too, and sometimes it hurts so much, my Pakhi.
-                    </p>
-                  </div>
-
-                  <p className="text-sm sm:text-base">
-                    But do you know one thing? I don't hate you. I hate the fact that even when I'm hurt, even when I'm upset, I still can't hate you. Karon amar mon-ta je shudhu tomar-i. ❤️
-                  </p>
-
-                  <p className="bg-rose-100/70 border-l-4 border-rose-500 pl-3.5 py-2 rounded-r-xl font-medium text-sm sm:text-base">
-                    Ami perfect relationship chai na, Pakhi. Ami chai amra dujon dujonke bujhi, bhul hole sorry boli, ar ekjon arekjoner pashe thaki.
-                  </p>
-
-                  <p className="text-sm sm:text-base">
-                    I'm sorry, my love. Jodi amar kono kothay ba kaj-e tomar mon kharap hoye thake, amake bolo. Ami tomar kotha shunte chai, tomake bujhte chai.
-                  </p>
-
-                  {/* Romantic Paragraph with Couple Hug Sticker */}
-                  <div className="bg-rose-50/80 border border-rose-200/90 rounded-2xl p-3 sm:p-4 my-2 flex flex-col sm:flex-row items-center gap-3">
-                    <div className="motion-sticker shrink-0 w-28 sm:w-36">
-                      <picture>
-                        <source srcSet="stickers/couple-hug.webp" type="image/webp" />
-                        <img
-                          src="stickers/couple-hug.png"
-                          alt="Nahid and Mahmuda in sweet embrace"
-                          className="w-full object-contain sticker-shadow rounded-xl"
-                        />
-                      </picture>
-                    </div>
-                    <div>
-                      <p className="font-semibold text-rose-900 text-sm sm:text-base">
-                        Nao, tomar jonno ekta boro bouquet of roses! 🌹💐 Ebar amar kache esho, amar buke matha rakho, ar tomar ei pagol chele-take ektu ador korte dao.
-                      </p>
-                      <p className="mt-1.5 text-rose-950 text-xs sm:text-sm">
-                        I love you, Mahmuda Khanum — my Shundori Pakhi, my Janu, my forever favorite person.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="pt-3 border-t border-rose-200/80 text-right">
-                    <p className="text-sm sm:text-base text-rose-700">Forever your pagol,</p>
-                    <p className="font-script text-2xl sm:text-3xl text-rose-900 mt-0.5">
-                      Nahid Ibn Zaman ❤️
-                    </p>
-                  </div>
-                </div>
-              </article>
-            )}
-          </div>
-        );
-      };
-
-      // PAGE 3: "MY RAGI BACCHA" INTERACTIVE SECTION + "OUR LITTLE WORLD" MEMORIES
-      const renderPageThree = (isActive) => {
-        const pageRef = useRef(null);
-
-        useEffect(() => {
-          if (!isActive || !pageRef.current) return;
-          const ctx = gsap.context(() => {
-            if (checkReducedMotion()) {
-              gsap.set('.motion-sticker, .motion-card, .motion-btn', { opacity: 1, y: 0, scale: 1 });
-              return;
-            }
-
-            const stickers = pageRef.current.querySelectorAll('.motion-sticker');
-            if (stickers.length) {
-              gsap.fromTo(stickers,
-                { opacity: 0, scale: 0.74, y: 22 },
-                {
-                  opacity: 1,
-                  scale: 1,
-                  y: 0,
-                  duration: MOTION_CONFIG.entrance.stickerDuration,
-                  ease: MOTION_CONFIG.entrance.stickerEase,
-                  stagger: 0.12,
-                  delay: 0.2
-                }
-              );
-            }
-
-            const cards = pageRef.current.querySelectorAll('.motion-card, .motion-btn');
-            if (cards.length) {
-              gsap.fromTo(cards,
-                { opacity: 0, y: 20 },
-                {
-                  opacity: 1,
-                  y: 0,
-                  duration: MOTION_CONFIG.entrance.cardDuration,
-                  ease: 'power2.out',
-                  stagger: MOTION_CONFIG.entrance.cardStagger,
-                  delay: 0.25
-                }
-              );
-            }
-          }, pageRef);
-
-          return () => ctx.revert();
-        }, [isActive]);
-
-        return (
-          <div ref={pageRef} className="min-h-full py-8 sm:py-12 px-3 sm:px-6 max-w-4xl mx-auto space-y-10">
-            {/* SECTION 1: THE “MY RAGI BACCHA” INTERACTIVE SECTION */}
-            <section className="text-center max-w-2xl mx-auto">
-              <span className="text-xs font-bold uppercase tracking-widest text-rose-500">
-                Interactive Emotion
-              </span>
-              <AnimatedHeadline
-                text="What Does Your Heart Say Right Now, Amar Pakhi? 💗"
-                isActive={isActive}
-                as="h3"
-                className="font-serif text-[clamp(1.4rem,2.8vw,2.2rem)] font-bold text-rose-950 mt-1 mb-1.5"
-              />
-              <p className="text-xs sm:text-sm text-rose-700 mb-5 font-medium max-w-md mx-auto">
-                Take all the time you need — both of your feelings are completely safe with me.
-              </p>
-
-              {/* Split Reactions Display */}
-              <div className="grid grid-cols-2 gap-3 sm:gap-5 max-w-sm mx-auto mb-5">
-                <div className="motion-card glass-glow-card rounded-2xl p-2.5 flex flex-col items-center">
-                  <picture className="motion-sticker">
-                    <source srcSet="stickers/nahid-loving.webp" type="image/webp" />
-                    <img
-                      src="stickers/nahid-loving.png"
-                      alt="Nahid listening lovingly"
-                      className="h-24 sm:h-30 object-contain sticker-shadow"
-                    />
-                  </picture>
-                  <p className="text-[10px] sm:text-[11px] font-bold text-rose-800 mt-1.5">Always Listening ❤️</p>
-                </div>
-
-                <div className="motion-card glass-glow-card rounded-2xl p-2.5 flex flex-col items-center">
-                  <picture className="motion-sticker">
-                    <source srcSet="stickers/pakhi-angry.webp" type="image/webp" />
-                    <img
-                      src="stickers/pakhi-angry.png"
-                      alt="Pakhi pouting"
-                      className="h-24 sm:h-30 object-contain sticker-shadow"
-                    />
-                  </picture>
-                  <p className="text-[10px] sm:text-[11px] font-bold text-rose-800 mt-1.5">My Ragi Baccha 😤</p>
-                </div>
-              </div>
-
-              {/* Two Working Interactive Choice Buttons with Magnetic Hover */}
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 max-w-md mx-auto">
-                <MagneticButton
-                  onClick={() => {
-                    setEmotionalChoice('ador');
-                    launchCelebration();
-                  }}
-                  className={`motion-btn flex-1 py-3 px-5 rounded-2xl font-bold text-sm sm:text-base shadow-md transition-all active:scale-95 ${
-                    emotionalChoice === 'ador'
-                      ? 'bg-rose-600 text-white ring-4 ring-rose-300'
-                      : 'bg-white hover:bg-rose-50 text-rose-900 border border-rose-300'
-                  }`}
-                >
-                  Ektu Ador Koro 🥺❤️
-                </MagneticButton>
-
-                <MagneticButton
-                  onClick={() => setEmotionalChoice('rag')}
-                  className={`motion-btn flex-1 py-3 px-5 rounded-2xl font-bold text-sm sm:text-base shadow-md transition-all active:scale-95 ${
-                    emotionalChoice === 'rag'
-                      ? 'bg-rose-800 text-white ring-4 ring-rose-300'
-                      : 'bg-white hover:bg-rose-50 text-rose-900 border border-rose-300'
-                  }`}
-                >
-                  Ami Ekhono Rag Kore Achi 😤
-                </MagneticButton>
-              </div>
-
-              {/* Respectful Response Displays */}
-              {emotionalChoice === 'ador' && (
-                <div className="mt-6 bg-white/95 backdrop-blur-md border-2 border-rose-300 rounded-3xl p-5 sm:p-7 shadow-2xl animate-fadeIn max-w-md mx-auto">
-                  <div className="max-w-[150px] mx-auto mb-3 animate-breathe">
-                    <picture>
-                      <source srcSet="stickers/couple-hug.webp" type="image/webp" />
-                      <img
-                        src="stickers/couple-hug.png"
-                        alt="Warm couple embrace"
-                        className="w-full object-contain sticker-shadow rounded-2xl"
-                      />
-                    </picture>
-                  </div>
-                  <div className="text-2xl mb-1.5 animate-bounce">🤗💞🌸</div>
-                  <p className="font-serif text-lg sm:text-xl font-bold text-rose-900 leading-relaxed">
-                    “Asho amar Pakhi, shob obhiman bhule ektu kache asho. Tomake buke joriye rakhi. ❤️”
-                  </p>
-                </div>
-              )}
-
-              {emotionalChoice === 'rag' && (
-                <div className="mt-6 bg-white/95 backdrop-blur-md border-2 border-rose-300 rounded-3xl p-5 sm:p-7 shadow-2xl animate-fadeIn max-w-md mx-auto">
-                  <div className="max-w-[130px] mx-auto mb-3">
-                    <picture>
-                      <source srcSet="stickers/pakhi-angry.webp" type="image/webp" />
-                      <img
-                        src="stickers/pakhi-angry.png"
-                        alt="Pakhi taking her time"
-                        className="w-full object-contain sticker-shadow rounded-2xl"
-                      />
-                    </picture>
-                  </div>
-                  <div className="text-2xl mb-1.5 animate-float-slow">🥺🌷🕊️</div>
-                  <p className="font-serif text-lg sm:text-xl font-semibold text-rose-900 leading-relaxed">
-                    “Thik ache, amar Pakhi. Tumi joto khon shomoy chao nao. Ami tomar kotha shunte ar tomake bujhte ekhanei achi. 🌷”
-                  </p>
-                </div>
-              )}
-            </section>
-
-            {/* SECTION 2: THE LITTLE MEMORIES SECTION — "OUR LITTLE WORLD ❤️" */}
-            <section className="pt-6 border-t border-rose-200/60 max-w-3xl mx-auto">
-              <div className="text-center mb-6">
-                <span className="text-xs font-bold uppercase tracking-widest text-rose-500">
-                  Cherished Keepsake Timeline
-                </span>
-                <AnimatedHeadline
-                  text="Our Little World ❤️"
-                  isActive={isActive}
-                  as="h2"
-                  className="font-serif text-[clamp(1.5rem,3vw,2.4rem)] font-bold text-rose-950 mt-1"
-                />
-                <p className="text-xs sm:text-sm text-rose-700 mt-1 font-medium">
-                  Saved permanently in browser storage. Tap any memory to edit, or add new chapters!
-                </p>
-              </div>
-
-              <div className="relative border-l-2 border-rose-300 ml-3 sm:ml-6 pl-4 sm:pl-7 space-y-4">
-                {memories.map((mem) => {
-                  const isEditing = editingId === mem.id;
-                  return (
-                    <div
-                      key={mem.id}
-                      className="motion-card glass-glow-card relative rounded-2xl p-4 sm:p-5 transition-shadow"
-                    >
-                      {/* Glowing Timeline Dot */}
-                      <span className="absolute -left-[25px] sm:-left-[37px] top-5 w-3.5 h-3.5 rounded-full bg-rose-500 ring-4 ring-rose-100" />
-
-                      <div className="flex flex-wrap items-center justify-between gap-2 mb-1.5">
-                        <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-rose-100 text-rose-700">
-                          {mem.badge}
-                        </span>
-                        <button
-                          onClick={() => setEditingId(isEditing ? null : mem.id)}
-                          className="text-xs font-bold text-rose-600 hover:text-rose-900 underline"
-                        >
-                          {isEditing ? 'Save Changes ✓' : 'Edit Memory ✏️'}
-                        </button>
-                      </div>
-
-                      <h4 className="font-serif text-lg sm:text-xl font-bold text-rose-950">
-                        {mem.title}
-                      </h4>
-
-                      {isEditing ? (
-                        <div className="mt-2.5 space-y-2">
-                          <input
-                            type="text"
-                            value={mem.title}
-                            onChange={(e) => handleUpdateMemory(mem.id, 'title', e.target.value)}
-                            className="w-full text-sm font-bold px-3 py-1.5 rounded-xl border border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-400"
-                            placeholder="Chapter Title..."
-                          />
-                          <input
-                            type="text"
-                            value={mem.date}
-                            onChange={(e) => handleUpdateMemory(mem.id, 'date', e.target.value)}
-                            className="w-full text-xs sm:text-sm px-3 py-1.5 rounded-xl border border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-400"
-                            placeholder="Date or Location..."
-                          />
-                          <textarea
-                            rows="3"
-                            value={mem.description}
-                            onChange={(e) => handleUpdateMemory(mem.id, 'description', e.target.value)}
-                            className="w-full text-xs sm:text-sm px-3 py-1.5 rounded-xl border border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-400"
-                            placeholder="Write our sweet memory here..."
-                          />
-                        </div>
-                      ) : (
-                        <>
-                          <p className="text-[11px] sm:text-xs font-semibold text-rose-500 mt-0.5 mb-1.5">
-                            {mem.date}
-                          </p>
-                          <p className="text-xs sm:text-sm text-rose-900/95 leading-relaxed">
-                            {mem.description}
-                          </p>
-                        </>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-
-              {/* Add New Memory Chapter Button */}
-              <div className="mt-6 text-center">
-                <MagneticButton
-                  onClick={handleAddChapter}
-                  className="motion-btn inline-flex items-center gap-2 bg-white/90 hover:bg-rose-50 border border-rose-300 text-rose-800 font-bold text-xs sm:text-sm px-5 py-2 rounded-full shadow-sm active:scale-95 transition-all"
-                >
-                  <span>➕ Add a New Chapter Together</span>
-                </MagneticButton>
-              </div>
-            </section>
-          </div>
-        );
-      };
-
-      // PAGE 4: THE FINAL PAGE (ACCEPTANCE + SURPRISE SONG + FOOTER)
-      const renderPageFour = (isActive) => {
-        const pageRef = useRef(null);
-
-        useEffect(() => {
-          if (!isActive || !pageRef.current) return;
-          const ctx = gsap.context(() => {
-            if (checkReducedMotion()) {
-              gsap.set('.motion-sticker, .motion-card, .motion-btn', { opacity: 1, y: 0, scale: 1 });
-              return;
-            }
-
-            const stickers = pageRef.current.querySelectorAll('.motion-sticker');
-            if (stickers.length) {
-              gsap.fromTo(stickers,
-                { opacity: 0, scale: 0.72, y: 24 },
-                {
-                  opacity: 1,
-                  scale: 1,
-                  y: 0,
-                  duration: MOTION_CONFIG.entrance.stickerDuration,
-                  ease: MOTION_CONFIG.entrance.stickerEase,
-                  stagger: 0.12,
-                  delay: 0.2
-                }
-              );
-            }
-
-            const cards = pageRef.current.querySelectorAll('.motion-card, .motion-btn');
-            if (cards.length) {
-              gsap.fromTo(cards,
-                { opacity: 0, y: 22 },
-                {
-                  opacity: 1,
-                  y: 0,
-                  duration: MOTION_CONFIG.entrance.cardDuration,
-                  ease: 'power2.out',
-                  stagger: MOTION_CONFIG.entrance.cardStagger,
-                  delay: 0.28
-                }
-              );
-            }
-          }, pageRef);
-
-          return () => ctx.revert();
-        }, [isActive]);
-
-        return (
-          <div ref={pageRef} className="relative min-h-full flex flex-col justify-between pt-8 pb-14 px-3 sm:px-6 bg-gradient-to-b from-rose-100/70 via-rose-300/80 to-rose-950 text-white overflow-hidden">
-            {/* Animated Sky Lanterns */}
-            <div className="pointer-events-none absolute inset-0 overflow-hidden">
-              {skyLanterns.map((l) => (
-                <div
-                  key={l.id}
-                  className="absolute bottom-20 flex flex-col items-center animate-lantern"
-                  style={{ left: `${l.left}%` }}
-                >
-                  <span className="text-3xl sm:text-4xl filter drop-shadow-[0_0_15px_#f59e0b]">🏮</span>
-                  <span className="text-[10px] font-bold text-amber-200 bg-rose-950/80 px-2 py-0.5 rounded-full mt-1 border border-amber-300/40 whitespace-nowrap">
-                    {l.text}
-                  </span>
-                </div>
-              ))}
-            </div>
-
-            <div className="max-w-3xl mx-auto text-center relative z-10 w-full my-auto">
-              <span className="motion-card inline-block text-xs font-bold uppercase tracking-widest text-rose-950 bg-white/90 px-3.5 py-1 rounded-full mb-2 shadow-md">
-                Sunset Promise 🌅
-              </span>
-
-              <AnimatedHeadline
-                text="Always Listening, Always Yours"
-                isActive={isActive}
-                as="h2"
-                className="font-serif text-[clamp(1.5rem,3.2vw,2.6rem)] font-bold text-rose-950 mb-4 leading-tight"
-              />
-
-              {/* Sunset Garden Scene Container (Target for Cinematic Zoom) */}
-              <div
-                id="sunset-garden-container"
-                className="motion-card relative max-w-xl mx-auto rounded-3xl overflow-hidden shadow-2xl border-2 border-white/80 bg-gradient-to-b from-amber-200/40 via-rose-900/60 to-rose-950 p-4 sm:p-7 text-white backdrop-blur-md will-change-transform"
-              >
-                {/* Glowing Heart Backdrop Aura */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-gradient-to-tr from-amber-400/40 via-rose-500/50 to-pink-500/30 blur-2xl pointer-events-none" />
-
-                {/* State Transition: Offering Bouquet vs Accepting Flowers */}
-                {!acceptedSunset ? (
-                  <div className="relative z-10 flex flex-col items-center animate-fadeIn">
-                    <div className="max-w-xs mx-auto mb-4 motion-sticker">
-                      <picture>
-                        <source srcSet="stickers/couple-flower-apology.webp" type="image/webp" />
-                        <img
-                          src="stickers/couple-flower-apology.png"
-                          alt="Nahid offering flowers at sunset"
-                          className="w-full max-h-[28vh] sm:max-h-[34vh] object-contain sticker-sunset-shadow"
-                        />
-                      </picture>
-                    </div>
-
-                    <p className="font-serif italic text-base sm:text-lg text-rose-100 max-w-md mx-auto mb-3">
-                      “Nahid is standing with the flowers, waiting patiently with all his heart…”
-                    </p>
-
-                    <MagneticButton
-                      onClick={handleAcceptSunset}
-                      className="group inline-flex items-center gap-2 bg-gradient-to-r from-rose-500 via-pink-500 to-amber-400 hover:from-rose-600 hover:to-pink-600 text-white font-bold text-sm sm:text-base px-6 py-2.5 rounded-full shadow-2xl transition-all duration-300 hover:scale-105 active:scale-95"
-                    >
-                      <span className="text-lg">💐</span>
-                      <span>Accept the Flowers 🌹💗</span>
-                    </MagneticButton>
-                  </div>
-                ) : (
-                  <div className="relative z-10 flex flex-col items-center animate-fadeIn">
-                    <div className="max-w-[200px] sm:max-w-[240px] mx-auto mb-4 animate-breathe motion-sticker">
-                      <picture>
-                        <source srcSet="stickers/couple-hug.webp" type="image/webp" />
-                        <img
-                          src="stickers/couple-hug.png"
-                          alt="Pakhi happily accepts and hugs Nahid"
-                          className="w-full object-contain sticker-sunset-shadow rounded-2xl"
-                        />
-                      </picture>
-                    </div>
-
-                    <div className="space-y-3 max-w-lg mx-auto">
-                      <p className="font-serif italic text-base sm:text-xl text-rose-100 leading-relaxed">
-                        “Rag hote pare, obhiman hote pare, kintu ami chai amra dujon dujonke bujhar cheshta kokhono bondho na kori. ❤️”
-                      </p>
-
-                      <div className="p-3 sm:p-4 rounded-2xl bg-white/10 border border-rose-300/30 backdrop-blur-md">
-                        <p className="font-serif text-xl sm:text-2xl font-bold text-amber-200">
-                          “My Shundori Pakhi, these flowers are for you. 🌹”
-                        </p>
-                        <p className="font-serif text-base sm:text-xl font-semibold text-rose-200 mt-1.5">
-                          “I love you, Mahmuda Khanum. — Your Nahid ❤️”
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {/* Lantern Release Button with Magnetic Hover */}
-                <div className="mt-5 pt-3 border-t border-rose-300/20 flex justify-center">
-                  <MagneticButton
-                    onClick={handleSendSkyLantern}
-                    className="inline-flex items-center gap-2 bg-white/20 hover:bg-white/30 text-white border border-rose-300/40 font-bold text-xs sm:text-sm px-5 py-2 rounded-full shadow-lg active:scale-95 transition-all"
-                  >
-                    <span>Release a Glowing Sky Lantern 🏮❤️</span>
-                  </MagneticButton>
-                </div>
-              </div>
-
-              {/* ============================================================= */}
-              {/* SPECIAL FINALE BOX: SURPRISE SONG FOR PAKHI (Hidden Title)    */}
-              {/* ============================================================= */}
-              <div id="special-song-section" className="motion-card max-w-xl mx-auto mt-6 relative">
-                <div className="relative p-[2.5px] rounded-3xl overflow-hidden shadow-2xl">
-                  <span className="absolute inset-0 shimmer-conic rounded-3xl" />
-                  <span className="absolute -inset-1 bg-gradient-to-r from-rose-600 via-pink-500 to-amber-400 rounded-3xl blur-lg opacity-85 animate-pulse" />
-
-                  <div className="relative rounded-[22px] bg-gradient-to-br from-rose-950 via-rose-900 to-pink-950 p-4 sm:p-6 text-center border border-rose-300/40 text-white backdrop-blur-md">
-                    <div className="flex items-center justify-center gap-2 mb-2">
-                      <span className="text-xl animate-bounce">💖</span>
-                      <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-amber-300 bg-rose-900/90 px-3 py-0.5 rounded-full border border-amber-300/40 shadow-sm">
-                        ✨ Nahid’s Special Choice For Pakhi
-                      </span>
-                      <span className="text-xl animate-bounce" style={{ animationDelay: '0.3s' }}>🎶</span>
-                    </div>
-
-                    <h3 className="font-serif text-xl sm:text-2xl md:text-3xl font-bold text-white mb-1.5 leading-tight">
-                      I have a special song for you Pakhi, tap to play the song ❤️
-                    </h3>
-
-                    <p className="text-xs sm:text-sm text-rose-200/90 max-w-sm mx-auto mb-4">
-                      Ei gaan-ta shudhu tomar jonno select korechi amar Pakhi. Amar shob bhalobasha diye tomake dilam.
-                    </p>
-
-                    <div className="flex justify-center">
-                      <MagneticButton
-                        onClick={handleDedicatedSurpriseClick}
-                        className="group relative inline-flex items-center gap-2.5 bg-gradient-to-r from-rose-500 via-pink-500 to-amber-500 hover:from-rose-600 hover:to-pink-600 text-white font-bold text-sm sm:text-base px-6 sm:px-8 py-3 rounded-full shadow-2xl transition-all duration-300 hover:scale-105 active:scale-95"
-                        ariaLabel="Tap to play surprise love song"
-                      >
-                        <span className="text-xl transition-transform group-hover:scale-125">
-                          {isPlaying && currentTrack.id === 'surprise-song' ? '⏸️' : '▶️'}
-                        </span>
-                        <span className="font-serif tracking-wide text-base sm:text-lg">
-                          {isPlaying && currentTrack.id === 'surprise-song'
-                            ? 'Pause Surprise Song 🎶'
-                            : 'Tap To Play Our Surprise Song 💖'}
-                        </span>
-                      </MagneticButton>
-                    </div>
-
-                    {isPlaying && currentTrack.id === 'surprise-song' && (
-                      <div className="mt-4 pt-3 border-t border-rose-300/20 flex flex-col items-center gap-1.5 animate-fadeIn">
-                        <div className="flex items-end gap-1 h-5">
-                          <span className="w-1 bg-rose-400 rounded-full equalizer-bar" />
-                          <span className="w-1 bg-pink-400 rounded-full equalizer-bar" />
-                          <span className="w-1 bg-amber-300 rounded-full equalizer-bar" />
-                          <span className="w-1 bg-rose-300 rounded-full equalizer-bar" />
-                          <span className="w-1 bg-rose-500 rounded-full equalizer-bar" />
-                        </div>
-                        <p className="text-xs font-semibold text-amber-200 animate-pulse">
-                          Now Playing: A Special Surprise Song For My Shundori Pakhi ❤️
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-
-              {/* Read Again 🔁 Action Button with Magnetic Hover */}
-              <div className="mt-6 flex justify-center">
-                <MagneticButton
-                  onClick={() => {
-                    setCurrentPage(0);
-                    launchCelebration();
-                  }}
-                  className="inline-flex items-center gap-2 bg-white/20 hover:bg-white/30 text-white border border-rose-300/40 font-bold text-xs sm:text-sm px-6 py-2 rounded-full shadow-md active:scale-95 transition-all"
-                >
-                  <span>Read again 🔁</span>
-                </MagneticButton>
-              </div>
-
-              <p className="text-[11px] sm:text-xs text-rose-200/80 mt-6">
-                Handcrafted with love by Nahid Ibn Zaman for Mahmuda Khanum (Shundori Pakhi) ❤️
-              </p>
-            </div>
-          </div>
-        );
-      };
-
-      const bookPages = [renderPageOne, renderPageTwo, renderPageThree, renderPageFour];
+      const bookPages = [PageOne, PageTwo, PageThree, PageFour];
 
       return (
         <div className="relative w-full h-[100dvh] overflow-hidden atmosphere-gradient text-rose-950">
-          {/* Background Romantic Petals & Interactive Glow Canvas */}
+          {/* Background Romantic Petals Canvas */}
           <RomanticParticleCanvas />
 
-          {/* Hidden Core Audio Element (Kept outside pages so music never stops across page turns) */}
+          {/* Hidden Core Audio Element (Music only plays when YOU choose!) */}
           <audio
             ref={audioRef}
             src={currentTrack.src}
@@ -2591,8 +2179,8 @@
           {/* FLOATING MUSIC BAR & EQUALIZER CONSOLE (Top-Right Glassmorphism) */}
           {/* =============================================================== */}
           <aside aria-label="Music player controls" className="fixed top-3 right-3 sm:top-5 sm:right-5 z-40 flex flex-col items-end">
-            <div className="flex items-center gap-2 bg-white/90 backdrop-blur-md border border-rose-200/90 shadow-xl rounded-full px-3.5 py-2">
-              {/* Spinning Vinyl Disc Motion Graphic */}
+            <div className="flex items-center gap-2 bg-white/95 backdrop-blur-md border border-rose-200/90 shadow-xl rounded-full px-3.5 py-2">
+              {/* Spinning Vinyl Disc */}
               <button
                 onClick={() => setShowPlaylistDrawer(!showPlaylistDrawer)}
                 className="relative w-8 h-8 rounded-full vinyl-grooves border border-amber-300/60 shadow-md flex items-center justify-center cursor-pointer group"
@@ -2639,7 +2227,7 @@
 
             {/* Expandable Glassmorphic Playlist & Scrubber Drawer */}
             {showPlaylistDrawer && (
-              <div className="mt-2 w-80 sm:w-96 bg-white/95 backdrop-blur-xl border border-rose-200 rounded-3xl p-4 sm:p-5 shadow-2xl animate-fadeIn text-rose-950">
+              <div className="mt-2 w-80 sm:w-96 bg-white/95 backdrop-blur-xl border border-rose-200 rounded-3xl p-4 sm:p-5 shadow-2xl text-rose-950">
                 <div className="flex items-center justify-between pb-3 border-b border-rose-100">
                   <div className="flex items-center gap-2">
                     <span className="text-xl">📻</span>
@@ -2763,7 +2351,6 @@
             pages={bookPages}
             currentPage={currentPage}
             onPageChange={setCurrentPage}
-            onFirstInteraction={handleFirstInteraction}
           />
 
           {/* =============================================================== */}
@@ -2772,7 +2359,6 @@
           <OpeningCover
             isOpen={isCoverOpen}
             onOpenCover={() => setIsCoverOpen(true)}
-            onFirstInteraction={handleFirstInteraction}
           />
         </div>
       );
