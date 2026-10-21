@@ -96,9 +96,9 @@
       width: 100%;
       overflow-y: auto;
       overflow-x: hidden;
-      -webkit-overflow-scrolling: touch;
       touch-action: pan-y;
-      will-change: scroll-position;
+      overscroll-behavior-y: contain;
+      overscroll-behavior: contain;
       scrollbar-width: thin;
       scrollbar-color: rgba(244, 63, 94, 0.45) rgba(255, 241, 242, 0.5);
     }
@@ -477,6 +477,11 @@
       const handlePointerDown = (e) => {
         if (e.button !== undefined && e.button !== 0) return;
 
+        e.stopPropagation();
+        try {
+          e.currentTarget.setPointerCapture(e.pointerId);
+        } catch (err) {}
+
         const startX = e.clientX;
         const startY = e.clientY;
         dragInfoRef.current = {
@@ -487,55 +492,37 @@
           isDragging: false
         };
 
-        if (isCover) {
-          e.stopPropagation();
-          try {
-            e.currentTarget.setPointerCapture(e.pointerId);
-          } catch (err) {}
-          if (onDragStart) onDragStart(startX, startY);
-        }
+        if (onDragStart) onDragStart(startX, startY);
       };
 
       const handlePointerMove = (e) => {
-        const { startX, startY, startTime, isDragging } = dragInfoRef.current;
+        const { startX, startTime } = dragInfoRef.current;
         if (startTime === 0) return;
+        e.stopPropagation();
 
         const currentX = e.clientX;
-        const currentY = e.clientY;
         const rawDelta = position === 'right' ? (startX - currentX) : (currentX - startX);
         const deltaX = Math.max(0, rawDelta);
-        const deltaY = Math.abs(currentY - startY);
 
-        if (!isDragging) {
-          if (isCover || (Math.abs(currentX - startX) > 8 && Math.abs(currentX - startX) > deltaY * 1.2)) {
-            dragInfoRef.current.isDragging = true;
-            try {
-              e.currentTarget.setPointerCapture(e.pointerId);
-            } catch (err) {}
-            if (onDragStart) onDragStart(startX, startY);
-          } else if (deltaY > Math.abs(currentX - startX)) {
-            // User is scrolling vertically, do not steal or capture pointer
-            return;
-          }
+        if (Math.abs(currentX - startX) > 6) {
+          dragInfoRef.current.isDragging = true;
         }
 
-        if (dragInfoRef.current.isDragging) {
-          e.stopPropagation();
-          dragInfoRef.current.totalDeltaX = deltaX;
+        dragInfoRef.current.totalDeltaX = deltaX;
 
-          // Instant direct DOM stretch without React re-render!
-          if (ribbonStripRef.current) {
-            const stretch = 1 + Math.min(0.2, deltaX / 600);
-            ribbonStripRef.current.style.transform = `scaleX(${stretch})`;
-          }
-
-          if (onDrag) onDrag(deltaX, currentX);
+        // Instant direct DOM stretch without React re-render!
+        if (ribbonStripRef.current) {
+          const stretch = 1 + Math.min(0.2, deltaX / 600);
+          ribbonStripRef.current.style.transform = `scaleX(${stretch})`;
         }
+
+        if (onDrag) onDrag(deltaX, currentX);
       };
 
       const handlePointerUp = (e) => {
         const { isDragging, totalDeltaX, startTime } = dragInfoRef.current;
         if (startTime === 0) return;
+        e.stopPropagation();
         dragInfoRef.current.startTime = 0;
 
         if (ribbonStripRef.current) {
@@ -548,15 +535,11 @@
 
         const elapsedTime = Date.now() - startTime;
 
-        if (isDragging) {
-          e.stopPropagation();
-          if (onDragEnd) onDragEnd(totalDeltaX);
-        } else {
-          if (totalDeltaX < 8 && elapsedTime < 400) {
-            e.stopPropagation();
-            if (onClick) onClick();
-          }
+        if (!isDragging || (totalDeltaX < 8 && elapsedTime < 400)) {
+          if (onClick) onClick();
           if (onDragEnd) onDragEnd(0);
+        } else {
+          if (onDragEnd) onDragEnd(totalDeltaX);
         }
       };
 
@@ -577,18 +560,20 @@
 
       return (
         <div
-          role="button"
-          tabIndex={0}
-          aria-label={ariaLabel}
-          onClick={onClick}
-          onPointerDown={handlePointerDown}
-          onPointerMove={handlePointerMove}
-          onPointerUp={handlePointerUp}
-          onPointerCancel={handlePointerCancel}
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-          style={{ touchAction: isCover ? 'none' : 'pan-y' }}
-          className={`absolute top-0 bottom-0 ${isRight ? 'right-0' : 'left-0'} ${hitboxWidth} z-30 flex items-center justify-center select-none cursor-grab active:cursor-grabbing`}
+          {...(isCover ? {
+            role: "button",
+            tabIndex: 0,
+            "aria-label": ariaLabel,
+            onClick: onClick,
+            onPointerDown: handlePointerDown,
+            onPointerMove: handlePointerMove,
+            onPointerUp: handlePointerUp,
+            onPointerCancel: handlePointerCancel,
+            onMouseEnter: () => setIsHovered(true),
+            onMouseLeave: () => setIsHovered(false),
+            style: { touchAction: 'none' }
+          } : {})}
+          className={`absolute top-0 bottom-0 ${isRight ? 'right-0' : 'left-0'} ${isCover ? hitboxWidth : ribbonWidth} z-30 flex items-center justify-center select-none ${isCover ? 'cursor-grab active:cursor-grabbing pointer-events-auto' : 'pointer-events-none'}`}
         >
           {/* Satin Ribbon (Fita) Hanging Strip */}
           <div
@@ -608,15 +593,34 @@
             <div className="absolute inset-0 opacity-25 bg-gradient-to-b from-white/30 via-transparent to-black/25" />
           </div>
 
-          {/* Decorative Bow & Knot Drag Handle */}
+          {/* Decorative Bow & Knot Drag Handle (Interactive on pages and cover) */}
           <div
-            className={`absolute top-1/2 -translate-y-1/2 z-10 flex flex-col items-center justify-center animate-ribbon-sway transition-transform duration-200`}
-            style={{
-              filter: BOOK_CONFIG.ribbon.shadow,
-              transform: isHovered ? 'translateY(-50%) scale(1.1)' : 'translateY(-50%) scale(1)',
-              willChange: 'transform',
-              touchAction: 'none'
-            }}
+            {...(!isCover ? {
+              role: "button",
+              tabIndex: 0,
+              "aria-label": ariaLabel,
+              onClick: onClick,
+              onPointerDown: handlePointerDown,
+              onPointerMove: handlePointerMove,
+              onPointerUp: handlePointerUp,
+              onPointerCancel: handlePointerCancel,
+              onMouseEnter: () => setIsHovered(true),
+              onMouseLeave: () => setIsHovered(false),
+              style: {
+                filter: BOOK_CONFIG.ribbon.shadow,
+                transform: isHovered ? 'translateY(-50%) scale(1.1)' : 'translateY(-50%) scale(1)',
+                willChange: 'transform',
+                touchAction: 'none'
+              }
+            } : {
+              style: {
+                filter: BOOK_CONFIG.ribbon.shadow,
+                transform: isHovered ? 'translateY(-50%) scale(1.1)' : 'translateY(-50%) scale(1)',
+                willChange: 'transform',
+                touchAction: 'none'
+              }
+            })}
+            className={`absolute top-1/2 -translate-y-1/2 z-10 flex flex-col items-center justify-center animate-ribbon-sway transition-transform duration-200 ${!isCover ? 'pointer-events-auto cursor-grab active:cursor-grabbing p-2.5 sm:p-3' : 'pointer-events-none'}`}
           >
             {/* Ribbon Knot SVG */}
             <div className="relative">
@@ -937,7 +941,7 @@
         const dy = e.changedTouches[0].clientY - touchStartRef.current.y;
         const dt = Date.now() - touchStartRef.current.time;
 
-        if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5 && dt < 450) {
+        if (Math.abs(dx) > 75 && Math.abs(dx) > Math.abs(dy) * 2.0 && dt < 400) {
           if (dx < 0) {
             goToNextPage();
           } else {
@@ -1046,13 +1050,12 @@
                   transformStyle: 'preserve-3d'
                 }}
               >
-                {/* Front Face of the Page (Solid, Never Vanishes) */}
+                {/* Front Face of the Page (Solid, Never Vanishes, 2D Native Scrollable) */}
                 <div
                   className="absolute inset-0 w-full h-full atmosphere-gradient text-rose-950 overflow-hidden"
                   style={{
                     WebkitBackfaceVisibility: 'hidden',
                     backfaceVisibility: 'hidden',
-                    transform: 'translateZ(1px)',
                     pointerEvents: isCurrent ? 'auto' : 'none'
                   }}
                 >
@@ -1093,7 +1096,7 @@
                 <div
                   className="absolute inset-0 w-full h-full paper-card border-r-2 border-rose-200/90 shadow-2xl flex items-center justify-center p-8 select-none"
                   style={{
-                    transform: 'rotateY(180deg) translateZ(1px)',
+                    transform: 'rotateY(180deg)',
                     WebkitBackfaceVisibility: 'hidden',
                     backfaceVisibility: 'hidden',
                     boxShadow: 'inset 25px 0 45px rgba(0, 0, 0, 0.12)'
