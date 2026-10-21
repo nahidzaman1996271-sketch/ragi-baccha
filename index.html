@@ -96,27 +96,26 @@
       width: 100%;
       overflow-y: auto;
       overflow-x: hidden;
-      touch-action: pan-y;
-      overscroll-behavior-y: contain;
-      overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior: auto;
       scrollbar-width: thin;
-      scrollbar-color: rgba(244, 63, 94, 0.45) rgba(255, 241, 242, 0.5);
+      scrollbar-color: rgba(244, 63, 94, 0.55) rgba(255, 241, 242, 0.5);
     }
     .page-scroll-container::-webkit-scrollbar {
-      width: 7px;
+      width: 8px;
     }
     .page-scroll-container::-webkit-scrollbar-track {
       background: rgba(255, 241, 242, 0.4);
       border-radius: 9999px;
     }
     .page-scroll-container::-webkit-scrollbar-thumb {
-      background: rgba(244, 63, 94, 0.4);
+      background: rgba(244, 63, 94, 0.5);
       border-radius: 9999px;
-      border: 1px solid rgba(255, 255, 255, 0.6);
+      border: 1.5px solid rgba(255, 255, 255, 0.7);
       transition: background 0.2s ease;
     }
     .page-scroll-container::-webkit-scrollbar-thumb:hover {
-      background: rgba(225, 29, 72, 0.7);
+      background: rgba(225, 29, 72, 0.85);
     }
 
     /* ========================================================= */
@@ -925,6 +924,28 @@
         }
       }, [currentPage]);
 
+      // Ultra-smooth rock-solid bidirectional wheel scrolling:
+      // Eliminates 3D transform scroll dropping, overscroll freezes, and boundary locks.
+      // Guarantees effortless downward and upward scrolling anywhere in the viewport.
+      useEffect(() => {
+        const handleWheel = (e) => {
+          if (e.target && e.target.closest && e.target.closest('.overflow-y-auto:not(.page-scroll-container)')) {
+            return;
+          }
+          const leaf = leafRefs.current[currentPage];
+          if (!leaf) return;
+          const scroller = leaf.querySelector('.page-scroll-container');
+          if (!scroller) return;
+
+          if (scroller.scrollHeight > scroller.clientHeight) {
+            scroller.scrollBy({ top: e.deltaY, behavior: 'auto' });
+            e.preventDefault();
+          }
+        };
+        window.addEventListener('wheel', handleWheel, { passive: false });
+        return () => window.removeEventListener('wheel', handleWheel);
+      }, [currentPage]);
+
       // Touch Horizontal Swipe Gesture Detection (Non-blocking, smooth scroll-friendly)
       const handleTouchStart = (e) => {
         if (e.touches.length !== 1) return;
@@ -1114,7 +1135,16 @@
           {/* Bottom Progress Bar: 4 Knot Dots */}
           <nav
             aria-label="Page navigation"
-            className="fixed bottom-3.5 left-1/2 -translate-x-1/2 z-40 bg-white/90 backdrop-blur-md border border-rose-200/90 shadow-xl px-4 py-1.5 rounded-full flex items-center gap-3"
+            onWheel={(e) => {
+              const leaf = leafRefs.current[currentPage];
+              if (leaf) {
+                const scroller = leaf.querySelector('.page-scroll-container');
+                if (scroller) {
+                  scroller.scrollBy({ top: e.deltaY, behavior: 'auto' });
+                }
+              }
+            }}
+            className="fixed bottom-3.5 left-1/2 -translate-x-1/2 z-40 bg-white/90 backdrop-blur-md border border-rose-200/90 shadow-xl px-4 py-1.5 rounded-full flex items-center gap-3 select-none pointer-events-auto"
           >
             {[0, 1, 2, 3].map((dotIdx) => {
               const isActive = currentPage === dotIdx;
