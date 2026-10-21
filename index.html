@@ -268,8 +268,8 @@
     // CONFIGURATION: BOOK PAGER & RIBBON SETTINGS
     // =========================================================================
     const BOOK_CONFIG = {
-      dragThreshold: 0.35,  // 35% screen width to auto-turn page
-      flipDurationMs: 480,  // Snappy, ultra-responsive 480ms transition
+      dragThreshold: 0.18,  // 18% screen width (or 75px) to auto-turn page smoothly with mouse
+      flipDurationMs: 440,  // Snappy, ultra-responsive 440ms transition
       ribbon: {
         nextGradient: 'linear-gradient(135deg, #9f1239 0%, #e11d48 30%, #fecdd3 50%, #f43f5e 70%, #881337 100%)',
         prevGradient: 'linear-gradient(135deg, #881337 0%, #be123c 30%, #ffe4e6 50%, #e11d48 70%, #4c0519 100%)',
@@ -543,13 +543,14 @@
 
       const isRight = position === 'right';
       const ribbonWidth = isCover ? 'w-10 sm:w-12' : (isSmall ? 'w-6 sm:w-7' : 'w-8 sm:w-10');
-      const hitboxWidth = isCover ? 'w-16 sm:w-20' : (isSmall ? 'w-10 sm:w-12' : 'w-11 sm:w-14');
+      const hitboxWidth = isCover ? 'w-16 sm:w-24' : (isSmall ? 'w-12 sm:w-16' : 'w-14 sm:w-20');
 
       return (
         <div
           role="button"
           tabIndex={0}
           aria-label={ariaLabel}
+          onClick={onClick}
           onPointerDown={handlePointerDown}
           onPointerMove={handlePointerMove}
           onPointerUp={handlePointerUp}
@@ -557,7 +558,7 @@
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
           style={{ touchAction: isCover ? 'none' : 'pan-y' }}
-          className={`absolute top-0 bottom-0 ${isRight ? 'right-0' : 'left-0'} ${hitboxWidth} z-30 flex items-center justify-center select-none cursor-pointer`}
+          className={`absolute top-0 bottom-0 ${isRight ? 'right-0' : 'left-0'} ${hitboxWidth} z-30 flex items-center justify-center select-none cursor-grab active:cursor-grabbing`}
         >
           {/* Satin Ribbon (Fita) Hanging Strip */}
           <div
@@ -620,6 +621,10 @@
               <div className="absolute right-14 sm:right-16 top-1/2 -translate-y-1/2 whitespace-nowrap bg-rose-950/90 text-amber-200 border border-amber-300/50 text-xs sm:text-sm font-semibold px-3.5 py-1.5 rounded-full shadow-xl animate-nudge-left pointer-events-none flex items-center gap-1.5">
                 <span>{hintText}</span>
               </div>
+            ) : isHovered ? (
+              <div className={`absolute ${isRight ? 'right-14 sm:right-16' : 'left-14 sm:left-16'} top-1/2 -translate-y-1/2 whitespace-nowrap bg-rose-950/90 text-amber-200 border border-amber-300/50 text-xs font-semibold px-3 py-1 rounded-full shadow-xl pointer-events-none flex items-center gap-1.5 z-40`}>
+                <span>{isRight ? 'Slide left with mouse 🎀' : 'Slide right with mouse 👈'}</span>
+              </div>
             ) : (
               <span className={`text-[10px] font-bold text-white drop-shadow-md mt-0.5 select-none ${isSmall ? 'text-[8px]' : ''}`}>
                 {isRight ? '◀' : '▶'}
@@ -663,7 +668,7 @@
         const screenWidth = window.innerWidth || 1000;
         const progress = deltaX / screenWidth;
 
-        if (progress >= BOOK_CONFIG.dragThreshold) {
+        if (progress >= BOOK_CONFIG.dragThreshold || deltaX > 75) {
           completeCoverTurn();
         } else {
           if (coverLeafRef.current) {
@@ -796,7 +801,6 @@
       const totalPages = pages.length;
       const isFlippingRef = useRef(false);
       const leafRefs = useRef([]);
-      const wheelCooldownRef = useRef(0);
       const touchStartRef = useRef({ x: 0, y: 0, time: 0 });
 
       // Programmatic Navigation
@@ -880,23 +884,58 @@
         }
       }, [currentPage]);
 
-      // Mouse Wheel Navigation: ONLY horizontal trackpad / shift+wheel gestures flip pages
-      // Normal vertical mouse wheel (deltaY) scrolls smoothly so the user can read all handwritten content
-      const handleWheel = (e) => {
-        if (isFlippingRef.current) return;
+      // Container mouse/pointer horizontal slide detection (sliding anywhere on gutters/page to turn)
+      const containerDragRef = useRef({ startX: 0, startY: 0, isDragging: false, startTime: 0 });
 
-        // Support intentional horizontal swipe / shift+wheel on trackpads
-        if (Math.abs(e.deltaX) > 45 && Math.abs(e.deltaX) > Math.abs(e.deltaY) * 1.5) {
-          const now = Date.now();
-          if (now - wheelCooldownRef.current < 650) return;
+      const handleContainerPointerDown = (e) => {
+        if (e.button !== undefined && e.button !== 0) return;
+        // Don't drag if clicking interactive elements or inside the letter card
+        if (e.target.closest('button, a, input, textarea, .vinyl-grooves, nav, [role="button"], .paper-card')) return;
 
-          if (e.deltaX > 45) {
-            wheelCooldownRef.current = now;
-            goToNextPage();
-          } else if (e.deltaX < -45) {
-            wheelCooldownRef.current = now;
-            goToPrevPage();
+        containerDragRef.current = {
+          startX: e.clientX,
+          startY: e.clientY,
+          isDragging: false,
+          startTime: Date.now()
+        };
+      };
+
+      const handleContainerPointerMove = (e) => {
+        const { startX, startY, startTime, isDragging } = containerDragRef.current;
+        if (startTime === 0 || isFlippingRef.current) return;
+
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+
+        if (!isDragging) {
+          // Only start horizontal peel if gesture is clearly horizontal (never on vertical scroll!)
+          if (Math.abs(dx) > 16 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+            containerDragRef.current.isDragging = true;
+            if (dx < 0 && currentPage < totalPages - 1) {
+              handleRibbonDragStart('next');
+            } else if (dx > 0 && currentPage > 0) {
+              handleRibbonDragStart('prev');
+            }
           }
+        } else {
+          if (dx < 0 && currentPage < totalPages - 1) {
+            handleRibbonDrag(Math.abs(dx), 'next');
+          } else if (dx > 0 && currentPage > 0) {
+            handleRibbonDrag(Math.abs(dx), 'prev');
+          }
+        }
+      };
+
+      const handleContainerPointerUp = (e) => {
+        const { startX, isDragging, startTime } = containerDragRef.current;
+        containerDragRef.current.startTime = 0;
+        if (!isDragging) return;
+
+        const dx = e.clientX - startX;
+        if (dx < 0 && currentPage < totalPages - 1) {
+          handleRibbonDragEnd(Math.abs(dx), 'next');
+        } else if (dx > 0 && currentPage > 0) {
+          handleRibbonDragEnd(Math.abs(dx), 'prev');
         }
       };
 
@@ -963,7 +1002,7 @@
         const screenWidth = window.innerWidth || 1000;
         const progress = deltaX / screenWidth;
 
-        if (progress >= BOOK_CONFIG.dragThreshold) {
+        if (progress >= BOOK_CONFIG.dragThreshold || deltaX > 75) {
           if (direction === 'next' && currentPage < totalPages - 1) {
             goToNextPage();
           } else if (direction === 'prev' && currentPage > 0) {
@@ -989,7 +1028,10 @@
 
       return (
         <div
-          onWheel={handleWheel}
+          onPointerDown={handleContainerPointerDown}
+          onPointerMove={handleContainerPointerMove}
+          onPointerUp={handleContainerPointerUp}
+          onPointerCancel={handleContainerPointerUp}
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
           className="book-container relative w-full h-[100dvh] overflow-hidden"
