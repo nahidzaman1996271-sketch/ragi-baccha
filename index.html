@@ -88,8 +88,6 @@
       transform-origin: left center;
       transform-style: preserve-3d;
       will-change: transform;
-      -webkit-backface-visibility: hidden;
-      backface-visibility: hidden;
     }
 
     /* Scrollable page container with custom romantic rose scrollbar */
@@ -99,9 +97,8 @@
       overflow-y: auto;
       overflow-x: hidden;
       -webkit-overflow-scrolling: touch;
-      overscroll-behavior-y: contain;
-      scroll-behavior: smooth;
       touch-action: pan-y;
+      will-change: scroll-position;
       scrollbar-width: thin;
       scrollbar-color: rgba(244, 63, 94, 0.45) rgba(255, 241, 242, 0.5);
     }
@@ -193,9 +190,25 @@
       100% { transform: rotate(360deg); }
     }
     @keyframes skyLanternDrift {
-      0% { transform: translateY(0) translateX(0) scale(0.85); opacity: 0.95; }
-      50% { transform: translateY(-160px) translateX(25px) scale(1.1); opacity: 0.9; }
-      100% { transform: translateY(-380px) translateX(-35px) scale(0.6); opacity: 0; }
+      0% {
+        transform: translateY(0) translateX(0) scale(0.85);
+        opacity: 0;
+      }
+      8% {
+        opacity: 1;
+      }
+      35% {
+        transform: translateY(-40vh) translateX(25px) scale(1.05);
+        opacity: 0.95;
+      }
+      70% {
+        transform: translateY(-80vh) translateX(-20px) scale(0.85);
+        opacity: 0.85;
+      }
+      100% {
+        transform: translateY(-125vh) translateX(30px) scale(0.5);
+        opacity: 0;
+      }
     }
     @keyframes waveBar {
       0%, 100% { height: 6px; }
@@ -206,7 +219,7 @@
     .animate-pulse-glow { animation: pulseGlow 2.5s ease-in-out infinite; }
     .animate-breathe { animation: gentleBreathing 4s ease-in-out infinite; }
     .animate-spin-slow { animation: spinDisc 9s linear infinite; }
-    .animate-lantern { animation: skyLanternDrift 5.5s cubic-bezier(0.2, 0.8, 0.25, 1) forwards; }
+    .animate-lantern { animation: skyLanternDrift 8s cubic-bezier(0.25, 1, 0.5, 1) forwards; will-change: transform, opacity; }
 
     /* Shimmering gradient border animation */
     .shimmer-conic {
@@ -464,11 +477,6 @@
       const handlePointerDown = (e) => {
         if (e.button !== undefined && e.button !== 0) return;
 
-        e.stopPropagation();
-        try {
-          e.currentTarget.setPointerCapture(e.pointerId);
-        } catch (err) {}
-
         const startX = e.clientX;
         const startY = e.clientY;
         dragInfoRef.current = {
@@ -479,37 +487,55 @@
           isDragging: false
         };
 
-        if (onDragStart) onDragStart(startX, startY);
+        if (isCover) {
+          e.stopPropagation();
+          try {
+            e.currentTarget.setPointerCapture(e.pointerId);
+          } catch (err) {}
+          if (onDragStart) onDragStart(startX, startY);
+        }
       };
 
       const handlePointerMove = (e) => {
-        const { startX, startTime } = dragInfoRef.current;
+        const { startX, startY, startTime, isDragging } = dragInfoRef.current;
         if (startTime === 0) return;
-        e.stopPropagation();
 
         const currentX = e.clientX;
+        const currentY = e.clientY;
         const rawDelta = position === 'right' ? (startX - currentX) : (currentX - startX);
         const deltaX = Math.max(0, rawDelta);
+        const deltaY = Math.abs(currentY - startY);
 
-        if (Math.abs(currentX - startX) > 6) {
-          dragInfoRef.current.isDragging = true;
+        if (!isDragging) {
+          if (isCover || (Math.abs(currentX - startX) > 8 && Math.abs(currentX - startX) > deltaY * 1.2)) {
+            dragInfoRef.current.isDragging = true;
+            try {
+              e.currentTarget.setPointerCapture(e.pointerId);
+            } catch (err) {}
+            if (onDragStart) onDragStart(startX, startY);
+          } else if (deltaY > Math.abs(currentX - startX)) {
+            // User is scrolling vertically, do not steal or capture pointer
+            return;
+          }
         }
 
-        dragInfoRef.current.totalDeltaX = deltaX;
+        if (dragInfoRef.current.isDragging) {
+          e.stopPropagation();
+          dragInfoRef.current.totalDeltaX = deltaX;
 
-        // Instant direct DOM stretch without React re-render!
-        if (ribbonStripRef.current) {
-          const stretch = 1 + Math.min(0.2, deltaX / 600);
-          ribbonStripRef.current.style.transform = `scaleX(${stretch})`;
+          // Instant direct DOM stretch without React re-render!
+          if (ribbonStripRef.current) {
+            const stretch = 1 + Math.min(0.2, deltaX / 600);
+            ribbonStripRef.current.style.transform = `scaleX(${stretch})`;
+          }
+
+          if (onDrag) onDrag(deltaX, currentX);
         }
-
-        if (onDrag) onDrag(deltaX, currentX);
       };
 
       const handlePointerUp = (e) => {
         const { isDragging, totalDeltaX, startTime } = dragInfoRef.current;
         if (startTime === 0) return;
-        e.stopPropagation();
         dragInfoRef.current.startTime = 0;
 
         if (ribbonStripRef.current) {
@@ -522,11 +548,15 @@
 
         const elapsedTime = Date.now() - startTime;
 
-        if (!isDragging || (totalDeltaX < 8 && elapsedTime < 320)) {
-          if (onClick) onClick();
-          if (onDragEnd) onDragEnd(0);
-        } else {
+        if (isDragging) {
+          e.stopPropagation();
           if (onDragEnd) onDragEnd(totalDeltaX);
+        } else {
+          if (totalDeltaX < 8 && elapsedTime < 400) {
+            e.stopPropagation();
+            if (onClick) onClick();
+          }
+          if (onDragEnd) onDragEnd(0);
         }
       };
 
@@ -542,8 +572,8 @@
       };
 
       const isRight = position === 'right';
-      const ribbonWidth = isCover ? 'w-10 sm:w-12' : (isSmall ? 'w-6 sm:w-7' : 'w-8 sm:w-10');
-      const hitboxWidth = isCover ? 'w-16 sm:w-24' : (isSmall ? 'w-12 sm:w-16' : 'w-14 sm:w-20');
+      const ribbonWidth = isCover ? 'w-10 sm:w-12' : (isSmall ? 'w-6 sm:w-7' : 'w-7 sm:w-8');
+      const hitboxWidth = isCover ? 'w-16 sm:w-24' : (isSmall ? 'w-8 sm:w-12' : 'w-9 sm:w-14');
 
       return (
         <div
@@ -732,9 +762,6 @@
                     alt="Amar Shundori Pakhi — Maf"
                     className="w-full h-full object-cover rounded-full select-none pointer-events-none"
                   />
-                  <span className="absolute bottom-2 right-2 w-8 h-8 rounded-full bg-rose-600 border-2 border-white flex items-center justify-center text-sm shadow-md animate-bounce">
-                    ❤️
-                  </span>
                 </div>
 
                 <p className="text-amber-200/90 text-xs sm:text-sm uppercase tracking-widest mb-2 font-semibold">
@@ -823,16 +850,16 @@
           // Turning forward: current page turns to -180deg
           const leaf = leafRefs.current[currentPage];
           if (leaf) {
-            leaf.style.zIndex = '20';
+            leaf.style.zIndex = '25';
             leaf.style.transition = `transform ${BOOK_CONFIG.flipDurationMs}ms cubic-bezier(0.2, 0.8, 0.25, 1)`;
             leaf.style.transform = 'rotateY(-180deg)';
           }
         } else {
-          // Turning backward: target page swings from -180deg to 0deg on top!
+          // Turning backward: target page swings from -180deg to 0deg smoothly on top!
           const leaf = leafRefs.current[targetIdx];
           if (leaf) {
             leaf.style.visibility = 'visible';
-            leaf.style.zIndex = '30';
+            leaf.style.zIndex = '35';
             leaf.style.transition = `transform ${BOOK_CONFIG.flipDurationMs}ms cubic-bezier(0.2, 0.8, 0.25, 1)`;
             leaf.style.transform = 'rotateY(0deg)';
           }
@@ -841,7 +868,17 @@
         setTimeout(() => {
           onPageChange(targetIdx);
           isFlippingRef.current = false;
-        }, BOOK_CONFIG.flipDurationMs);
+          if (leafRefs.current) {
+            leafRefs.current.forEach((l, i) => {
+              if (l) {
+                l.style.zIndex = i === targetIdx ? '10' : (i < targetIdx ? '1' : '5');
+                l.style.transition = '';
+                l.style.transform = i < targetIdx ? 'rotateY(-180deg)' : 'rotateY(0deg)';
+                l.style.visibility = Math.abs(i - targetIdx) <= 1 ? 'visible' : 'hidden';
+              }
+            });
+          }
+        }, BOOK_CONFIG.flipDurationMs + 20);
       };
 
       const goToNextPage = () => {
@@ -884,62 +921,7 @@
         }
       }, [currentPage]);
 
-      // Container mouse/pointer horizontal slide detection (sliding anywhere on gutters/page to turn)
-      const containerDragRef = useRef({ startX: 0, startY: 0, isDragging: false, startTime: 0 });
-
-      const handleContainerPointerDown = (e) => {
-        if (e.button !== undefined && e.button !== 0) return;
-        // Don't drag if clicking interactive elements or inside the letter card
-        if (e.target.closest('button, a, input, textarea, .vinyl-grooves, nav, [role="button"], .paper-card')) return;
-
-        containerDragRef.current = {
-          startX: e.clientX,
-          startY: e.clientY,
-          isDragging: false,
-          startTime: Date.now()
-        };
-      };
-
-      const handleContainerPointerMove = (e) => {
-        const { startX, startY, startTime, isDragging } = containerDragRef.current;
-        if (startTime === 0 || isFlippingRef.current) return;
-
-        const dx = e.clientX - startX;
-        const dy = e.clientY - startY;
-
-        if (!isDragging) {
-          // Only start horizontal peel if gesture is clearly horizontal (never on vertical scroll!)
-          if (Math.abs(dx) > 16 && Math.abs(dx) > Math.abs(dy) * 1.5) {
-            containerDragRef.current.isDragging = true;
-            if (dx < 0 && currentPage < totalPages - 1) {
-              handleRibbonDragStart('next');
-            } else if (dx > 0 && currentPage > 0) {
-              handleRibbonDragStart('prev');
-            }
-          }
-        } else {
-          if (dx < 0 && currentPage < totalPages - 1) {
-            handleRibbonDrag(Math.abs(dx), 'next');
-          } else if (dx > 0 && currentPage > 0) {
-            handleRibbonDrag(Math.abs(dx), 'prev');
-          }
-        }
-      };
-
-      const handleContainerPointerUp = (e) => {
-        const { startX, isDragging, startTime } = containerDragRef.current;
-        containerDragRef.current.startTime = 0;
-        if (!isDragging) return;
-
-        const dx = e.clientX - startX;
-        if (dx < 0 && currentPage < totalPages - 1) {
-          handleRibbonDragEnd(Math.abs(dx), 'next');
-        } else if (dx > 0 && currentPage > 0) {
-          handleRibbonDragEnd(Math.abs(dx), 'prev');
-        }
-      };
-
-      // Touch Horizontal Swipe Gesture Detection
+      // Touch Horizontal Swipe Gesture Detection (Non-blocking, smooth scroll-friendly)
       const handleTouchStart = (e) => {
         if (e.touches.length !== 1) return;
         touchStartRef.current = {
@@ -955,7 +937,7 @@
         const dy = e.changedTouches[0].clientY - touchStartRef.current.y;
         const dt = Date.now() - touchStartRef.current.time;
 
-        if (Math.abs(dx) > 65 && Math.abs(dx) > Math.abs(dy) * 1.5 && dt < 450) {
+        if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5 && dt < 450) {
           if (dx < 0) {
             goToNextPage();
           } else {
@@ -972,9 +954,9 @@
           leaf.style.transition = 'none';
           if (direction === 'prev') {
             leaf.style.visibility = 'visible';
-            leaf.style.zIndex = '30';
+            leaf.style.zIndex = '35';
           } else {
-            leaf.style.zIndex = '20';
+            leaf.style.zIndex = '25';
           }
         }
       };
@@ -1009,18 +991,30 @@
             goToPrevPage();
           }
         } else {
-          // Snap back
+          // Snap back smoothly
           if (direction === 'next') {
             const leaf = leafRefs.current[currentPage];
             if (leaf) {
               leaf.style.transition = `transform ${BOOK_CONFIG.flipDurationMs}ms cubic-bezier(0.2, 0.8, 0.25, 1)`;
               leaf.style.transform = 'rotateY(0deg)';
+              setTimeout(() => {
+                if (leaf && !isFlippingRef.current) {
+                  leaf.style.zIndex = '10';
+                  leaf.style.transition = '';
+                }
+              }, BOOK_CONFIG.flipDurationMs + 20);
             }
           } else if (direction === 'prev' && currentPage > 0) {
             const leaf = leafRefs.current[currentPage - 1];
             if (leaf) {
               leaf.style.transition = `transform ${BOOK_CONFIG.flipDurationMs}ms cubic-bezier(0.2, 0.8, 0.25, 1)`;
               leaf.style.transform = 'rotateY(-180deg)';
+              setTimeout(() => {
+                if (leaf && !isFlippingRef.current) {
+                  leaf.style.zIndex = '1';
+                  leaf.style.transition = '';
+                }
+              }, BOOK_CONFIG.flipDurationMs + 20);
             }
           }
         }
@@ -1028,10 +1022,6 @@
 
       return (
         <div
-          onPointerDown={handleContainerPointerDown}
-          onPointerMove={handleContainerPointerMove}
-          onPointerUp={handleContainerPointerUp}
-          onPointerCancel={handleContainerPointerUp}
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
           className="book-container relative w-full h-[100dvh] overflow-hidden"
@@ -1060,7 +1050,9 @@
                 <div
                   className="absolute inset-0 w-full h-full atmosphere-gradient text-rose-950 overflow-hidden"
                   style={{
+                    WebkitBackfaceVisibility: 'hidden',
                     backfaceVisibility: 'hidden',
+                    transform: 'translateZ(1px)',
                     pointerEvents: isCurrent ? 'auto' : 'none'
                   }}
                 >
@@ -1101,7 +1093,8 @@
                 <div
                   className="absolute inset-0 w-full h-full paper-card border-r-2 border-rose-200/90 shadow-2xl flex items-center justify-center p-8 select-none"
                   style={{
-                    transform: 'rotateY(180deg)',
+                    transform: 'rotateY(180deg) translateZ(1px)',
+                    WebkitBackfaceVisibility: 'hidden',
                     backfaceVisibility: 'hidden',
                     boxShadow: 'inset 25px 0 45px rgba(0, 0, 0, 0.12)'
                   }}
@@ -1690,6 +1683,15 @@
       const [acceptedSunset, setAcceptedSunset] = useState(false);
       const [skyLanterns, setSkyLanterns] = useState([]);
 
+      const addLantern = (text, leftPercent) => {
+        const id = Date.now() + Math.random();
+        const newLantern = { id, left: leftPercent, text };
+        setSkyLanterns(prev => [...prev.slice(-8), newLantern]);
+        setTimeout(() => {
+          setSkyLanterns(prev => prev.filter(item => item.id !== id));
+        }, 8500);
+      };
+
       const handleSendSkyLantern = () => {
         if (window.confetti) {
           window.confetti({ particleCount: 30, spread: 60, origin: { y: 0.6 } });
@@ -1702,12 +1704,7 @@
           "Tomake Khub Bhalobashi 🌹"
         ];
         const randomMsg = lanternMessages[Math.floor(Math.random() * lanternMessages.length)];
-        const newLantern = {
-          id: Date.now() + Math.random(),
-          left: 30 + Math.random() * 40,
-          text: randomMsg
-        };
-        setSkyLanterns(prev => [...prev.slice(-6), newLantern]);
+        addLantern(randomMsg, 12 + Math.random() * 70);
       };
 
       const handleAcceptSunset = () => {
@@ -1725,37 +1722,41 @@
         const messages = [
           "Amar Shundori Pakhi 🕊️",
           "Always Yours, Nahid ❤️",
-          "Forever & Always 💫"
+          "Forever & Always 💫",
+          "Tomake Khub Bhalobashi 🌹"
         ];
         messages.forEach((msg, i) => {
           setTimeout(() => {
-            const l = {
-              id: Date.now() + Math.random(),
-              left: 25 + i * 22,
-              text: msg
-            };
-            setSkyLanterns(prev => [...prev.slice(-6), l]);
-          }, i * 500);
+            addLantern(msg, 10 + i * 23);
+          }, i * 400);
         });
       };
 
       return (
         <div className="relative min-h-full flex flex-col justify-start pt-8 pb-28 sm:pb-36 px-3 sm:px-6 bg-gradient-to-b from-rose-100/70 via-rose-300/80 to-rose-950 text-white">
-          {/* Animated Sky Lanterns */}
-          <div className="pointer-events-none absolute inset-0 overflow-hidden">
-            {skyLanterns.map((l) => (
-              <div
-                key={l.id}
-                className="absolute bottom-20 flex flex-col items-center animate-lantern"
-                style={{ left: `${l.left}%` }}
-              >
-                <span className="text-3xl sm:text-4xl filter drop-shadow-[0_0_15px_#f59e0b]">🏮</span>
-                <span className="text-[10px] font-bold text-amber-200 bg-rose-950/80 px-2 py-0.5 rounded-full mt-1 border border-amber-300/40 whitespace-nowrap">
-                  {l.text}
-                </span>
-              </div>
-            ))}
-          </div>
+          {/* Animated Sky Lanterns (Rendered directly into document.body for true full-screen mobile float) */}
+          {typeof document !== 'undefined' && ReactDOM.createPortal(
+            <div className="pointer-events-none fixed inset-0 z-50 overflow-hidden">
+              {skyLanterns.map((l) => (
+                <div
+                  key={l.id}
+                  className="absolute bottom-6 flex flex-col items-center animate-lantern pointer-events-none select-none"
+                  style={{ left: `${l.left}%` }}
+                >
+                  <div className="relative flex items-center justify-center">
+                    <span className="text-4xl sm:text-6xl filter drop-shadow-[0_0_24px_#fbbf24] animate-pulse">
+                      🏮
+                    </span>
+                    <span className="absolute -inset-2 bg-amber-400/30 rounded-full blur-md animate-ping pointer-events-none -z-10" />
+                  </div>
+                  <span className="text-[11px] sm:text-xs font-bold text-amber-200 bg-rose-950/95 px-3.5 py-1 rounded-full mt-1.5 border border-amber-300/70 shadow-[0_4px_16px_rgba(0,0,0,0.6)] whitespace-nowrap backdrop-blur-md">
+                    {l.text}
+                  </span>
+                </div>
+              ))}
+            </div>,
+            document.body
+          )}
 
           <div className="max-w-3xl mx-auto text-center relative z-10 w-full my-auto">
             <span className="inline-block text-xs font-bold uppercase tracking-widest text-rose-950 bg-white/90 px-3.5 py-1 rounded-full mb-2 shadow-md">
